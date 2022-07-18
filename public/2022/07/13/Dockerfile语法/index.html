@@ -1,0 +1,727 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://yangdi.site/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://yangdi.site/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://yangdi.site/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Dockerfile" />
+
+
+<link rel="canonical" href="http://yangdi.site/2022/07/13/Dockerfile%E8%AF%AD%E6%B3%95/">
+
+
+
+  <title>
+Dockerfile 基本语法 - DockerFile - docker |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Dockerfile 基本语法
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-07-13 02:26:31">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-07-13T02:26:31Z">2022-07-13</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (30).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (32).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (14).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (25).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (1).jpg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (27).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/docker/" itemprop="item" rel="index" title="分类于 docker"><span itemprop="name">docker</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/docker/DockerFile/" itemprop="item" rel="index" title="分类于 DockerFile"><span itemprop="name">DockerFile</span></a>
+<meta itemprop="position" content="2" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://yangdi.site/2022/07/13/Dockerfile%E8%AF%AD%E6%B3%95/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><ul>
+<li><p>FROM</p>
+<blockquote>
+<p>指定一个镜像作为构建自定义镜像的基础，构建的镜像在此基础上进行修改，例如</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">FROM java:8</span><br><span class="line">FROM apline</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>MAINTAINET</p>
+<blockquote>
+<p>指定维护者信息，当前已更新换为使用LABEL</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LABEL maintainer=&quot;name&quot; version=&quot;1.0&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>EXPOSE </p>
+<blockquote>
+<p>告诉 Docker 服务，容器需要暴露的端口号</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXPOSE &lt;port1&gt; [&lt;port2&gt; ...]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>帮助镜像使用者理解这个镜像服务的守护端口，以方便配置映射；</li>
+<li>在使用随机端口映射时，也就是 docker run -P （大写的 P）时，会自动随机映射 EXPOSE 的端口（而 -p 参数指定具体的映射端口）</li>
+</ul>
+</blockquote>
+</li>
+<li><p>RUN</p>
+<blockquote>
+<p>为构建的镜像指定要运行的命令行命令，而这些命令是在 docker build 的时候执行的</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">RUN &lt;command&gt;</span><br><span class="line"></span><br><span class="line">RUN [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;, ...]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>shell 格式将在终端中运行命令，command 则为终端操作的 shell 命令；</li>
+<li>exec 格式使用 exec 命令执行，可以指定其他终端，例如：RUN [“&#x2F;bin&#x2F;bash”, “-c”, “echo hello”]；</li>
+<li>每条 RUN 指令将在当前镜像的基础上执行指定命令，并提交为新的镜像，而 Dockerfile 的指令每执行一次都会在 docker 上新建一层，过多无意义的层，会造成镜像膨胀过大，所以建议将多个命令合并到同一个 RUN 指令上</li>
+</ul>
+</blockquote>
+</li>
+<li><p>ENV</p>
+<blockquote>
+<p>设置自定义的环境变量，容器中可使用</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ENV env1 val1</span><br><span class="line">ENV env1=val1 env2=val2</span><br><span class="line"></span><br><span class="line">RUN echo $env1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ADD</p>
+<blockquote>
+<p>上下文目录或者文件复制到容器的指定目录，类似于COPY</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ADD $&#123;source&#125; $&#123;target&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>在执行 &lt;源文件&gt; 为 tar 压缩文件的话，压缩格式为 gzip, bzip2 以及 xz 的情况下，会自动复制并解压到 &lt;目标路径&gt;</li>
+<li>在不解压的前提下，无法复制 tar 压缩文件，会令镜像构建缓存失效，从而可能会令镜像构建变得比较缓慢</li>
+</ul>
+</blockquote>
+</li>
+<li><p>COPY</p>
+<blockquote>
+<p>上下文目录或者文件复制到容器的指定目录，类似于ADD</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">COPY [--chown=&lt;user&gt;:&lt;group&gt;] &lt;源路径1&gt;...  &lt;目标路径&gt;</span><br><span class="line">COPY [--chown=&lt;user&gt;:&lt;group&gt;] [&quot;&lt;源路径1&gt;&quot;,...  &quot;&lt;目标路径&gt;&quot;]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>[–chown&#x3D;<user>:<group>] 可选参数，用于改变复制到容器内文件的拥有者和所属组</li>
+<li>源文件或目录（以 Dockerfile 的上下文环境为相对路径），可以使用通配符，但通配符要满足 Go 的 filepath.Match 规则</li>
+<li>容器内的路径，如果路径不存在的话，会自动创建</li>
+</ul>
+</blockquote>
+</li>
+<li><p>CMD</p>
+<blockquote>
+<p>为启动的容器指定要运行的命令，类似于 RUN 指令，但 CMD 运行程序的时间是在 docker run 时执行的，命令运行结束，容器也就结束</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1、shell 命令格式</span></span><br><span class="line">CMD &lt;shell command&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2、<span class="built_in">exec</span> 命令格式：推荐</span> </span><br><span class="line">CMD [&quot;&lt;可执行文件或命令&gt;&quot;,&quot;&lt;param1&gt;&quot;,&quot;&lt;param2&gt;&quot;,...] </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3、该写法是为 ENTRYPOINT 指令指定的程序提供默认参数</span></span><br><span class="line">CMD [&quot;&lt;param1&gt;&quot;,&quot;&lt;param2&gt;&quot;,...]  </span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>每个 Dockerfile 只能有一条 CMD 命令，如果指定了多条 CMD 命令，只有最后一条会被执行；</li>
+<li>如果 docker run 命令行参数中指定了要运行的程序命令，则会覆盖CMD 指令指定的程序命令。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>ENTRYPOINT</p>
+<blockquote>
+<p>指定容器启动时执行的命令</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FROM nginx</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [&quot;nginx&quot;, &quot;-c&quot;]    # 定参</span><br><span class="line">CMD [&quot;/etc/nginx/nginx.conf&quot;] # 变参 </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>即使 docker run 的命令行参数指定了要运行的程序命令，ENTRYPOINT 指令的程序命令也不会被覆盖，并且这些命令行参数会被当作参数传送给 ENTRYPOINT 指令指定的程序</li>
+<li>但是，如果运行 docker run 时使用了 –entrypoint 选项，将覆盖 ENTRYPOINT 指令指定的程序</li>
+</ul>
+</blockquote>
+</li>
+<li><p>VOLUME</p>
+<blockquote>
+<p>定义挂载匿名数据卷目录。在启动容器时如果忘记挂载数据卷，会自动挂载到匿名卷</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VOLUME &lt;path&gt;</span><br><span class="line">VOLUME [&quot;&lt;path1&gt;&quot;, &quot;&lt;path2&gt;&quot;, ...]</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在启动容器 docker run 的时候，我们可以通过 -v 参数修改挂载点</p>
+</blockquote>
+</li>
+<li><p>USER</p>
+<blockquote>
+</blockquote>
+</li>
+<li><p>WORKDIR</p>
+<blockquote>
+<p>指定工作目录。用 WORKDIR 指定的工作目录，会在构建镜像的每一层中都存在（WORKDIR 指定的工作目录，必须是提前创建好的）<br>构建镜像过程中的，每一个 RUN 命令都是新建的一层，只有通过 WORKDIR 创建的目录才会一直存在</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">WORKDIR /a</span><br><span class="line">WORKDIR b</span><br><span class="line">WORKDIR c</span><br><span class="line">RUN pwd</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 最终路径为：/a/b/c</span></span></span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>ONBUILD</p>
+<blockquote>
+<p>创建的镜像作为其他镜像的基础镜像时使用的指令</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ONBUILD [INSTRUCTION]</span><br><span class="line"></span><br><span class="line">示例 name: my-node</span><br><span class="line">...</span><br><span class="line">FROM node:slim</span><br><span class="line">RUN mkdir /app</span><br><span class="line">WORKDIR /app</span><br><span class="line">ONBUILD COPY ./package.json /app</span><br><span class="line">ONBUILD RUN [ &quot;npm&quot;, &quot;install&quot; ]</span><br><span class="line">ONBUILD COPY . /app/</span><br><span class="line">CMD [ &quot;npm&quot;, &quot;start&quot; ]</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">使用 name: use-node</span><br><span class="line">...</span><br><span class="line">FROM my-node</span><br><span class="line">相当于</span><br><span class="line">COPY ./package.json /app</span><br><span class="line">RUN [ &quot;npm&quot;, &quot;install&quot; ]</span><br><span class="line">COPY . /app/</span><br><span class="line">CMD [ &quot;npm&quot;, &quot;start&quot; ]</span><br><span class="line">...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HEALTHCHECK</p>
+<blockquote>
+<p>指定某个程序或者指令来监控 docker 容器服务的运行状态</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置检查容器健康状况的命令</span></span><br><span class="line">HEALTHCHECK [选项] CMD &lt;命令&gt;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果基础镜像有健康检查指令，使用这行可以屏蔽掉其健康检查指令</span></span><br><span class="line">HEALTHCHECK NONE</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">这边 CMD 后面跟随的命令使用，可以参考 CMD 的用法</span></span><br><span class="line">HEALTHCHECK [选项] CMD &lt;命令&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Dockerfile编写优化"><a href="#Dockerfile编写优化" class="headerlink" title="Dockerfile编写优化"></a>Dockerfile编写优化</h2><ul>
+<li><p>.dockerignore 文件</p>
+<blockquote>
+<p>可以忽略一些不需要的文件，加快构建速度，减小镜像大小</p>
+</blockquote>
+</li>
+<li><p>多个Run 合并成一个， 同样变化频率的指令也放在一起</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">FROM ubuntu</span><br><span class="line"></span><br><span class="line">RUN apt-get update &amp;&amp; apt-get install -y nodejs  </span><br><span class="line">ADD . /app  </span><br><span class="line">RUN cd /app &amp;&amp; npm install</span><br><span class="line"></span><br><span class="line">CMD npm start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>基础镜像不要使用latest</p>
+<blockquote>
+<p>latest不同时间可能指向不同的镜像，最后使用确定的版本或者没有其它疑虑的情况下使用latest</p>
+</blockquote>
+</li>
+<li><p>RUN后删除不必要的文件</p>
+<blockquote>
+<p>多余的压缩包和APK的安装包使用之后可以删除，减少镜像体积</p>
+</blockquote>
+</li>
+<li><p>选择合适的基础镜像</p>
+<blockquote>
+<p>最好的还是使用apline,没有必要选择标准版本的ubuntu</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FROM ubuntu</span><br><span class="line">FROM node:7-alpine</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>alpine 是一个极小化的 Linux 发行版，非常适合作为基础镜像；</li>
+<li>apk 是 Alpine 的包管理工具，它与 apt-get 有些不同，但是非常容易上手。另外，它还有一些非常有用的特性，比如 no-cache 和 –virtual 选项，它们都可以帮助我们减少镜像的大小；</li>
+</ul>
+</blockquote>
+</li>
+<li><p>ENTRYPOINT</p>
+<blockquote>
+<p>ENTRYPOINT 指令并不是必须的，因为它会增加复杂度。ENTRYPOINT 是一个脚本，它会默认执行，并且将指定的命令作为其参数，它通常用于构建可执行的 Docker 镜像</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">指定脚本</span><br><span class="line">ENTRYPOINT [&quot;./entrypoint.sh&quot;] </span><br><span class="line">执行</span><br><span class="line">docker run -it demo /bin/bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合理调整 COPY 与 RUN 的顺序</p>
+<blockquote>
+<p>我们应该把变化最少的部分放在 Dockerfile 的前面，这样可以充分利用镜像缓存</p>
+</blockquote>
+</li>
+<li><p>设置默认的环境变量、映射端口和数据卷</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置环境变量</span></span><br><span class="line">ENV MEDIA_DIR=/media \  </span><br><span class="line">    APP_PORT=3000</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">挂载数据卷</span></span><br><span class="line">VOLUME $MEDIA_DIR </span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">暴露映射端口</span></span><br><span class="line">EXPOSE $APP_PORT</span><br></pre></td></tr></table></figure></li>
+<li><p>使用 LABEL 设置镜像元数据</p>
+<blockquote>
+<p>使用 LABEL 指令，可以为镜像设置元数据，例如镜像创建者或者镜像说明。旧版的 Dockerfile 语法使用 MAINTAINER 指令指定镜像创建者，但是它已经被弃用了：</p>
+</blockquote>
+</li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/Dockerfile/" rel="tag"><i class="ic i-tag"></i> Dockerfile</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2022-07-18 02:03:11" itemprop="dateModified" datetime="2022-07-18T02:03:11Z">2022-07-18</time>
+  </span>
+  <span id="2022/07/13/Dockerfile语法/" class="item leancloud_visitors" data-flag-title="Dockerfile 基本语法" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="yangdi 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="yangdi 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://yangdi.site/2022/07/13/Dockerfile%E8%AF%AD%E6%B3%95/" title="Dockerfile 基本语法">http://yangdi.site/2022/07/13/Dockerfile语法/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/07/13/alpine/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;180.76.54.1&#x2F;img_blog&#x2F;img (7).jpeg" title="alpine 是什么">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> linux</span>
+  <h3>alpine 是什么</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/07/13/docker%20%E6%95%B0%E6%8D%AE%E5%8D%B7/" itemprop="url" rel="next" data-background-image="http:&#x2F;&#x2F;180.76.54.1&#x2F;img_blog&#x2F;img (29).jpeg" title="docker 数据卷">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> docker</span>
+  <h3>docker 数据卷</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8C%87%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">指令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Dockerfile%E7%BC%96%E5%86%99%E4%BC%98%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">Dockerfile编写优化</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2022/07/13/Dockerfile%E8%AF%AD%E6%B3%95/" rel="bookmark" title="Dockerfile 基本语法">Dockerfile 基本语法</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">27</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">35</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">21</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/07/13/alpine/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/07/13/docker%20%E6%95%B0%E6%8D%AE%E5%8D%B7/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%83%A8%E7%BD%B2/" title="分类于 部署">部署</a>
+</div>
+
+    <span><a href="/2022/06/27/jenkins/" title="docker + jenkins + github 代码提交自动部署">docker + jenkins + github 代码提交自动部署</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Markdown/" title="分类于 Markdown">Markdown</a>
+</div>
+
+    <span><a href="/2022/06/27/MarkDown/" title="MarkDown 基本语法">MarkDown 基本语法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SSR/" title="分类于 SSR">SSR</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/SSR/CSR/" title="分类于 CSR">CSR</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/SSR/CSR/PreRender/" title="分类于 PreRender">PreRender</a>
+</div>
+
+    <span><a href="/2022/06/29/%E5%89%8D%E7%AB%AF%E6%B8%B2%E6%9F%93%E6%96%B9%E5%BC%8F/" title="前端渲染方式">前端渲染方式</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/babel/" title="分类于 babel">babel</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/babel/JS/" title="分类于 JS">JS</a>
+</div>
+
+    <span><a href="/2022/06/27/babelrc/" title=".babelrc 详解">.babelrc 详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/docker/DockerFile/" title="分类于 DockerFile">DockerFile</a>
+</div>
+
+    <span><a href="/2022/07/13/Dockerfile%E8%AF%AD%E6%B3%95/" title="Dockerfile 基本语法">Dockerfile 基本语法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%85%B3%E4%BA%8E/" title="分类于 关于">关于</a>
+</div>
+
+    <span><a href="/2022/06/27/%E5%85%B3%E4%BA%8E/about_page/" title="待添加">待添加</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/TypeScript/" title="分类于 TypeScript">TypeScript</a>
+</div>
+
+    <span><a href="/2022/06/27/tsconfig/" title="tsconfig.json 参数详解">tsconfig.json 参数详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/nvm/" title="分类于 nvm">nvm</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/nvm/node/" title="分类于 node">node</a>
+</div>
+
+    <span><a href="/2022/06/28/nvm%20%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" title="nvm 安装与使用">nvm 安装与使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker%20%E6%95%B0%E6%8D%AE%E5%8D%B7/" title="docker 数据卷">docker 数据卷</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JS/" title="分类于 JS">JS</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/JS/%E6%9E%84%E5%BB%BA/" title="分类于 构建">构建</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/JS/%E6%9E%84%E5%BB%BA/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" title="分类于 开发工具">开发工具</a>
+</div>
+
+    <span><a href="/2022/06/27/rollup/" title="Rollup">Rollup</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/07/13/Dockerfile语法/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,598 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://yangdi.site/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://yangdi.site/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://yangdi.site/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="docker" />
+
+
+<link rel="canonical" href="http://yangdi.site/2022/07/13/ant+jmeter+docker%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">
+
+
+
+  <title>
+制作自动化测试镜像（ant+jmeter+docker） - docker |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">制作自动化测试镜像（ant+jmeter+docker）
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-07-13 01:57:20">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-07-13T01:57:20Z">2022-07-13</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (13).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (9).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (16).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (24).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (11).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (8).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/docker/" itemprop="item" rel="index" title="分类于 docker"><span itemprop="name">docker</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://yangdi.site/2022/07/13/ant+jmeter+docker%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="一：-安装-docker"><a href="#一：-安装-docker" class="headerlink" title="一： 安装 docker"></a>一： 安装 docker</h3><ul>
+<li><p>1、MAC、windows 建议安装 docker desktop,便于管理和操作docker</p>
+<blockquote>
+<p>下载地址 <span class="exturl" data-url="aHR0cHM6Ly93d3cuZG9ja2VyLmNvbS9wcm9kdWN0cy9kb2NrZXItZGVza3RvcC8=">docker desktop</span></p>
+</blockquote>
+</li>
+<li><p>2、Linux 安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">yum install -y yum-utils vim  // 安装基础工具</span><br><span class="line">yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo //添加软件源信息</span><br><span class="line">yum -y install docker-ce   --allowerasing  //必须添加--allowerasing不然会报错，是因为centos8中的默认podman和docker冲突不能共存，要先卸载podman才能安装docker,centos7就不存在这个问题</span><br><span class="line">systemctl enable docker --now  //启动docker并设置为开机自启</span><br><span class="line">[root@localhost ~]# docker --version //查看docker版本 yum默认安装是最新版本</span><br><span class="line">Docker version 20.10.12, build e91ed57</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">因为docker默认是从国外服务器拉取镜像的，很慢的！！所以一定要配置镜像加速器!</span></span><br><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-&#x27;EOF&#x27;</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https://x31x8hjg.mirror.aliyuncs.com&quot;]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h3><ul>
+<li><p>1：jmeter安装包</p>
+<blockquote>
+<p>下载地址 <span class="exturl" data-url="aHR0cHM6Ly9qbWV0ZXIuYXBhY2hlLm9yZy9kb3dubG9hZF9qbWV0ZXIuY2dp">docker desktop</span> tgz格式安装包</p>
+</blockquote>
+</li>
+<li><p>1：ant安装包</p>
+<blockquote>
+<p>下载地址 <span class="exturl" data-url="aHR0cHM6Ly9hbnQuYXBhY2hlLm9yZy9iaW5kb3dubG9hZC5jZ2k=">docker desktop</span> tar格式安装包</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="准备Dockerfile"><a href="#准备Dockerfile" class="headerlink" title="准备Dockerfile"></a>准备Dockerfile</h3><blockquote>
+<p>ant 支持邮件发送及jmeter支持shell命令均需要插件支持，部分jmeter文件夹下jar插件也需要复制到ant 文件夹下，如下所示</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">FROM openjdk:8-jre-alpine</span><br><span class="line"></span><br><span class="line">ENV http_proxy &quot;&quot;</span><br><span class="line">ENV https_proxy &quot;&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">workdir</span></span><br><span class="line">RUN mkdir /jmeterdocker</span><br><span class="line">RUN mkdir -p /jmeterdocker/test</span><br><span class="line">RUN mkdir -p /jmeterdocker/jar</span><br><span class="line">RUN mkdir -p /jmeterdocker/xsl</span><br><span class="line">RUN mkdir -p /jmeterdocker/bin</span><br><span class="line">RUN mkdir -p /jmeterdocker/packages</span><br><span class="line">RUN mkdir -p /jmeterdocker/test/input/jmx</span><br><span class="line">RUN mkdir -p /jmeterdocker/test/input/testdata</span><br><span class="line">RUN mkdir -p /jmeterdocker/test/report/html</span><br><span class="line">RUN mkdir -p /jmeterdocker/test/report/jtl</span><br><span class="line">RUN mkdir -p /jmeterdocker/test/report/outputdata</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">env</span></span></span><br><span class="line">ENV ANT_HOME=/jmeterdocker/apache-ant-1.9.16</span><br><span class="line">ENV PATH=$&#123;PATH&#125;:$&#123;ANT_HOME&#125;/bin</span><br><span class="line">ENV JMETER_HOME=/jmeterdocker/apache-jmeter-5.5</span><br><span class="line">ENV JMETER_PATH=$&#123;JMETER_HOME&#125;/bin:$&#123;PATH&#125;</span><br><span class="line">ENV PATH=$&#123;JMETER_HOME&#125;/bin:$&#123;PATH&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">dependences</span></span><br><span class="line">COPY /packages/ /jmeterdocker/packages/</span><br><span class="line">COPY /jar/ /jmeterdocker/jar/</span><br><span class="line">COPY /xsl/ /jmeterdocker/xsl/</span><br><span class="line">COPY /build.xml /jmeterdocker/test</span><br><span class="line">COPY /bin/ /jmeterdocker/bin</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">decompression</span></span><br><span class="line">RUN cd /jmeterdocker  \</span><br><span class="line">    &amp;&amp; tar zxvf packages/apache-jmeter-5.5.tgz  \</span><br><span class="line">    &amp;&amp; tar zxvf packages/apache-ant-1.9.16-bin.tar.gz \</span><br><span class="line">    &amp;&amp; cp jar/*.jar /jmeterdocker/apache-ant-1.9.16/lib \</span><br><span class="line">    &amp;&amp; cp jar/ext/* /jmeterdocker/apache-jmeter-5.5/lib/ext \</span><br><span class="line">    &amp;&amp; cp jar/lib/* /jmeterdocker/apache-jmeter-5.5/lib \</span><br><span class="line">    &amp;&amp; cp xsl/* /jmeterdocker/apache-jmeter-5.5/extras \</span><br><span class="line">    &amp;&amp; cp bin/* /jmeterdocker/apache-jmeter-5.5/bin \</span><br><span class="line">    &amp;&amp; rm -rf packages \</span><br><span class="line">    &amp;&amp; rm -rf jar</span><br></pre></td></tr></table></figure>
+
+<h3 id="ant-build-xml配置"><a href="#ant-build-xml配置" class="headerlink" title="ant build.xml配置"></a>ant build.xml配置</h3><blockquote>
+<p>以下xml文件为以jmeter-results-detail-report_30.xsl为基础优化修改而来，添加详细接口请求及返回信息</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF8&quot;?&gt;</span><br><span class="line">&lt;project name=&quot;ant-jmeter&quot; default=&quot;all&quot; basedir=&quot;.&quot;&gt;</span><br><span class="line">    &lt;!--properties--&gt;</span><br><span class="line">    &lt;property name=&quot;jmeterPath&quot; value=&quot;/jmeterdocker/apache-jmeter-5.5&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;ant.home&quot; value=&quot;/jmeterdocker/apache-ant-1.9.16&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;mail_host&quot; value=&quot;smtp.163.com&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;mail_port&quot; value=&quot;25&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;username&quot; value=&quot;18705511619@163.com&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;password&quot; value=&quot;TRPVPJSZTCXIXRUQ&quot;/&gt;</span><br><span class="line">    &lt;property environment=&quot;env&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;mail_from&quot; value=&quot;18705511619@163.com&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;mail_to&quot; value=&quot;$&#123;env.JMETER_EMAIL&#125;&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;mailsubject&quot; value=&quot;jmeter&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;message&quot; value=&quot;AI平台测试报告&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--timestamp--&gt;</span><br><span class="line">    &lt;tstamp&gt;&lt;format property=&quot;time&quot; pattern=&quot;yyyyMMddhhmm&quot; /&gt;&lt;/tstamp&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- jmeter环境配置 --&gt;</span><br><span class="line">    &lt;property name=&quot;jmeter.home&quot; value=&quot;$&#123;jmeterPath&#125;&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- jtl测试结果存放路径 --&gt;</span><br><span class="line">    &lt;property name=&quot;jmeter.result.jtl.dir&quot; value=&quot;/jmeterdocker/test/report/jtl&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- html测试结果存放路径 --&gt;</span><br><span class="line">    &lt;property name=&quot;jmeter.result.html.dir&quot; value=&quot;/jmeterdocker/test/report/html&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;htmlReportNameSummary&quot; value=&quot;TestReport&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;jmeter.result.jtlName&quot; value=&quot;$&#123;jmeter.result.jtl.dir&#125;/$&#123;htmlReportNameSummary&#125;$&#123;time&#125;.jtl&quot;/&gt;</span><br><span class="line">    &lt;property name=&quot;jmeter.result.htmlName&quot; value=&quot;$&#123;jmeter.result.html.dir&#125;/$&#123;htmlReportNameSummary&#125;$&#123;time&#125;.html&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--run order--&gt;</span><br><span class="line">    &lt;target name=&quot;all&quot;&gt;</span><br><span class="line">        &lt;antcall target=&quot;clear&quot;/&gt;</span><br><span class="line">        &lt;antcall target=&quot;test&quot;/&gt;</span><br><span class="line">        &lt;antcall target=&quot;report&quot;/&gt;</span><br><span class="line">        &lt;antcall target=&quot;sendEmail&quot;/&gt;</span><br><span class="line">    &lt;/target&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--删除历史文件--&gt;</span><br><span class="line">    &lt;target name=&quot;clear&quot;&gt;</span><br><span class="line">        &lt;!-- 每次执行前先删除清空jtl和html文件夹，释放空间 --&gt;</span><br><span class="line">        &lt;echo message=&quot;释放空间,清空jtl和html文件夹中 ...&quot;&gt;&lt;/echo&gt;</span><br><span class="line">        &lt;delete dir=&quot;$&#123;meter.result.jtl.dir&#125;&quot; /&gt;</span><br><span class="line">        &lt;delete dir=&quot;$&#123;jmeter.result.html.dir&#125;&quot; /&gt;</span><br><span class="line">        &lt;!-- 删除单个文件--&gt;</span><br><span class="line">        &lt;!--&lt;delete file=&quot;C:\Users\Administrator\Desktop\ant\ant_jmeter_test_report.rar&quot; /&gt;--&gt;</span><br><span class="line">        &lt;sleep seconds=&quot;2&quot;/&gt;</span><br><span class="line">        &lt;echo message=&quot;释放完成&quot;&gt;&lt;/echo&gt;</span><br><span class="line">    &lt;/target&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 执行接口测试 --&gt;</span><br><span class="line">    &lt;target name=&quot;test&quot;&gt;</span><br><span class="line">        &lt;echo message=&quot;执行接口自动化测试用例&quot;&gt;&lt;/echo&gt;</span><br><span class="line">        &lt;taskdef name=&quot;jmeter&quot; classname=&quot;org.programmerplanet.ant.taskdefs.jmeter.JMeterTask&quot; /&gt;</span><br><span class="line">        &lt;jmeter jmeterhome=&quot;$&#123;jmeter.home&#125;&quot; resultlog=&quot;$&#123;jmeter.result.jtlName&#125;&quot;&gt;</span><br><span class="line">            &lt;testplans dir=&quot;/jmeterdocker/test/input/jmx&quot; includes=&quot;*/*.jmx&quot; /&gt;</span><br><span class="line">            &lt;property name=&quot;jmeter.save.saveservice.output_format&quot; value=&quot;xml&quot; /&gt;</span><br><span class="line">        &lt;/jmeter&gt;</span><br><span class="line">    &lt;/target&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 转换执行结果--&gt;</span><br><span class="line">    &lt;path id=&quot;xslt.classpath&quot;&gt;</span><br><span class="line">        &lt;fileset dir=&quot;$&#123;jmeter.home&#125;/lib&quot; includes=&quot;xalan*.jar&quot; /&gt;</span><br><span class="line">        &lt;fileset dir=&quot;$&#123;jmeter.home&#125;/lib&quot; includes=&quot;serializer*.jar&quot; /&gt;</span><br><span class="line">    &lt;/path&gt;</span><br><span class="line">    &lt;target name=&quot;report&quot;&gt;</span><br><span class="line">        &lt;echo message=&quot;生成接口自动化测试报告&quot;&gt;&lt;/echo&gt;</span><br><span class="line">        &lt;tstamp&gt; &lt;format property=&quot;report.datestamp&quot; pattern=&quot;yyyy/MM/dd HH:mm&quot; /&gt;&lt;/tstamp&gt;</span><br><span class="line">        &lt;xslt classpathref=&quot;xslt.classpath&quot;</span><br><span class="line">              force=&quot;true&quot;</span><br><span class="line">              in=&quot;$&#123;jmeter.result.jtlName&#125;&quot;</span><br><span class="line">              out=&quot;$&#123;jmeter.result.htmlName&#125;&quot;</span><br><span class="line">              style=&quot;$&#123;jmeter.home&#125;/extras/jmeter-results-detail-report_30.xsl&quot;&gt;</span><br><span class="line">            &lt;param name=&quot;titleReport&quot; expression=&quot;$&#123;mailsubject&#125;$&#123;time&#125;&quot;/&gt;</span><br><span class="line">            &lt;param name=&quot;dateReport&quot; expression=&quot;$&#123;report.datestamp&#125;&quot;/&gt;</span><br><span class="line">        &lt;/xslt&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!-- 因为上面生成报告的时候，不会将相关的图片也一起拷贝至目标目录，所以，需要手动拷贝 --&gt;</span><br><span class="line">        &lt;copy file=&quot;$&#123;jmeter.home&#125;/extras/expand.png&quot; tofile=&quot;$&#123;jmeter.result.html.dir&#125;/expand.png&quot; /&gt;</span><br><span class="line">        &lt;copy file=&quot;$&#123;jmeter.home&#125;/extras/collapse.png&quot; tofile=&quot;$&#123;jmeter.result.html.dir&#125;/collapse.png&quot; /&gt;</span><br><span class="line">    &lt;/target&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--获取报告HTML贴到邮件正文  发送邮件--&gt;</span><br><span class="line">    &lt;target name=&quot;sendEmail&quot;&gt;</span><br><span class="line">        &lt;!--获取HTML--&gt;</span><br><span class="line">        &lt;echo message=&quot;加载文件&quot;&gt;&lt;/echo&gt;</span><br><span class="line">        &lt;loadfile property=&quot;html&quot; srcFile=&quot;$&#123;jmeter.result.html.dir&#125;/$&#123;htmlReportNameSummary&#125;$&#123;time&#125;.html&quot; encoding=&quot;UTF-8&quot;&gt;</span><br><span class="line">            &lt;filterchain&gt;</span><br><span class="line">                &lt;expandproperties /&gt;</span><br><span class="line">            &lt;/filterchain&gt;</span><br><span class="line">        &lt;/loadfile&gt;</span><br><span class="line"></span><br><span class="line">        &lt;!--邮件配置--&gt;</span><br><span class="line">        &lt;path id=&quot;lib_classpath&quot;&gt;</span><br><span class="line">            &lt;fileset dir=&quot;$&#123;ant.home&#125;/lib&quot;&gt;</span><br><span class="line">                &lt;include name=&quot;mail*.jar&quot; /&gt;</span><br><span class="line">                &lt;include name=&quot;activation*.jar&quot; /&gt;</span><br><span class="line">                &lt;include name=&quot;commons-email*.jar&quot; /&gt;</span><br><span class="line">                &lt;include name=&quot;ant-contrib*.jar&quot; /&gt;</span><br><span class="line">            &lt;/fileset&gt;</span><br><span class="line">        &lt;/path&gt;</span><br><span class="line"></span><br><span class="line">        &lt;echo&gt;发送测试报告&lt;/echo&gt;</span><br><span class="line">        &lt;mail mailhost=&quot;$&#123;mail_host&#125;&quot;</span><br><span class="line">              ssl=&quot;false&quot;</span><br><span class="line">              user=&quot;$&#123;username&#125;&quot;</span><br><span class="line">              password=&quot;$&#123;password&#125;&quot;</span><br><span class="line">              mailport=&quot;$&#123;mail_port&#125;&quot;</span><br><span class="line">              subject=&quot;$&#123;mailsubject&#125;&quot;</span><br><span class="line">              messagemimetype=&quot;text/html&quot;</span><br><span class="line">              tolist=&quot;$&#123;mail_to&#125;&quot;  &gt;</span><br><span class="line">            &lt;from address=&quot;$&#123;mail_from&#125;&quot; /&gt;</span><br><span class="line">            &lt;to address=&quot;$&#123;mail_to&#125;&quot; /&gt;</span><br><span class="line"></span><br><span class="line">            &lt;attachments&gt;</span><br><span class="line">                &lt;fileset dir=&quot;$&#123;jmeter.result.html.dir&#125;&quot;&gt;</span><br><span class="line">                    &lt;include name=&quot;$&#123;htmlReportNameSummary&#125;$&#123;time&#125;.html&quot; /&gt;</span><br><span class="line">                    &lt;include name=&quot;collapse.png&quot; /&gt;</span><br><span class="line">                    &lt;include name=&quot;expand.png&quot; /&gt;</span><br><span class="line">                &lt;/fileset&gt;</span><br><span class="line">            &lt;/attachments&gt;</span><br><span class="line"></span><br><span class="line">            &lt;message&gt;</span><br><span class="line">                $&#123;message&#125;：</span><br><span class="line">                $&#123;html&#125;</span><br><span class="line">            &lt;/message&gt;</span><br><span class="line">        &lt;/mail&gt;</span><br><span class="line">    &lt;/target&gt;</span><br><span class="line"></span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="制作镜像"><a href="#制作镜像" class="headerlink" title="制作镜像"></a>制作镜像</h3><blockquote>
+<p>Dockerfile文件夹下执行命令</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t $&#123;name&#125; .</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -itd --privileged=true --name $&#123;containerName&#125; --rm -v /Users/xxx/jmx_git/workflow:/jmeterdocker/test/input/jmx/workflow ai/test</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it $&#123;容器ID&#125; /bin/sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试导出报告"><a href="#测试导出报告" class="headerlink" title="测试导出报告"></a>测试导出报告</h3><blockquote>
+<p>可使用邮箱发送报告，也可直接在容器中查看报告html &#x2F;jmeterdocker&#x2F;test&#x2F;report&#x2F;html</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /jmeterdocker/test &amp;&amp; export JMETER_EMAIL=$&#123;邮箱地址: 推荐使用企业微信邮箱地址&#125; &amp;&amp; ant</span><br></pre></td></tr></table></figure>
+
+<h3 id="完整Git地址"><a href="#完整Git地址" class="headerlink" title="完整Git地址"></a>完整Git地址</h3><blockquote>
+<p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12di9qbWV0ZXItdGVzdA==">GIT 地址</span></p>
+</blockquote>
+
+      <div class="tags">
+          <a href="/tags/docker/" rel="tag"><i class="ic i-tag"></i> docker</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2022-07-18 02:41:41" itemprop="dateModified" datetime="2022-07-18T02:41:41Z">2022-07-18</time>
+  </span>
+  <span id="2022/07/13/ant+jmeter+docker自动化测试工具/" class="item leancloud_visitors" data-flag-title="制作自动化测试镜像（ant+jmeter+docker）" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="yangdi 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="yangdi 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://yangdi.site/2022/07/13/ant+jmeter+docker%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" title="制作自动化测试镜像（ant+jmeter+docker）">http://yangdi.site/2022/07/13/ant+jmeter+docker自动化测试工具/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/07/05/Jmeter%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;180.76.54.1&#x2F;img_blog&#x2F;img (1).jpeg" title="MAC 下 jmeter安装使用">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> Java</span>
+  <h3>MAC 下 jmeter安装使用</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/07/13/docker%20%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" itemprop="url" rel="next" data-background-image="http:&#x2F;&#x2F;180.76.54.1&#x2F;img_blog&#x2F;img (20).jpeg" title="docker 操作指令">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> docker</span>
+  <h3>docker 操作指令</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%EF%BC%9A-%E5%AE%89%E8%A3%85-docker"><span class="toc-number">1.</span> <span class="toc-text">一： 安装 docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">2.</span> <span class="toc-text">下载安装包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87Dockerfile"><span class="toc-number">3.</span> <span class="toc-text">准备Dockerfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ant-build-xml%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">ant build.xml配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E9%95%9C%E5%83%8F"><span class="toc-number">5.</span> <span class="toc-text">制作镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8"><span class="toc-number">6.</span> <span class="toc-text">启动容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E5%AE%B9%E5%99%A8"><span class="toc-number">7.</span> <span class="toc-text">进入容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E5%AF%BC%E5%87%BA%E6%8A%A5%E5%91%8A"><span class="toc-number">8.</span> <span class="toc-text">测试导出报告</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4Git%E5%9C%B0%E5%9D%80"><span class="toc-number">9.</span> <span class="toc-text">完整Git地址</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2022/07/13/ant+jmeter+docker%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" rel="bookmark" title="制作自动化测试镜像（ant+jmeter+docker）">制作自动化测试镜像（ant+jmeter+docker）</a></li><li><a href="/2022/07/13/docker%20%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" rel="bookmark" title="docker 操作指令">docker 操作指令</a></li><li><a href="/2022/07/13/JAVA%E6%A0%87%E5%87%86%E7%89%88%E6%9C%AC%E3%80%81openJDK%E3%80%81jre%E5%8C%BA%E5%88%AB/" rel="bookmark" title="JDK 和 openjdk的区别">JDK 和 openjdk的区别</a></li><li><a href="/2022/07/13/alpine/" rel="bookmark" title="alpine 是什么">alpine 是什么</a></li><li><a href="/2022/07/13/Dockerfile%E8%AF%AD%E6%B3%95/" rel="bookmark" title="Dockerfile 基本语法">Dockerfile 基本语法</a></li><li><a href="/2022/07/13/docker%20%E6%95%B0%E6%8D%AE%E5%8D%B7/" rel="bookmark" title="docker 数据卷">docker 数据卷</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">27</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">35</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">21</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/07/05/Jmeter%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/07/13/docker%20%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/babel/" title="分类于 babel">babel</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/babel/JS/" title="分类于 JS">JS</a>
+</div>
+
+    <span><a href="/2022/06/27/babelrc/" title=".babelrc 详解">.babelrc 详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JS/" title="分类于 JS">JS</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/JS/%E6%9E%84%E5%BB%BA/" title="分类于 构建">构建</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/JS/%E6%9E%84%E5%BB%BA/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" title="分类于 开发工具">开发工具</a>
+</div>
+
+    <span><a href="/2022/06/27/ESbuild/" title="ESbuild">ESbuild</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2022/07/04/React%E7%9A%84SSR%E6%96%B9%E6%A1%88/" title="未命名">未命名</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/graphQL/" title="分类于 graphQL">graphQL</a>
+</div>
+
+    <span><a href="/2022/06/27/graphQL%E4%BD%BF%E7%94%A8/" title="graphQL使用">graphQL使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/docker/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2022/07/13/alpine/" title="alpine 是什么">alpine 是什么</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Jmeter/" title="分类于 Jmeter">Jmeter</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Jmeter/Java/" title="分类于 Java">Java</a>
+</div>
+
+    <span><a href="/2022/07/05/Jmeter%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" title="MAC 下 jmeter安装使用">MAC 下 jmeter安装使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SSR/" title="分类于 SSR">SSR</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/SSR/Vue/" title="分类于 Vue">Vue</a>
+</div>
+
+    <span><a href="/2022/06/29/Vue%E7%9A%84SSR%E6%96%B9%E6%A1%88/" title="Vue SSR方案">Vue SSR方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Mobx/" title="分类于 Mobx">Mobx</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Mobx/Vue/" title="分类于 Vue">Vue</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Mobx/Vue/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2022/06/27/mobx/" title="Mobx 基本使用">Mobx 基本使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/TypeScript/" title="分类于 TypeScript">TypeScript</a>
+</div>
+
+    <span><a href="/2022/06/27/tslint/" title="tslint.js 详解">tslint.js 详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker%20%E6%95%B0%E6%8D%AE%E5%8D%B7/" title="docker 数据卷">docker 数据卷</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/07/13/ant+jmeter+docker自动化测试工具/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

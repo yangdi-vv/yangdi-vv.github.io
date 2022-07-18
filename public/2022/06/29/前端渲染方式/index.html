@@ -1,0 +1,560 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://yangdi.site/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://yangdi.site/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://yangdi.site/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="笔记" />
+
+
+<link rel="canonical" href="http://yangdi.site/2022/06/29/%E5%89%8D%E7%AB%AF%E6%B8%B2%E6%9F%93%E6%96%B9%E5%BC%8F/">
+
+
+
+  <title>
+前端渲染方式 - PreRender - CSR - SSR |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">前端渲染方式
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-06-29 03:35:59">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-06-29T03:35:59Z">2022-06-29</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (3).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (18).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (30).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (8).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (13).jpeg"></li>
+          <li class="item" data-background-image="http://180.76.54.1/img_blog/img (24).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/SSR/" itemprop="item" rel="index" title="分类于 SSR"><span itemprop="name">SSR</span></a>
+<meta itemprop="position" content="1" /></span>
+<i class="ic i-angle-right"></i>
+<span  itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/SSR/CSR/" itemprop="item" rel="index" title="分类于 CSR"><span itemprop="name">CSR</span></a>
+<meta itemprop="position" content="2" /></span>
+<i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/SSR/CSR/PreRender/" itemprop="item" rel="index" title="分类于 PreRender"><span itemprop="name">PreRender</span></a>
+<meta itemprop="position" content="3" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://yangdi.site/2022/06/29/%E5%89%8D%E7%AB%AF%E6%B8%B2%E6%9F%93%E6%96%B9%E5%BC%8F/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    
+      <div class="tags">
+          <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"><i class="ic i-tag"></i> 笔记</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2022-06-29 03:37:00" itemprop="dateModified" datetime="2022-06-29T03:37:00Z">2022-06-29</time>
+  </span>
+  <span id="2022/06/29/前端渲染方式/" class="item leancloud_visitors" data-flag-title="前端渲染方式" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.png" alt="yangdi 支付宝">
+        <p>支付宝</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/paypal.png" alt="yangdi 贝宝">
+        <p>贝宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://yangdi.site/2022/06/29/%E5%89%8D%E7%AB%AF%E6%B8%B2%E6%9F%93%E6%96%B9%E5%BC%8F/" title="前端渲染方式">http://yangdi.site/2022/06/29/前端渲染方式/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/06/28/homebrew%E4%BD%BF%E7%94%A8/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;180.76.54.1&#x2F;img_blog&#x2F;img (24).jpeg" title="homebrew 安装与使用">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> homebrew</span>
+  <h3>homebrew 安装与使用</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/06/29/Vue%E7%9A%84SSR%E6%96%B9%E6%A1%88/" itemprop="url" rel="next" data-background-image="http:&#x2F;&#x2F;180.76.54.1&#x2F;img_blog&#x2F;img (15).jpeg" title="Vue SSR方案">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> Vue</span>
+  <h3>Vue SSR方案</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2022/06/29/%E5%89%8D%E7%AB%AF%E6%B8%B2%E6%9F%93%E6%96%B9%E5%BC%8F/" rel="bookmark" title="前端渲染方式">前端渲染方式</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">27</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">35</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">21</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/06/28/homebrew%E4%BD%BF%E7%94%A8/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/06/29/Vue%E7%9A%84SSR%E6%96%B9%E6%A1%88/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Mobx/" title="分类于 Mobx">Mobx</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Mobx/Vue/" title="分类于 Vue">Vue</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Mobx/Vue/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2022/06/27/mobx/" title="Mobx 基本使用">Mobx 基本使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/docker/java/" title="分类于 java">java</a>
+</div>
+
+    <span><a href="/2022/07/13/JAVA%E6%A0%87%E5%87%86%E7%89%88%E6%9C%AC%E3%80%81openJDK%E3%80%81jre%E5%8C%BA%E5%88%AB/" title="JDK 和 openjdk的区别">JDK 和 openjdk的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker%20%E6%95%B0%E6%8D%AE%E5%8D%B7/" title="docker 数据卷">docker 数据卷</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Vue/" title="分类于 Vue">Vue</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Vue/Typescript/" title="分类于 Typescript">Typescript</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Vue/Typescript/Vite/" title="分类于 Vite">Vite</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/Vue/Typescript/Vite/Eslint/" title="分类于 Eslint]">Eslint]</a>
+</div>
+
+    <span><a href="/2022/06/27/Vue3%20+%20Vite%20+%20TS%20+%20Eslint%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/" title="Vue3 + Vite + TS + Eslint搭建一个项目">Vue3 + Vite + TS + Eslint搭建一个项目</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JS/" title="分类于 JS">JS</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/JS/%E6%9E%84%E5%BB%BA/" title="分类于 构建">构建</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/JS/%E6%9E%84%E5%BB%BA/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" title="分类于 开发工具">开发工具</a>
+</div>
+
+    <span><a href="/2022/06/27/rollup/" title="Rollup">Rollup</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/babel/" title="分类于 babel">babel</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/babel/JS/" title="分类于 JS">JS</a>
+</div>
+
+    <span><a href="/2022/06/27/babelrc/" title=".babelrc 详解">.babelrc 详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Markdown/" title="分类于 Markdown">Markdown</a>
+</div>
+
+    <span><a href="/2022/06/27/MarkDown/" title="MarkDown 基本语法">MarkDown 基本语法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/SSR/" title="分类于 SSR">SSR</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/SSR/Vue/" title="分类于 Vue">Vue</a>
+</div>
+
+    <span><a href="/2022/06/29/Vue%E7%9A%84SSR%E6%96%B9%E6%A1%88/" title="Vue SSR方案">Vue SSR方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker%20%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" title="docker 操作指令">docker 操作指令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/TypeScript/" title="分类于 TypeScript">TypeScript</a>
+</div>
+
+    <span><a href="/2022/06/27/tslint/" title="tslint.js 详解">tslint.js 详解</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2022</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/06/29/前端渲染方式/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
