@@ -1,0 +1,604 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://www.yangdi.cloud/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://www.yangdi.cloud/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://www.yangdi.cloud/feed.json" />
+
+
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="linux,find" />
+
+
+<link rel="canonical" href="http://www.yangdi.cloud/2024/10/09/linux/find%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+
+
+  <title>
+find指令的使用 - linux |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">find指令的使用
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2024-10-09 09:51:46">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-10-09T09:51:46Z">2024-10-09</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (6).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (12).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (32).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (28).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (16).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (15).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/linux/" itemprop="item" rel="index" title="分类于 linux"><span itemprop="name">linux</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://www.yangdi.cloud/2024/10/09/linux/find%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
+<p>全称 File IN Databank，是一个强大的文件搜索命令，可以根据各种标准如文件名、大小、修改日期等在系统中搜索文件和目录。<br>find 这个命令适用于所有Linux版本，包括但不限于 Ubuntu、Debian、Fedora、Red Hat、CentOS 等。由于 find 是预安装在所有Linux发行版上的，所以大部分时候并不需要进行额外的安装。</p>
+</blockquote>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-name</td>
+<td>搜索文件名</td>
+</tr>
+<tr>
+<td>-size</td>
+<td>根据文件大小搜索文件</td>
+</tr>
+<tr>
+<td>-type</td>
+<td>根据类型搜索文件，如 -type d 为搜索目录</td>
+</tr>
+<tr>
+<td>-mtime [n]</td>
+<td>根据修改时间搜索文件，n为天数</td>
+</tr>
+<tr>
+<td>-exec</td>
+<td>将查找的文件执行指定的命令</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>查找名称为filename的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name filename</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>搜索所有大于1MB的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -size +1M</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找当前目录及子目录下所有的 .txt 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -name &quot;*.txt&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在&#x2F;home目录中查找以.log结尾的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home -name &quot;*.log&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找&#x2F;home目录中用户所有者为root，并且文件大小超过10M的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home -user root -size +10M</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在当前目录查找更改时间在5天之内的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -mtime -5</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找出所有的空目录</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -empty -type d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找并删除所有的 .tmp 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name &quot;*.tmp&quot; -exec rm &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找并打印所有以 .sh 结尾的文件，并显示其文件大小和最后修改时间</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -name &quot;*.sh&quot; -exec ls -lh &#123;&#125; \;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找当前目录及子目录中文件权限为755的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find . -type f -perm 0755</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在&#x2F;home目录中查找拥有者为root的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home -owner root</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找&#x2F;home目录中，更改时间在10天前，15天内的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home -mtime +10 -mtime -15</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找&#x2F;etc目录下，更改时间超过10天，并且后缀为’.log’的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /etc -name &quot;*.log&quot; -mtime +10</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查找&#x2F;var&#x2F;log目录下，10天内被访问过，并且后缀为’.log’的文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /var/log -name &quot;*.log&quot; -atime -10</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/linux/" rel="tag"><i class="ic i-tag"></i> linux</a>
+          <a href="/tags/find/" rel="tag"><i class="ic i-tag"></i> find</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-10-09 10:21:42" itemprop="dateModified" datetime="2024-10-09T10:21:42Z">2024-10-09</time>
+  </span>
+  <span id="2024/10/09/linux/find的使用/" class="item leancloud_visitors" data-flag-title="find指令的使用" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 加个好友</button>
+  <p>技术讨论~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信">
+        <p>微信</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://www.yangdi.cloud/2024/10/09/linux/find%E7%9A%84%E4%BD%BF%E7%94%A8/" title="find指令的使用">http://www.yangdi.cloud/2024/10/09/linux/find的使用/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/09/24/K8S/K8S%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (29).jpeg" title="K8S基础功能介绍">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> K8S</span>
+  <h3>K8S基础功能介绍</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/11/11/CSS/filter/" itemprop="url" rel="next" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (7).jpeg" title="CSS filter">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> CSS</span>
+  <h3>CSS filter</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">使用</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2022/07/13/linux/alpine/" rel="bookmark" title="alpine 是什么">alpine 是什么</a></li><li class="active"><a href="/2024/10/09/linux/find%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="bookmark" title="find指令的使用">find指令的使用</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">78</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">32</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">85</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/09/24/K8S/K8S%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/11/11/CSS/filter/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JavaScript/" title="分类于 JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/2022/06/27/JavaScript/JS%20%E8%A3%85%E9%A5%B0%E5%99%A8/" title="JS 装饰器">JS 装饰器</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/CSS/" title="分类于 CSS">CSS</a>
+</div>
+
+    <span><a href="/2022/12/29/CSS/grid%E5%B8%83%E5%B1%80/" title="grid布局">grid布局</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Markdown/" title="分类于 Markdown">Markdown</a>
+</div>
+
+    <span><a href="/2022/06/27/%E5%85%B6%E4%BB%96/MarkDown/" title="MarkDown 基本语法">MarkDown 基本语法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/graphQL/" title="分类于 graphQL">graphQL</a>
+</div>
+
+    <span><a href="/2022/06/27/graphQL%E4%BD%BF%E7%94%A8/" title="graphQL使用">graphQL使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/TypeScript/" title="分类于 TypeScript">TypeScript</a>
+</div>
+
+    <span><a href="/2022/06/27/TypeScript/tslint/" title="tslint.js 详解">tslint.js 详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker/docker%20%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" title="docker 操作指令">docker 操作指令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" title="分类于 测试工具">测试工具</a>
+</div>
+
+    <span><a href="/2022/07/28/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/ant+jmeter%E9%82%AE%E7%AE%B1SSL%E9%85%8D%E7%BD%AE/" title="ant+jmeter加密邮箱配置">ant+jmeter加密邮箱配置</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/git/" title="分类于 git">git</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/git/object-Object/" title="分类于 [object Object]">[object Object]</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/git/object-Object/git/" title="分类于 git">git</a>
+</div>
+
+    <span><a href="/2023/02/13/git/git%20pull%E6%9C%AC%E9%83%BD%E4%BF%9D%E5%AD%98%E5%AF%86%E7%A0%81/" title="git pull 保存密码无需再次输入">git pull 保存密码无需再次输入</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E5%85%B7/" title="分类于 工具">工具</a>
+</div>
+
+    <span><a href="/2024/06/04/%E5%B7%A5%E5%85%B7/nginx%E5%8D%87%E7%BA%A7/" title="nginx 升级">nginx 升级</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Turborepo/" title="分类于 Turborepo">Turborepo</a>
+</div>
+
+    <span><a href="/2024/08/09/%E5%B7%A5%E5%85%B7/Turborepo%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Turborepo的使用">Turborepo的使用</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/10/09/linux/find的使用/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

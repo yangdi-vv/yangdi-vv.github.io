@@ -1,0 +1,579 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://www.yangdi.cloud/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://www.yangdi.cloud/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://www.yangdi.cloud/feed.json" />
+
+
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="TypeScript,tslint" />
+
+
+<link rel="canonical" href="http://www.yangdi.cloud/2022/06/27/TypeScript/tslint/">
+
+
+
+  <title>
+tslint.js 详解 - TypeScript |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">tslint.js 详解
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-06-27 03:16:26">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-06-27T03:16:26Z">2022-06-27</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (30).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (2).jpg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (16).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (8).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (28).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (4).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/TypeScript/" itemprop="item" rel="index" title="分类于 TypeScript"><span itemprop="name">TypeScript</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://www.yangdi.cloud/2022/06/27/TypeScript/tslint/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h1 id="tslint-js-详解"><a href="#tslint-js-详解" class="headerlink" title="tslint.js 详解"></a>tslint.js 详解</h1><h2 id="一、区别"><a href="#一、区别" class="headerlink" title="一、区别"></a>一、区别</h2><ul>
+<li>eslint 是用来检测 javascript 的代码错误及代码规范问题，原理是通过对AST的分析完成。</li>
+<li>tslint 是用来检测 typescript 的代码错误及代码规范问题，原理也是通过对AST的分析完成。</li>
+<li>eslint 和 tslint 都是基于不同parser对AST解析。</li>
+</ul>
+<h2 id="二、AST"><a href="#二、AST" class="headerlink" title="二、AST"></a>二、AST</h2><ul>
+<li><p>AST是对源代码的抽象语法结构树状表现形式，并不是完整的语法结构（CST）：<br><img data-src="https://tva1.sinaimg.cn/large/00760ex2ly8h1m3lxrfd6j308v06nq35.jpg" alt="AST"></p>
+</li>
+<li><p>AST有不同的标准存在，最早用来解析代码成AST的 parser 是 esprima，它参考了 Mozilla 浏览器的 SpiderMonkey 引擎的 AST 的标准。</p>
+</li>
+<li><p>AST标准大体分为estree(esprima、espree、babel parser（babylon）、acorn)和非estree(typescript、terser)<br><img data-src="https://tva4.sinaimg.cn/large/00760ex2ly8h1lz2opzsyj30k008w3yo.jpg" alt="AST标准"></p>
+</li>
+</ul>
+<h2 id="三、eslint-parser"><a href="#三、eslint-parser" class="headerlink" title="三、eslint - parser"></a>三、eslint - parser</h2><ul>
+<li><p>eslint 默认使用parser的是 espree, 同时也支持parser的切换：</p>
+<ol>
+<li>默认的espree  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;parserOptions&quot;: &#123;</span><br><span class="line">        &quot;ecmaVersion&quot;: 6,</span><br><span class="line">        &quot;sourceType&quot;: &quot;module&quot;,</span><br><span class="line">        &quot;ecmaFeatures&quot;: &#123;</span><br><span class="line">            &quot;jsx&quot;: true</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>通过 @babel&#x2F;eslint-parser 来切换到babel 的AST，babel的parser支持的语法更多，再babel7之后也支持TS及jsx、flow语法解析。</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    parser: &quot;@babel/eslint-parser&quot;,</span><br><span class="line">    parserOptions: &#123;</span><br><span class="line">        sourceType: &quot;module&quot;,</span><br><span class="line">        plugins: []</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>可以通过@typescript&#x2F;parser来切换到typescript的parser  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;parser&quot;: &quot;@typescript-eslint/parser&quot;,</span><br><span class="line">  &quot;parserOptions&quot;: &#123;</span><br><span class="line">      &quot;project&quot;: &quot;./tsconfig.json&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>可以通过 vue-eslint-parser 来解析 vue 的单文件组件，因为 vue 组件代码同样通过 eslint 来检查规范和逻辑错误，所以实现了对应的 parser<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">       &quot;parser&quot;: &quot;vue-eslint-parser&quot;,</span><br><span class="line">       &quot;parserOptions&quot;: &#123;</span><br><span class="line">           &quot;sourceType&quot;: &quot;module&quot;,</span><br><span class="line">           &quot;ecmaVersion&quot;: 2018,</span><br><span class="line">           &quot;ecmaFeatures&quot;: &#123;</span><br><span class="line">               &quot;globalReturn&quot;: false,</span><br><span class="line">               &quot;impliedStrict&quot;: false,</span><br><span class="line">               &quot;jsx&quot;: false</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+<h2 id="四、eslint-参数"><a href="#四、eslint-参数" class="headerlink" title="四、eslint - 参数"></a>四、eslint - 参数</h2><ul>
+<li><p>extends</p>
+<blockquote>
+<p>内置配置预设的名称（请参阅下面的内置预设），或由此配置扩展的其他配置文件的路径或路径数组。该值使用节点模块解析语义处理。例如，值”tslint-config”将告诉 TSLint 尝试将名为“tslint-config”的模块的主文件加载为配置文件。也可以指定节点模块内的特定文件，例如。”tslint-config&#x2F;path&#x2F;to&#x2F;submodule”. 还支持 JSON 文件或 JS 模块的相对路径，例如”.&#x2F;tslint-config”.</p>
+</blockquote>
+</li>
+<li><p>rulesDirectory</p>
+<blockquote>
+<p>[自定义规则][2] 的目录路径或目录路径数组。index.js如果将 an放在您的规则目录中，则使用节点模块解析语义处理这些值。如果无法解析模块，我们将使用相对或绝对路径。如果您想避免模块解析，您可以直接使用相对或绝对路径（例如 with .&#x2F;）。</p>
+</blockquote>
+</li>
+<li><p>rules</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;defaultSeverity&quot;: &quot;error&quot;,</span><br><span class="line">	&quot;extends&quot;: [</span><br><span class="line">		&quot;tslint:recommended&quot;</span><br><span class="line">	],</span><br><span class="line">	&quot;rules&quot;: &#123;</span><br><span class="line">        &quot;member-access&quot;: true, // 设置成员对象的访问权限（public,private,protect)</span><br><span class="line">        &quot;member-ordering&quot;: [// 设置修饰符顺序</span><br><span class="line">            true,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;order&quot;: [ </span><br><span class="line">                    &quot;public-static-field&quot;,</span><br><span class="line">                    &quot;public-static-method&quot;,</span><br><span class="line">                    &quot;protected-static-field&quot;,</span><br><span class="line">                    &quot;protected-static-method&quot;,</span><br><span class="line">                    &quot;private-static-field&quot;,</span><br><span class="line">                    &quot;private-static-method&quot;,</span><br><span class="line">                    &quot;public-instance-field&quot;,</span><br><span class="line">                    &quot;protected-instance-field&quot;,</span><br><span class="line">                    &quot;private-instance-field&quot;,</span><br><span class="line">                    &quot;public-constructor&quot;,</span><br><span class="line">                    &quot;protected-constructor&quot;,</span><br><span class="line">                    &quot;private-constructor&quot;,</span><br><span class="line">                    &quot;public-instance-method&quot;,</span><br><span class="line">                    &quot;protected-instance-method&quot;,</span><br><span class="line">                    &quot;private-instance-method&quot;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        ],</span><br><span class="line">        // &quot;no-empty-interface&quot;:true,// 不允许空接口</span><br><span class="line">        &quot;no-parameter-reassignment&quot;:false,// 不允许修改方法输入参数</span><br><span class="line">        &quot;prefer-for-of&quot;:true,// 如果for循环中没有使用索引，建议是使用for-of</span><br><span class="line"> </span><br><span class="line">        // 功能特性</span><br><span class="line">        &quot;no-namespace&quot;:false,</span><br><span class="line">        &quot;only-arrow-functions&quot;:false, //禁止使用传统（非箭头）函数表达式</span><br><span class="line">        &quot;no-shadowed-variable&quot;: true, // 不允许子作用域与外层作用域声明同名变量</span><br><span class="line">        &quot;no-string-literal&quot;:false,</span><br><span class="line">        &quot;ban-types&quot;: false,// 禁止内置原始类型</span><br><span class="line">        &quot;await-promise&quot;:true,// 不允许没有Promise的情况下使用await</span><br><span class="line">        &quot;curly&quot;:true,// if/for/do/while强制使用大括号</span><br><span class="line">        &quot;forin&quot;:false,// 使用for in语句时，强制进行hasOwnProperty检查</span><br><span class="line">        &quot;no-arg&quot;:true,// 不允许使用arguments.callee</span><br><span class="line">        &quot;no-bitwise&quot;:false, // 不允许使用特殊运算符 &amp;, &amp;=, |, |=, ^, ^=, &lt;&lt;, &lt;&lt;=, &gt;&gt;, &gt;&gt;=, &gt;&gt;&gt;, &gt;&gt;&gt;=, ~</span><br><span class="line">        &quot;no-conditional-assignment&quot;:true,// do while/for/if/while 语句中将会对例如if(a=b)进行检查</span><br><span class="line">        &quot;no-console&quot;:true,// 不允许使用console对象</span><br><span class="line">        &quot;no-debugger&quot;:true,// 不允许使用debugger</span><br><span class="line">        &quot;no-duplicate-super&quot;:true,// 不允许super() 两次使用在构造函数中</span><br><span class="line">        &quot;no-empty&quot;:false,// 函数体不允许空</span><br><span class="line">        &quot;no-eval&quot;:true,// 不允许使用eval</span><br><span class="line">        &quot;no-for-in-array&quot;:true,// 不允许对Array使用for-in</span><br><span class="line">        &quot;no-invalid-template-strings&quot;:true,// 只允许在模板字符串中使用$&#123;</span><br><span class="line">        // &quot;no-invalid-this&quot;:true,// 不允许在class之外使用this</span><br><span class="line">        // &quot;no-null-keyword&quot;:true,// 不允许使用null,使用undefined代替null，指代空指针对象</span><br><span class="line">        &quot;no-sparse-arrays&quot;:true,// 不允许array中有空元素</span><br><span class="line">        &quot;no-string-throw&quot;:true,// 不允许throw一个字符串</span><br><span class="line">        &quot;no-switch-case-fall-through&quot;:true,// 不允许case段落中在没有使用breack的情况下，在新启一段case逻辑</span><br><span class="line">        &quot;no-unsafe-finally&quot;:true,// 不允许在finally语句中使用return/continue/break/throw</span><br><span class="line">        &quot;no-unused-expression&quot;:true,// 不允许使用未使用的表达式</span><br><span class="line">        &quot;no-use-before-declare&quot;:true,// 在使用前必须声明</span><br><span class="line">        &quot;no-var-keyword&quot;:true,// 不允许使用var</span><br><span class="line">        &quot;radix&quot;:false,// parseInt时，必须输入radix精度参数</span><br><span class="line">        // &quot;restrict-plus-operands&quot;:true,// 不允许自动类型转换，如果已设置不允许使用关键字var该设置无效</span><br><span class="line">        &quot;triple-equals&quot;:false,// 必须使用恒等号，进行等于比较</span><br><span class="line">        &quot;use-isnan&quot;:true,// 只允许使用isNaN方法检查数字是否有效</span><br><span class="line"> </span><br><span class="line">        // 维护性功能</span><br><span class="line">        &quot;indent&quot;:[true, &quot;spaces&quot;, 4],// 每行开始以4个空格符开始</span><br><span class="line">        &quot;max-classes-per-file&quot;:[true,1],// 每个文件中可定义类的个数</span><br><span class="line">        &quot;max-file-line-count&quot;:[true,1000],// 定义每个文件代码行数</span><br><span class="line">        &quot;max-line-length&quot;:[true,300],// 定义每行代码数</span><br><span class="line">        &quot;no-default-export&quot;:true,// 禁止使用export default关键字，因为当export对象名称发生变化时，需要修改import中的对象名。https://github.com/palantir/tslint/issues/1182#issue-151780453</span><br><span class="line">        &quot;no-duplicate-imports&quot;:true,// 禁止在一个文件内，多次引用同一module</span><br><span class="line"> </span><br><span class="line">        // 格式</span><br><span class="line">        &quot;align&quot;:[true,&quot;parameters&quot;,&quot;arguments&quot;,&quot;statements&quot;,&quot;members&quot;,&quot;elements&quot;],// 定义对齐风格</span><br><span class="line">        &quot;array-type&quot;:[true,&quot;array&quot;],// 建议使用T[]方式声明一个数组对象</span><br><span class="line">        &quot;class-name&quot;:false,// 类名以大驼峰格式命名</span><br><span class="line">        &quot;comment-format&quot;:[true, &quot;check-space&quot;],// 定义注释格式</span><br><span class="line">        &quot;encoding&quot;:false,// 定义编码格式默认utf-8</span><br><span class="line">        &quot;import-spacing&quot;:true,// import关键字后加空格</span><br><span class="line">        &quot;interface-name&quot;:[true,&quot;always-prefix&quot;],// interface必须以I开头</span><br><span class="line">        &quot;jsdoc-format&quot;:false,// 注释基于jsdoc风格</span><br><span class="line">        &quot;new-parens&quot;:true,// 调用构造函数时需要用括号</span><br><span class="line">        &quot;object-literal-sort-keys&quot;:false,</span><br><span class="line">        &quot;no-consecutive-blank-lines&quot;:[true,2],// 不允许有空行</span><br><span class="line">        // &quot;no-trailing-whitespace&quot;: [// 不允许空格结尾</span><br><span class="line">        //     true,</span><br><span class="line">        //     &quot;ignore-comments&quot;,</span><br><span class="line">        //     &quot;ignore-jsdoc&quot;</span><br><span class="line">        // ],</span><br><span class="line">        &quot;no-unnecessary-initializer&quot;:true,// 不允许没有必要的初始化</span><br><span class="line">        &quot;variable-name&quot;:[false, &quot;check-format&quot;,// 定义变量命名规则</span><br><span class="line">            &quot;allow-leading-underscore&quot;,</span><br><span class="line">            &quot;allow-trailing-underscore&quot;,</span><br><span class="line">            &quot;ban-keywords&quot;]</span><br><span class="line">    &#125;,</span><br><span class="line">	&quot;rulesDirectory&quot;: [],</span><br><span class="line">	&quot;linterOptions&quot;: &#123;</span><br><span class="line">		&quot;exclude&quot;: [</span><br><span class="line">			&quot;e2e/**/*&quot;</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="五、eslint-和-tslint的融合"><a href="#五、eslint-和-tslint的融合" class="headerlink" title="五、eslint 和 tslint的融合"></a>五、eslint 和 tslint的融合</h2><ul>
+<li>首先通过 @typescript-eslint&#x2F;parser 将tslint的AST转化为estree的AST，eslint无法检测的ts属性会再次使用tslint进行检测</li>
+</ul>
+<h2 id="六、总结"><a href="#六、总结" class="headerlink" title="六、总结"></a>六、总结</h2><p>js 有不同的 parser，分为 estree 系列和非 estree 系列：</p>
+<ul>
+<li>estree 系列有 esprima、acorn 以及扩展自 acorn 的 espree、babel parser 等。</li>
+<li>非 estree 系列有 typescript、terser 等。</li>
+</ul>
+<p>eslint 中支持了 parser 的切换，可以在 babel parser、vue template parser、typescript 和 espree 中切换，当然也可以扩展其他的 parser。</p>
+<p>tslint 是基于 typescript 做 parse 的一个独立的工具。它和 eslint 都是基于 AST 检查代码中的逻辑和格式错误的工具，后来做了融合。</p>
+<p>为了复用基于 estree 的一些 rule， @typescript-eslint&#x2F;parser 把 ts node 转成了 estree node，但是依然保留了映射关系和一些操作 ts ast 的 api。</p>
+<p>这样基于 estree AST 的 rule 可以正常运行，基于 ts AST 的 rule 也可以映射回原来的 ts node 然后运行。</p>
+<p>通过这种方式，完美的把 eslint 和 tslint 融合在了一起。</p>
+
+      <div class="tags">
+          <a href="/tags/TypeScript/" rel="tag"><i class="ic i-tag"></i> TypeScript</a>
+          <a href="/tags/tslint/" rel="tag"><i class="ic i-tag"></i> tslint</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2022-12-28 07:10:27" itemprop="dateModified" datetime="2022-12-28T07:10:27Z">2022-12-28</time>
+  </span>
+  <span id="2022/06/27/TypeScript/tslint/" class="item leancloud_visitors" data-flag-title="tslint.js 详解" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 加个好友</button>
+  <p>技术讨论~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信">
+        <p>微信</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://www.yangdi.cloud/2022/06/27/TypeScript/tslint/" title="tslint.js 详解">http://www.yangdi.cloud/2022/06/27/TypeScript/tslint/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/06/27/React/mobx/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (15).jpeg" title="Mobx 基本使用">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> React</span>
+  <h3>Mobx 基本使用</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/06/27/TypeScript/tsconfig/" itemprop="url" rel="next" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (17).jpeg" title="tsconfig.json 参数详解">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> TypeScript</span>
+  <h3>tsconfig.json 参数详解</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#tslint-js-%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.</span> <span class="toc-text">tslint.js 详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.</span> <span class="toc-text">一、区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81AST"><span class="toc-number">1.2.</span> <span class="toc-text">二、AST</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81eslint-parser"><span class="toc-number">1.3.</span> <span class="toc-text">三、eslint - parser</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81eslint-%E5%8F%82%E6%95%B0"><span class="toc-number">1.4.</span> <span class="toc-text">四、eslint - 参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81eslint-%E5%92%8C-tslint%E7%9A%84%E8%9E%8D%E5%90%88"><span class="toc-number">1.5.</span> <span class="toc-text">五、eslint 和 tslint的融合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">1.6.</span> <span class="toc-text">六、总结</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2022/06/27/TypeScript/tsconfig/" rel="bookmark" title="tsconfig.json 参数详解">tsconfig.json 参数详解</a></li><li class="active"><a href="/2022/06/27/TypeScript/tslint/" rel="bookmark" title="tslint.js 详解">tslint.js 详解</a></li><li><a href="/2022/10/18/TypeScript/typeScript/" rel="bookmark" title="typeScript使用">typeScript使用</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">78</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">32</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">85</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/06/27/React/mobx/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/06/27/TypeScript/tsconfig/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/vite/" title="分类于 vite">vite</a>
+</div>
+
+    <span><a href="/2023/05/17/vite/pina/" title="pinia 使用">pinia 使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2022/07/04/React/React%E7%9A%84SSR%E6%96%B9%E6%A1%88/" title="React 的SSR方案">React 的SSR方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E5%85%B7/" title="分类于 工具">工具</a>
+</div>
+
+    <span><a href="/2022/11/11/%E5%BE%AE%E5%89%8D%E7%AB%AF/html%20entry/" title="html entry">html entry</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JavaScript/" title="分类于 JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/2022/11/01/JavaScript/web%20component/" title="web component">web component</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E5%85%B7/" title="分类于 工具">工具</a>
+</div>
+
+    <span><a href="/2024/07/24/%E5%B7%A5%E5%85%B7/pnpm/" title="pnpm">pnpm</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/git/" title="分类于 git">git</a>
+</div>
+
+    <span><a href="/2022/07/28/%E5%B7%A5%E5%85%B7/mac%E9%85%8D%E7%BD%AEgit%20cz/" title="MAC 配置git cz">MAC 配置git cz</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Linux/" title="分类于 Linux">Linux</a>
+</div>
+
+    <span><a href="/2022/08/02/linux/%E4%B8%8D%E5%90%8C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E6%9F%A5%E7%9C%8B%E5%92%8Ckill%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E7%A8%8B%E5%BA%8F/" title="不同系统下查看和kill端口占用程序">不同系统下查看和kill端口占用程序</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker/JAVA%E6%A0%87%E5%87%86%E7%89%88%E6%9C%AC%E3%80%81openJDK%E3%80%81jre%E5%8C%BA%E5%88%AB/" title="JDK 和 openjdk的区别">JDK 和 openjdk的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/nodeJS/" title="分类于 nodeJS">nodeJS</a>
+</div>
+
+    <span><a href="/2022/07/29/nodeJS/nodejs%E5%AF%BC%E5%87%BAexcel/" title="nodeJS 导出excel">nodeJS 导出excel</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/MongoDB/" title="分类于 MongoDB">MongoDB</a>
+</div>
+
+    <span><a href="/2022/08/24/%E5%B7%A5%E5%85%B7/mongoDB%20%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" title="mongoDB 安装及使用">mongoDB 安装及使用</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/06/27/TypeScript/tslint/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

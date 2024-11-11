@@ -1,0 +1,586 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://www.yangdi.cloud/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://www.yangdi.cloud/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://www.yangdi.cloud/feed.json" />
+
+
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="JS,ESbuild,构建" />
+
+
+<link rel="canonical" href="http://www.yangdi.cloud/2022/06/27/%E5%B7%A5%E5%85%B7/ESbuild/">
+
+
+
+  <title>
+ESbuild - 工具 |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">ESbuild
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-06-27 08:35:22">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-06-27T08:35:22Z">2022-06-27</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (5).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (28).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (9).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (16).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (3).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (10).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="item" rel="index" title="分类于 工具"><span itemprop="name">工具</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://www.yangdi.cloud/2022/06/27/%E5%B7%A5%E5%85%B7/ESbuild/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
+<p>ESbuild是一款基于GOLang的打包工具，相比于传统打包工具速度提升达到数十倍</p>
+</blockquote>
+<ul>
+<li><p>优点</p>
+<ul>
+<li>基于GO，相比较于JS，GO是机器语言，速度更快</li>
+<li>JS是单线程，ESbuild是多线程并行</li>
+<li>没有使用AST，优化了构建流程</li>
+</ul>
+</li>
+<li><p>缺点</p>
+<ul>
+<li>没有 TS 类型检查</li>
+<li>不能操作 AST</li>
+<li>不支持装饰器语法</li>
+<li>产物 target 无法降级到 ES5 及以下</li>
+</ul>
+</li>
+</ul>
+<p><img data-src="http://123.56.167.35/img_blog/esbuild.jpg" alt="对比"><br><img data-src="http://123.56.167.35/img_blog/esbuild.png" alt="对比"></p>
+<h2 id="ESM及bound-webpack等-执行机制"><a href="#ESM及bound-webpack等-执行机制" class="headerlink" title="ESM及bound(webpack等)执行机制"></a>ESM及bound(webpack等)执行机制</h2><p><img data-src="http://123.56.167.35/img_blog/webpackVSvite.png"></p>
+<ul>
+<li><p>webpack</p>
+<blockquote>
+<p>Webpack 的构建流程简单来说就是递归编译每一个模块文件，对于不同类型的文件使用不同的 webpack loader 进行处理。<br>并可以自动构建并基于你所引用或导出的内容推断出依赖的图谱。<br>esbuild-loader 是一个构建在 esbuild 上的 webpack loader，且可以替代 babel-loader 或 ts-loader 来提高构建速度。</p>
+</blockquote>
+</li>
+<li><p>vite</p>
+<blockquote>
+<p>esbuild 构建默认开启了 Tree shaking（sub 并没有被编译输出），还可以进行 minify、 sourcemap，指定 platform ，以及 watch（监视模式）等等。具体可以查看官方 <span class="exturl" data-url="aHR0cHM6Ly9lc2J1aWxkLmdpdGh1Yi5pby9hcGkv">API</span></p>
+</blockquote>
+</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i esbuild -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">esbuild main.ts</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编译代码</p>
+<pre><code>
+</code></pre>
+</li>
+<li><p>处理JSX</p>
+</li>
+<li><p>压缩</p>
+</li>
+</ul>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><blockquote>
+<p>在当前前端环境中，直接使用 esbuild 代替 webpack 不现实；主流方案是在 webpack 中使用 esbuild 去做一些代码的 transform (代替 babel-loader)。当然随时后续 vite（采用 esbuild 预构建依赖） 、snowpack 等构建工具的发展，其会在某些场景下替代 webpack（vue3 的官方推荐构建工具为 vite）。esbuild 针对构建 应用 的重要功能仍然还在持续开发中 —— 特别是代码分割（可以获得最佳的加载性能）和 CSS 处理方面。当未来这些功能稳定后，不排除使用 esbuild 作为生产构建器的可能。</p>
+</blockquote>
+<blockquote>
+<p>vite 中引用 esbuild： <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3ZpdGVqcy92aXRlL2Jsb2IvbWFpbi9wYWNrYWdlcy92aXRlL3NyYy9ub2RlL29wdGltaXplci9pbmRleC50cyNMNQ==">https://github.com/vitejs/vite/blob/main/packages/vite/src/node/optimizer/index.ts#L5</span></p>
+</blockquote>
+<blockquote>
+<p>webpack 在 v5 版本中也是针对编译的性能做出了不少努力，除了提供了物理缓存的优化之外，还提供 Module Federation 的方案，这给我们上层的应用实践带来了很多想象的空间。以前 webpack 大有一统构建工具的趋势，而现在我们可以结合业务的特点有更多的选择。</p>
+</blockquote>
+
+      <div class="tags">
+          <a href="/tags/JS/" rel="tag"><i class="ic i-tag"></i> JS</a>
+          <a href="/tags/ESbuild/" rel="tag"><i class="ic i-tag"></i> ESbuild</a>
+          <a href="/tags/%E6%9E%84%E5%BB%BA/" rel="tag"><i class="ic i-tag"></i> 构建</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-12-21 04:03:05" itemprop="dateModified" datetime="2023-12-21T04:03:05Z">2023-12-21</time>
+  </span>
+  <span id="2022/06/27/工具/ESbuild/" class="item leancloud_visitors" data-flag-title="ESbuild" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 加个好友</button>
+  <p>技术讨论~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信">
+        <p>微信</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://www.yangdi.cloud/2022/06/27/%E5%B7%A5%E5%85%B7/ESbuild/" title="ESbuild">http://www.yangdi.cloud/2022/06/27/工具/ESbuild/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/06/27/TypeScript/tsconfig/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (31).jpeg" title="tsconfig.json 参数详解">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> TypeScript</span>
+  <h3>tsconfig.json 参数详解</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/06/27/rollup/" itemprop="url" rel="next" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (31).jpeg" title="Rollup">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 开发工具</span>
+  <h3>Rollup</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ESM%E5%8F%8Abound-webpack%E7%AD%89-%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text">ESM及bound(webpack等)执行机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">4.</span> <span class="toc-text">结语</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2022/06/27/%E5%B7%A5%E5%85%B7/ESbuild/" rel="bookmark" title="ESbuild">ESbuild</a></li><li><a href="/2022/06/28/%E5%B7%A5%E5%85%B7/homebrew%E4%BD%BF%E7%94%A8/" rel="bookmark" title="homebrew 安装与使用">homebrew 安装与使用</a></li><li><a href="/2022/08/01/%E5%B7%A5%E5%85%B7/YAPI%20%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" rel="bookmark" title="YAPI 安装使用">YAPI 安装使用</a></li><li><a href="/2022/08/20/%E5%B7%A5%E5%85%B7/pip%E4%BD%BF%E7%94%A8/" rel="bookmark" title="pip 安装及使用">pip 安装及使用</a></li><li><a href="/2022/11/11/%E5%BE%AE%E5%89%8D%E7%AB%AF/html%20entry/" rel="bookmark" title="html entry">html entry</a></li><li><a href="/2022/11/16/%E5%B7%A5%E5%85%B7/lerna/" rel="bookmark" title="lerna使用">lerna使用</a></li><li><a href="/2022/11/18/%E5%B7%A5%E5%85%B7/npm-run-all/" rel="bookmark" title="npm-run-all">npm-run-all</a></li><li><a href="/2022/12/29/%E5%B7%A5%E5%85%B7/npx/" rel="bookmark" title="npx 介绍">npx 介绍</a></li><li><a href="/2023/05/06/%E5%B7%A5%E5%85%B7/nginx%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="bookmark" title="nginx 使用">nginx 使用</a></li><li><a href="/2023/05/12/%E5%B7%A5%E5%85%B7/nginx%E8%AE%BE%E7%BD%AEGzip/" rel="bookmark" title="nginx 设置gzip">nginx 设置gzip</a></li><li><a href="/2024/06/04/%E5%B7%A5%E5%85%B7/nginx%E5%8D%87%E7%BA%A7/" rel="bookmark" title="nginx 升级">nginx 升级</a></li><li><a href="/2024/07/24/%E5%B7%A5%E5%85%B7/pnpm/" rel="bookmark" title="pnpm">pnpm</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">78</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">32</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">85</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/06/27/TypeScript/tsconfig/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/06/27/rollup/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2022/06/27/React/mobx/" title="Mobx 基本使用">Mobx 基本使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker/Dockerfile%E8%AF%AD%E6%B3%95/" title="Dockerfile 基本语法">Dockerfile 基本语法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" title="分类于 测试工具">测试工具</a>
+</div>
+
+    <span><a href="/2022/07/05/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/Jmeter%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" title="MAC 下 jmeter安装使用">MAC 下 jmeter安装使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E5%85%B7/" title="分类于 工具">工具</a>
+</div>
+
+    <span><a href="/2022/12/29/%E5%B7%A5%E5%85%B7/npx/" title="npx 介绍">npx 介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E5%85%B7/" title="分类于 工具">工具</a>
+</div>
+
+    <span><a href="/2022/06/27/%E5%B7%A5%E5%85%B7/ESbuild/" title="ESbuild">ESbuild</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/mongodb/" title="分类于 mongodb">mongodb</a>
+</div>
+
+    <span><a href="/2022/08/01/%E5%B7%A5%E5%85%B7/mongdb%E5%AE%89%E8%A3%85/" title="mongoDB 安装及常用指令">mongoDB 安装及常用指令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/vite/" title="分类于 vite">vite</a>
+</div>
+
+    <span><a href="/2022/06/27/vite/vite%20+%20vue3%20+%20ts%20+%20eslint...%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/" title="Vue3 + Vite + TS + Eslint搭建一个项目">Vue3 + Vite + TS + Eslint搭建一个项目</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/nodeJS/" title="分类于 nodeJS">nodeJS</a>
+</div>
+
+    <span><a href="/2022/07/29/nodeJS/Koa%20%E6%90%AD%E5%BB%BA%20nodeJS%20%20%E4%B8%AD%E9%97%B4%E4%BB%B6/" title="Koa 搭建 nodeJS 中间件">Koa 搭建 nodeJS 中间件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2022/07/13/linux/alpine/" title="alpine 是什么">alpine 是什么</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Linux/" title="分类于 Linux">Linux</a>
+</div>
+
+    <span><a href="/2024/03/28/linux/sed%E7%9A%84%E4%BD%BF%E7%94%A8/" title="sed使用">sed使用</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/06/27/工具/ESbuild/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

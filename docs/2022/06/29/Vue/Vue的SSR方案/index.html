@@ -1,0 +1,567 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://www.yangdi.cloud/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://www.yangdi.cloud/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://www.yangdi.cloud/feed.json" />
+
+
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="SSR,nuxt,Vue" />
+
+
+<link rel="canonical" href="http://www.yangdi.cloud/2022/06/29/Vue/Vue%E7%9A%84SSR%E6%96%B9%E6%A1%88/">
+
+
+
+  <title>
+Vue SSR方案 - Vue |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Vue SSR方案
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-06-29 03:43:10">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-06-29T03:43:10Z">2022-06-29</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (31).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (3).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (11).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (13).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (2).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (4).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Vue/" itemprop="item" rel="index" title="分类于 Vue"><span itemprop="name">Vue</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://www.yangdi.cloud/2022/06/29/Vue/Vue%E7%9A%84SSR%E6%96%B9%E6%A1%88/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h2><blockquote>
+<p>服务端渲染方案一般是用于对首屏要求较高的场景，或者SEO较好的优化效果，移动端也经常使用。<br>当前有官方推荐方案、Vite方案、nuxt2.x方案</p>
+</blockquote>
+<h3 id="Vue3官方方案"><a href="#Vue3官方方案" class="headerlink" title="Vue3官方方案"></a>Vue3官方方案</h3><blockquote>
+<p>使用express匹配路由进行渲染操作，这种简单的组合适用于不复杂的静态资源页面</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> express <span class="keyword">from</span> <span class="string">&#x27;express&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; renderToString &#125; <span class="keyword">from</span> <span class="string">&#x27;vue/server-renderer&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; createSSRApp &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> server = <span class="title function_">express</span>();</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">get</span>(<span class="string">&#x27;/&#x27;</span>, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> app = <span class="title function_">createSSRApp</span>(&#123;</span><br><span class="line">      <span class="attr">data</span>: <span class="function">() =&gt;</span> (&#123; <span class="attr">count</span>: <span class="number">1</span> &#125;),</span><br><span class="line">      <span class="attr">components</span>: &#123;</span><br><span class="line">          </span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="attr">template</span>: <span class="string">`&lt;div @click=&quot;count++&quot;&gt;&#123;&#123; count &#125;&#125;&lt;Home/&gt;&lt;/div&gt;`</span>,</span><br><span class="line">      <span class="comment">// router: router,</span></span><br><span class="line">  &#125;);;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">renderToString</span>(app).<span class="title function_">then</span>(<span class="function">(<span class="params">html</span>) =&gt;</span> &#123;</span><br><span class="line">    res.<span class="title function_">send</span>(<span class="string">`</span></span><br><span class="line"><span class="string">    &lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="string">    &lt;html&gt;</span></span><br><span class="line"><span class="string">      &lt;head&gt;</span></span><br><span class="line"><span class="string">        &lt;title&gt;Vue SSR Example&lt;/title&gt;</span></span><br><span class="line"><span class="string">        &lt;script type=&quot;importmap&quot;&gt;</span></span><br><span class="line"><span class="string">          &#123;</span></span><br><span class="line"><span class="string">            &quot;imports&quot;: &#123;</span></span><br><span class="line"><span class="string">              &quot;vue&quot;: &quot;https://unpkg.com/vue@3/dist/vue.esm-browser.js&quot;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">          &#125;</span></span><br><span class="line"><span class="string">        &lt;/script&gt;</span></span><br><span class="line"><span class="string">        &lt;script type=&quot;module&quot; src=&quot;/client.js&quot;&gt;&lt;/script&gt;</span></span><br><span class="line"><span class="string">      &lt;/head&gt;</span></span><br><span class="line"><span class="string">      &lt;body&gt;</span></span><br><span class="line"><span class="string">        &lt;div id=&quot;app&quot;&gt;<span class="subst">$&#123;html&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">      &lt;/body&gt;</span></span><br><span class="line"><span class="string">    &lt;/html&gt;</span></span><br><span class="line"><span class="string">    `</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">use</span>(express.<span class="title function_">static</span>(<span class="string">&#x27;.&#x27;</span>));</span><br><span class="line"></span><br><span class="line">server.<span class="title function_">listen</span>(<span class="number">3000</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;ready&#x27;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Vite-koa-vue-router实现SSR"><a href="#Vite-koa-vue-router实现SSR" class="headerlink" title="Vite + koa + vue-router实现SSR"></a>Vite + koa + vue-router实现SSR</h3><h4 id="开发环境使用创建ViteServer-middleware服务链接koa-connect"><a href="#开发环境使用创建ViteServer-middleware服务链接koa-connect" class="headerlink" title="开发环境使用创建ViteServer.middleware服务链接koa-connect"></a>开发环境使用创建ViteServer.middleware服务链接koa-connect</h4><h4 id="生产环境"><a href="#生产环境" class="headerlink" title="生产环境"></a>生产环境</h4><ul>
+<li>client.js用于客户端激活路由文件 -&gt;</li>
+<li>service.js文件激活服务端路由监听及第一次服务端渲染字符串 -&gt;</li>
+<li>生产环境客户端客户端文件夹构建 &#x2F;dist&#x2F;client 生成路由映射关系mainfest.json -&gt;</li>
+<li>生产环境服务端文件夹构建 &#x2F;dist&#x2F;server -&gt;</li>
+<li>启动服务端监听 -&gt;</li>
+<li>路由接收第一个页面请求 -&gt;</li>
+<li>koa路由监听到路由进入处理页面 -&gt;</li>
+<li>区分 &#x2F;assets 客户端打包文件夹或者服务端第一次渲染处理 -&gt;</li>
+<li>第一次服务端请求使用Vite renderString函数结合path服务端渲染于HTML的字符串 -&gt;</li>
+<li>HTML字符串返回至客户端页面直接渲染，并启动客户端路由 -&gt;</li>
+<li>已激活的客户端路由请求静态资源文件均为 &#x2F;assets 路径下，后续请求不再进行服务端渲染</li>
+</ul>
+<h3 id="nuxt方案"><a href="#nuxt方案" class="headerlink" title="nuxt方案"></a>nuxt方案</h3><h4 id="nuxt2-x"><a href="#nuxt2-x" class="headerlink" title="nuxt2.x"></a>nuxt2.x</h4><blockquote>
+<p>2.x版本模板较全，可选nodeJS框架及SSR模板等内容</p>
+</blockquote>
+<ul>
+<li>安装<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install create-nuxt-app -g</span><br><span class="line"></span><br><span class="line">npx create-nuxt-app init app-name </span><br></pre></td></tr></table></figure></li>
+<li>选项<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">yd@bogon nuxt-ssr % npx create-nuxt-app nuxt-ssr                           </span><br><span class="line"></span><br><span class="line">create-nuxt-app v4.0.0</span><br><span class="line">✨  Generating Nuxt.js project in nuxt-ssr</span><br><span class="line">? Project name: nuxt-ssr</span><br><span class="line">? Programming language: TypeScript</span><br><span class="line">? Package manager: Npm</span><br><span class="line">? UI framework: (Use arrow keys)</span><br><span class="line">? UI framework: </span><br><span class="line">? UI framework: Ant Design Vue</span><br><span class="line">? Nuxt.js modules: Axios - Promise based HTTP client, Progressive Web App (PWA)</span><br><span class="line">? Linting tools: ESLint, Prettier, Lint staged files, StyleLint, Commitlint</span><br><span class="line">? Testing framework: None</span><br><span class="line">? Rendering mode: Universal (SSR / SSG)</span><br><span class="line">? Deployment target: Server (Node.js hosting)</span><br><span class="line">? Development tools: (Press &lt;space&gt; to select, &lt;a&gt; to toggle all, &lt;i&gt; to invert selection)</span><br><span class="line">? Continuous integration: None</span><br><span class="line">? Version control system: Git</span><br><span class="line">⠋ Installing packages with npm</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="nuxt3-x"><a href="#nuxt3-x" class="headerlink" title="nuxt3.x"></a>nuxt3.x</h4><blockquote>
+<p>基于Vue3.x,安装即支持SSR，增加pages等文件夹及配置即可使用<br>官网(<span class="exturl" data-url="aHR0cHM6Ly92My5udXh0anMub3JnL2dldHRpbmctc3RhcnRlZC9taWdyYXRpb24=">https://v3.nuxtjs.org/getting-started/migration</span>)</p>
+</blockquote>
+<ul>
+<li>安装<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install nuxi -g</span><br><span class="line"></span><br><span class="line">npx nuxi init app-name</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/SSR/" rel="tag"><i class="ic i-tag"></i> SSR</a>
+          <a href="/tags/nuxt/" rel="tag"><i class="ic i-tag"></i> nuxt</a>
+          <a href="/tags/Vue/" rel="tag"><i class="ic i-tag"></i> Vue</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2022-12-28 07:12:11" itemprop="dateModified" datetime="2022-12-28T07:12:11Z">2022-12-28</time>
+  </span>
+  <span id="2022/06/29/Vue/Vue的SSR方案/" class="item leancloud_visitors" data-flag-title="Vue SSR方案" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 加个好友</button>
+  <p>技术讨论~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信">
+        <p>微信</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://www.yangdi.cloud/2022/06/29/Vue/Vue%E7%9A%84SSR%E6%96%B9%E6%A1%88/" title="Vue SSR方案">http://www.yangdi.cloud/2022/06/29/Vue/Vue的SSR方案/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/06/29/JavaScript/%E5%89%8D%E7%AB%AF%E6%B8%B2%E6%9F%93%E6%96%B9%E5%BC%8F/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (2).jpg" title="前端渲染方式">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>前端渲染方式</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/07/04/React/React%E7%9A%84SSR%E6%96%B9%E6%A1%88/" itemprop="url" rel="next" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (23).jpeg" title="React 的SSR方案">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> React</span>
+  <h3>React 的SSR方案</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B9%E6%A1%88"><span class="toc-number">1.</span> <span class="toc-text">方案</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue3%E5%AE%98%E6%96%B9%E6%96%B9%E6%A1%88"><span class="toc-number">1.1.</span> <span class="toc-text">Vue3官方方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vite-koa-vue-router%E5%AE%9E%E7%8E%B0SSR"><span class="toc-number">1.2.</span> <span class="toc-text">Vite + koa + vue-router实现SSR</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%BD%BF%E7%94%A8%E5%88%9B%E5%BB%BAViteServer-middleware%E6%9C%8D%E5%8A%A1%E9%93%BE%E6%8E%A5koa-connect"><span class="toc-number">1.2.1.</span> <span class="toc-text">开发环境使用创建ViteServer.middleware服务链接koa-connect</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.2.</span> <span class="toc-text">生产环境</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nuxt%E6%96%B9%E6%A1%88"><span class="toc-number">1.3.</span> <span class="toc-text">nuxt方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#nuxt2-x"><span class="toc-number">1.3.1.</span> <span class="toc-text">nuxt2.x</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nuxt3-x"><span class="toc-number">1.3.2.</span> <span class="toc-text">nuxt3.x</span></a></li></ol></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2022/06/29/Vue/Vue%E7%9A%84SSR%E6%96%B9%E6%A1%88/" rel="bookmark" title="Vue SSR方案">Vue SSR方案</a></li><li><a href="/2022/07/04/Vue/nuxt/" rel="bookmark" title="Nuxt基本使用">Nuxt基本使用</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">78</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">32</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">85</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/06/29/JavaScript/%E5%89%8D%E7%AB%AF%E6%B8%B2%E6%9F%93%E6%96%B9%E5%BC%8F/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/07/04/React/React%E7%9A%84SSR%E6%96%B9%E6%A1%88/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Linux/" title="分类于 Linux">Linux</a>
+</div>
+
+    <span><a href="/2022/08/02/linux/%E4%B8%8D%E5%90%8C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E6%9F%A5%E7%9C%8B%E5%92%8Ckill%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E7%A8%8B%E5%BA%8F/" title="不同系统下查看和kill端口占用程序">不同系统下查看和kill端口占用程序</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker/docker%20%E6%95%B0%E6%8D%AE%E5%8D%B7/" title="docker 数据卷">docker 数据卷</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JS/" title="分类于 JS">JS</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/JS/%E6%9E%84%E5%BB%BA/" title="分类于 构建">构建</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/JS/%E6%9E%84%E5%BB%BA/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/" title="分类于 开发工具">开发工具</a>
+</div>
+
+    <span><a href="/2022/06/27/rollup/" title="Rollup">Rollup</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BE%AE%E5%89%8D%E7%AB%AF/" title="分类于 微前端">微前端</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E5%BE%AE%E5%89%8D%E7%AB%AF/JS/" title="分类于 JS">JS</a>
+</div>
+
+    <span><a href="/2022/11/16/%E5%BE%AE%E5%89%8D%E7%AB%AF/%E6%B5%81%E8%A1%8C%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E6%AF%94%E8%BE%83/" title="微前端框架比较">微前端框架比较</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2022/10/31/React/%E7%B1%BB%E7%BB%84%E4%BB%B6%E5%92%8C%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BB%84%E4%BB%B6%E6%AF%94%E8%BE%83/" title="React 类组件和函数式组件">React 类组件和函数式组件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2022/11/03/React/%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6%20HOC/" title="高阶组件 HOC">高阶组件 HOC</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Turborepo/" title="分类于 Turborepo">Turborepo</a>
+</div>
+
+    <span><a href="/2024/08/09/%E5%B7%A5%E5%85%B7/Turborepo%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Turborepo的使用">Turborepo的使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E5%85%B7/" title="分类于 工具">工具</a>
+</div>
+
+    <span><a href="/2022/11/11/%E5%BE%AE%E5%89%8D%E7%AB%AF/html%20entry/" title="html entry">html entry</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E5%85%B7/" title="分类于 工具">工具</a>
+</div>
+
+    <span><a href="/2022/08/20/%E5%B7%A5%E5%85%B7/pip%E4%BD%BF%E7%94%A8/" title="pip 安装及使用">pip 安装及使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E5%85%B7/" title="分类于 工具">工具</a>
+</div>
+
+    <span><a href="/2022/11/16/%E5%B7%A5%E5%85%B7/lerna/" title="lerna使用">lerna使用</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/06/29/Vue/Vue的SSR方案/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

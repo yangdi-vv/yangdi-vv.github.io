@@ -1,0 +1,597 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://www.yangdi.cloud/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://www.yangdi.cloud/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://www.yangdi.cloud/feed.json" />
+
+
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="Typescript,Eslint],vite" />
+
+
+<link rel="canonical" href="http://www.yangdi.cloud/2022/07/13/vite/vite%20+%20react%20+%20ts%20+%20Eslint...%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/">
+
+
+
+  <title>
+Vue3 + Vite + TS + Eslint搭建一个项目 - vite |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Vue3 + Vite + TS + Eslint搭建一个项目
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-07-13 08:38:02">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-07-13T08:38:02Z">2022-07-13</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (4).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (3).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (2).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (24).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (26).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (23).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/vite/" itemprop="item" rel="index" title="分类于 vite"><span itemprop="name">vite</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://www.yangdi.cloud/2022/07/13/vite/vite%20+%20react%20+%20ts%20+%20Eslint...%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="安装Vite"><a href="#安装Vite" class="headerlink" title="安装Vite"></a>安装Vite</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install vite</span><br><span class="line">or</span><br><span class="line">yarn add vite</span><br></pre></td></tr></table></figure>
+
+<h2 id="初始化REACT项目"><a href="#初始化REACT项目" class="headerlink" title="初始化REACT项目"></a>初始化REACT项目</h2><blockquote>
+<p>选择REACT -&gt; typescript</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm init vite app-name --template vue</span><br><span class="line">or</span><br><span class="line">yarn create vite app-name --template vue</span><br></pre></td></tr></table></figure>
+
+<h2 id="Eslint配置"><a href="#Eslint配置" class="headerlink" title="Eslint配置"></a>Eslint配置</h2><ul>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install eslint -D</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>eslint初始化命令行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx eslint --init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>eslint初始化选项</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">You can also run this command directly using &#x27;npm init @eslint/config&#x27;.</span><br><span class="line">√ How would you like to use ESLint? · problems</span><br><span class="line">√ What type of modules does your project use? · esm</span><br><span class="line">√ Which framework does your project use? · vue</span><br><span class="line">√ Does your project use TypeScript? · No / Yes</span><br><span class="line">√ Where does your code run? · browser, node</span><br><span class="line">√ What format do you want your config file to be in? · JavaScript</span><br><span class="line">The config that you&#x27;ve selected requires the following dependencies:</span><br><span class="line"></span><br><span class="line">eslint-plugin-vue@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest</span><br><span class="line">√ Would you like to install them now? · No / Yes</span><br><span class="line">√ Which package manager do you want to use? · npm</span><br><span class="line">Installing eslint-plugin-vue@latest, @typescript-eslint/eslint-plugin@latest, @typescript-eslint/parser@latest</span><br><span class="line"></span><br><span class="line">up to date, audited 233 packages in 2s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改eslintrc.js</p>
+</li>
+</ul>
+<blockquote>
+<p>.eslintrc.cjs<br>添加parser: ‘@typescript-eslint&#x2F;parser’,</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">extends: [</span><br><span class="line">    &#x27;eslint:recommended&#x27;,</span><br><span class="line">    &#x27;plugin:react/recommended&#x27;,</span><br><span class="line">    &#x27;standard-with-typescript&#x27;,</span><br><span class="line">    &#x27;plugin:@typescript-eslint/recommended&#x27;,</span><br><span class="line">]</span><br><span class="line">parser: &#x27;@typescript-eslint/parser&#x27;,</span><br><span class="line">parserOptions: &#123;</span><br><span class="line">    ecmaVersion: &#x27;latest&#x27;,</span><br><span class="line">    sourceType: &#x27;module&#x27;,</span><br><span class="line">    ecmaFeatures: &#123;</span><br><span class="line">        modules: true</span><br><span class="line">    &#125;,</span><br><span class="line">    requireConfigFile: false,</span><br><span class="line">    project: &#x27;./tsconfig.json&#x27;</span><br><span class="line">&#125;,</span><br><span class="line">plugins: [</span><br><span class="line">    &#x27;react&#x27;,</span><br><span class="line">    &#x27;@typescript-eslint&#x27;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>修改vite.config.ts</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">export default defineConfig(&#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    react(&#123;</span><br><span class="line">      babel: &#123;</span><br><span class="line">        plugins: [</span><br><span class="line">          [&#x27;@babel/plugin-proposal-decorators&#x27;, &#123; legacy: true &#125;],</span><br><span class="line">          [&#x27;@babel/plugin-proposal-class-properties&#x27;, &#123; loose: true &#125;]</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;),</span><br><span class="line">    eslintPlugin(&#123;</span><br><span class="line">      include: [&#x27;./*.&#123;js,jsx,ts,tsx,cjs&#125;&#x27;, &#x27;src/**/*.&#123;js,jsx,ts,tsx,cjs&#125;&#x27;, &#x27;src/*.&#123;js,jsx,ts,tsx&#125;&#x27;]</span><br><span class="line">    &#125;)]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行<br>package.json运行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;lint&quot;: &quot;npx eslint .&quot;,</span><br><span class="line">&quot;lint:fix&quot;: &quot;npx eslint . --fix&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="安装react-router-dom"><a href="#安装react-router-dom" class="headerlink" title="安装react-router-dom"></a>安装react-router-dom</h2><ul>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -S react-router-dom</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用 </p>
+<blockquote>
+<p>懒加载lazy</p>
+</blockquote>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; <span class="title class_">Suspense</span>, lazy &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BrowserRouter</span>, <span class="title class_">Routes</span>, <span class="title class_">Route</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-router-dom&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Layout</span> <span class="keyword">from</span> <span class="string">&#x27;../views/layout/index&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">PageA</span> <span class="keyword">from</span> <span class="string">&#x27;../views/pageA/index&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">PageB</span> <span class="keyword">from</span> <span class="string">&#x27;../views/pageB/index&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">IRoute</span> &#123;</span><br><span class="line">  name?: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">path</span>: <span class="built_in">string</span></span><br><span class="line">  exact?: <span class="built_in">boolean</span></span><br><span class="line">  children?: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">component</span>: <span class="title class_">React</span>.<span class="property">FC</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">route</span>: <span class="title class_">IRoute</span>[] = [</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;pageA&#x27;</span>,</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;pageA&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title function_">lazy</span>(<span class="keyword">async</span> () =&gt; <span class="keyword">await</span> <span class="title function_">import</span>(<span class="string">&#x27;../views/pageA/index&#x27;</span>))</span><br><span class="line">  &#125;,</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;pageB&#x27;</span>,</span><br><span class="line">    <span class="attr">path</span>: <span class="string">&#x27;pageB&#x27;</span>,</span><br><span class="line">    <span class="attr">component</span>: <span class="title function_">lazy</span>(<span class="keyword">async</span> () =&gt; <span class="keyword">await</span> <span class="title function_">import</span>(<span class="string">&#x27;../views/pageB/index&#x27;</span>))</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">RouteC</span> = (): <span class="variable constant_">JSX</span>.<span class="property">Element</span> =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">      <span class="language-xml"><span class="tag">&lt;<span class="name">BrowserRouter</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;<span class="name">Suspense</span> <span class="attr">fallback</span>=<span class="string">&quot;loading pages&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;<span class="name">Routes</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                  <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;/&quot;</span> <span class="attr">element</span>=<span class="string">&#123;</span>&lt;<span class="attr">Layout</span>/&gt;</span>&#125;&gt;<span class="tag">&lt;/<span class="name">Route</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                  &#123;route.map((item) =&gt; <span class="tag">&lt;<span class="name">Route</span> <span class="attr">key</span>=<span class="string">&#123;item.path&#125;</span> <span class="attr">path</span>=<span class="string">&#123;item.path&#125;</span> <span class="attr">element</span>=<span class="string">&#123;</span>&lt;<span class="attr">item.component</span>/&gt;</span>&#125;/&gt;)&#125;</span></span><br><span class="line"><span class="language-xml">                  <span class="tag">&lt;<span class="name">Route</span> <span class="attr">path</span>=<span class="string">&quot;*&quot;</span> <span class="attr">element</span>=<span class="string">&#123;</span>&#x27;<span class="attr">not</span> <span class="attr">found</span>&#x27;&#125; /&gt;</span></span></span><br><span class="line"><span class="language-xml">              <span class="tag">&lt;/<span class="name">Routes</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">          <span class="tag">&lt;/<span class="name">Suspense</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">BrowserRouter</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">RouteC</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="添加MOBX"><a href="#添加MOBX" class="headerlink" title="添加MOBX"></a>添加MOBX</h2><ul>
+<li><p>安装，使用装饰器写法需安装额外插件及配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -S mobx mobx-react</span><br><span class="line">npm install -D @babel/plugin-proposal-class-properties @babel/plugin-proposal-decorator</span><br></pre></td></tr></table></figure></li>
+<li><p>tsconfig.json</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;compilerOptions&quot;: &#123;</span><br><span class="line">    &quot;experimentalDecorators&quot;: true</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>vite.config.ts</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [</span><br><span class="line">    <span class="title function_">react</span>(&#123;</span><br><span class="line">      <span class="attr">babel</span>: &#123;</span><br><span class="line">        <span class="attr">plugins</span>: [</span><br><span class="line">          [<span class="string">&#x27;@babel/plugin-proposal-decorators&#x27;</span>, &#123; <span class="attr">legacy</span>: <span class="literal">true</span> &#125;],</span><br><span class="line">          [<span class="string">&#x27;@babel/plugin-proposal-class-properties&#x27;</span>, &#123; <span class="attr">loose</span>: <span class="literal">true</span> &#125;]</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用</p>
+<figure class="highlight tsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; observable, makeObservable, action, computed &#125; <span class="keyword">from</span> <span class="string">&#x27;mobx&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">IPageA</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span></span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PageAStore</span> <span class="keyword">implements</span> <span class="title class_">IPageA</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span> () &#123;</span><br><span class="line">    <span class="title function_">makeObservable</span>(<span class="variable language_">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@observable</span> name = <span class="string">&#x27;jack&#x27;</span></span><br><span class="line">  <span class="meta">@observable</span> age = <span class="number">18</span></span><br><span class="line"></span><br><span class="line">  <span class="meta">@action</span> changeName (<span class="attr">name</span>: <span class="built_in">string</span>): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@action</span> changeAge (<span class="attr">age</span>: <span class="built_in">string</span> | <span class="built_in">number</span>): <span class="built_in">void</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = <span class="title class_">Number</span>(age)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@computed</span> get info (): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="variable language_">this</span>.name&#125;</span> <span class="subst">$&#123;<span class="variable language_">this</span>.age&#125;</span>`</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">PageAStore</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="stylelint配置"><a href="#stylelint配置" class="headerlink" title="stylelint配置"></a>stylelint配置</h2><blockquote>
+<p>例如使用scss</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -D stylelint stylelint-config-standard stylelint-config-standard-scss</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>.stylelintrc.json</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;extends&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;stylelint-config-standard&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="string">&quot;stylelint-config-standard-scss&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="husky、lint-staged、commitizen配置"><a href="#husky、lint-staged、commitizen配置" class="headerlink" title="husky、lint-staged、commitizen配置"></a>husky、lint-staged、commitizen配置</h2><ul>
+<li>安装<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -D husky commitizen lint-staged cz-conventional-changelo</span><br></pre></td></tr></table></figure></li>
+<li>package.json<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;husky&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;hooks&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;pre-commit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;lint-staged&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;lint-staged&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;src/**/*.&#123;ts,tsx&#125;&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="string">&quot;npx eslint&quot;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;config&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;commitizen&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">      <span class="attr">&quot;path&quot;</span><span class="punctuation">:</span> <span class="string">&quot;./node_modules/cz-conventional-changelog&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/Typescript/" rel="tag"><i class="ic i-tag"></i> Typescript</a>
+          <a href="/tags/Eslint/" rel="tag"><i class="ic i-tag"></i> Eslint]</a>
+          <a href="/tags/vite/" rel="tag"><i class="ic i-tag"></i> vite</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-04-28 03:07:30" itemprop="dateModified" datetime="2024-04-28T03:07:30Z">2024-04-28</time>
+  </span>
+  <span id="2022/07/13/vite/vite + react + ts + Eslint...搭建一个项目/" class="item leancloud_visitors" data-flag-title="Vue3 + Vite + TS + Eslint搭建一个项目" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 加个好友</button>
+  <p>技术讨论~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信">
+        <p>微信</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://www.yangdi.cloud/2022/07/13/vite/vite%20+%20react%20+%20ts%20+%20Eslint...%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/" title="Vue3 + Vite + TS + Eslint搭建一个项目">http://www.yangdi.cloud/2022/07/13/vite/vite + react + ts + Eslint...搭建一个项目/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/07/13/docker/docker%20%E6%95%B0%E6%8D%AE%E5%8D%B7/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (32).jpeg" title="docker 数据卷">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> docker</span>
+  <h3>docker 数据卷</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/07/15/docker/%E5%88%B6%E4%BD%9C%E8%BD%BB%E9%87%8Fjava%E9%95%9C%E5%83%8F/" itemprop="url" rel="next" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (32).jpeg" title="制作轻量JAVA镜像">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> docker</span>
+  <h3>制作轻量JAVA镜像</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Vite"><span class="toc-number">1.</span> <span class="toc-text">安装Vite</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96REACT%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.</span> <span class="toc-text">初始化REACT项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Eslint%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">Eslint配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85react-router-dom"><span class="toc-number">4.</span> <span class="toc-text">安装react-router-dom</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0MOBX"><span class="toc-number">5.</span> <span class="toc-text">添加MOBX</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#stylelint%E9%85%8D%E7%BD%AE"><span class="toc-number">6.</span> <span class="toc-text">stylelint配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#husky%E3%80%81lint-staged%E3%80%81commitizen%E9%85%8D%E7%BD%AE"><span class="toc-number">7.</span> <span class="toc-text">husky、lint-staged、commitizen配置</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2022/06/27/vite/Vite/" rel="bookmark" title="Vite">Vite</a></li><li><a href="/2022/06/27/vite/vite%20+%20vue3%20+%20ts%20+%20eslint...%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/" rel="bookmark" title="Vue3 + Vite + TS + Eslint搭建一个项目">Vue3 + Vite + TS + Eslint搭建一个项目</a></li><li class="active"><a href="/2022/07/13/vite/vite%20+%20react%20+%20ts%20+%20Eslint...%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/" rel="bookmark" title="Vue3 + Vite + TS + Eslint搭建一个项目">Vue3 + Vite + TS + Eslint搭建一个项目</a></li><li><a href="/2023/05/17/vite/pina/" rel="bookmark" title="pinia 使用">pinia 使用</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">78</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">32</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">85</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/07/13/docker/docker%20%E6%95%B0%E6%8D%AE%E5%8D%B7/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/07/15/docker/%E5%88%B6%E4%BD%9C%E8%BD%BB%E9%87%8Fjava%E9%95%9C%E5%83%8F/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/nodeJS/" title="分类于 nodeJS">nodeJS</a>
+</div>
+
+    <span><a href="/2022/07/29/nodeJS/Koa2%E5%92%8CExpress%E6%AF%94%E8%BE%83/" title="Koa2和Express比较">Koa2和Express比较</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/CSS/" title="分类于 CSS">CSS</a>
+</div>
+
+    <span><a href="/2024/11/11/CSS/filter/" title="CSS filter">CSS filter</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E9%83%A8%E7%BD%B2/" title="分类于 部署">部署</a>
+</div>
+
+    <span><a href="/2022/06/27/%E9%83%A8%E7%BD%B2/jenkins/" title="docker + jenkins + github 代码提交自动部署">docker + jenkins + github 代码提交自动部署</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/28/docker/CMD%E5%92%8CENTRYPOINT%E7%9A%84%E5%8C%BA%E5%88%AB/" title="Dockerfile CMD和ENTRYPOINT的区别">Dockerfile CMD和ENTRYPOINT的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2024/04/07/React/zustand%E4%BD%BF%E7%94%A8/" title="zustand的使用">zustand的使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2022/11/03/React/%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6%20HOC/" title="高阶组件 HOC">高阶组件 HOC</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Linux/" title="分类于 Linux">Linux</a>
+</div>
+
+    <span><a href="/2022/08/02/linux/%E4%B8%8D%E5%90%8C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E6%9F%A5%E7%9C%8B%E5%92%8Ckill%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E7%A8%8B%E5%BA%8F/" title="不同系统下查看和kill端口占用程序">不同系统下查看和kill端口占用程序</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/nodeJS/" title="分类于 nodeJS">nodeJS</a>
+</div>
+
+    <span><a href="/2022/07/29/nodeJS/nodejs%E5%AF%BC%E5%87%BAexcel/" title="nodeJS 导出excel">nodeJS 导出excel</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JavaScript/" title="分类于 JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/2023/05/05/JavaScript/JS%E8%AF%BB%E5%8F%96JSON%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6/" title="JS 读取JSON文件">JS 读取JSON文件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/git/" title="分类于 git">git</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/git/object-Object/" title="分类于 [object Object]">[object Object]</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/git/object-Object/git/" title="分类于 git">git</a>
+</div>
+
+    <span><a href="/2023/02/13/git/git%20pull%E6%9C%AC%E9%83%BD%E4%BF%9D%E5%AD%98%E5%AF%86%E7%A0%81/" title="git pull 保存密码无需再次输入">git pull 保存密码无需再次输入</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/07/13/vite/vite + react + ts + Eslint...搭建一个项目/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

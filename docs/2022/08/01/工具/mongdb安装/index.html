@@ -1,0 +1,565 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://www.yangdi.cloud/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://www.yangdi.cloud/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://www.yangdi.cloud/feed.json" />
+
+
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="mongodb" />
+
+
+<link rel="canonical" href="http://www.yangdi.cloud/2022/08/01/%E5%B7%A5%E5%85%B7/mongdb%E5%AE%89%E8%A3%85/">
+
+
+
+  <title>
+mongoDB 安装及常用指令 - mongodb |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">mongoDB 安装及常用指令
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-08-01 02:08:25">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-08-01T02:08:25Z">2022-08-01</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (15).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (17).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (10).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (11).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (28).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (24).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/mongodb/" itemprop="item" rel="index" title="分类于 mongodb"><span itemprop="name">mongodb</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://www.yangdi.cloud/2022/08/01/%E5%B7%A5%E5%85%B7/mongdb%E5%AE%89%E8%A3%85/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><h4 id="一：安装包方式（linux）"><a href="#一：安装包方式（linux）" class="headerlink" title="一：安装包方式（linux）"></a>一：安装包方式（linux）</h4><ul>
+<li><p>下载安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v8.12.0/node-v8.12.0.tar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解压源码</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf node-v8.12.0.tar.gz</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改环境变量</p>
+<blockquote>
+<p>查看解压路径</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo pwd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/.bash_profile</span><br><span class="line"></span><br><span class="line">export MONGO_HOME=$&#123;解压路径&#125;/mongodb-linux-x86_64-4.0.3/bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改配置文件、缓存路径</p>
+<blockquote>
+<p>查询mongod.conf 位置</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps -ax | grep mongod</span><br><span class="line"></span><br><span class="line">vi $&#123;mongod.conf 位置文件夹&#125;/mongod.conf</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动</p>
+<blockquote>
+<p>mongo指令进入操作，默认存储路径，可创建 &#x2F;data&#x2F;db 文件夹并配置缓存地址</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br><span class="line"></span><br><span class="line">或</span><br><span class="line"></span><br><span class="line">mongod --depath=$&#123;缓存路径&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二、常用操作指令"><a href="#二、常用操作指令" class="headerlink" title="二、常用操作指令"></a>二、常用操作指令</h3></li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; 数据库指令查看</span><br><span class="line">db.help()</span><br><span class="line">&gt; 切换数据库</span><br><span class="line">use $&#123;数据库名称&#125;</span><br><span class="line">&gt; 删除当前数据库</span><br><span class="line">db.dropDatabase()</span><br><span class="line">&gt; 从某个数据库下载数据</span><br><span class="line">db.cloneDatabase(&#x27;$&#123;dbname&#125;&#x27;)</span><br><span class="line">&gt;当前数据库详情</span><br><span class="line">db.stats()</span><br><span class="line">&gt;数据库版本</span><br><span class="line">db.version()</span><br><span class="line">&gt;获取DB连接服务器地址和端口</span><br><span class="line">db.getMongo()</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、Collection-聚集集合指令"><a href="#三、Collection-聚集集合指令" class="headerlink" title="三、Collection 聚集集合指令"></a>三、Collection 聚集集合指令</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 创建集合</span></span><br><span class="line">db.createCollection(&#x27;test<span class="emphasis">_db&#x27;, &#123;name:&#x27;test_</span>db&#x27;&#125;)</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 得到指定名称的聚集集合（table）</span></span><br><span class="line">db.getCollection(“account”);</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 得到当前db的所有聚集集合</span></span><br><span class="line">db.getCollectionNames();</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 显示当前db所有聚集索引的状态</span></span><br><span class="line">db.printCollectionStats();</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 查询当前集合的数据条数</span></span><br><span class="line">db.yourColl.count();</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 查看当前集合数据空间大小</span></span><br><span class="line">db.yourColl.dataSize();</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 得到当前聚集集合所在的db</span></span><br><span class="line">db.yourColl.getDB();</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 得到当前聚集的状态</span></span><br><span class="line">db.coll.stats();</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 得到聚集集合总大小</span></span><br><span class="line">db.coll.totalSize();</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 聚集集合储存空间大小</span></span><br><span class="line">db.coll.storageSize();</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 聚集集合重命名</span></span><br><span class="line">db.coll.renameCollection(“ray”); 将coll重命名为ray</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 删除当前聚集集合</span></span><br><span class="line">db.coll.drop();</span><br></pre></td></tr></table></figure>
+
+<h3 id="四、MongoDB聚集集合查询"><a href="#四、MongoDB聚集集合查询" class="headerlink" title="四、MongoDB聚集集合查询"></a>四、MongoDB聚集集合查询</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 查询所有记录</span></span><br><span class="line">db.userInfo.find();</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 相当于：select<span class="emphasis">* from userInfo;</span></span></span><br><span class="line"><span class="emphasis"><span class="quote">默认每页显示20条记录，当显示不下的情况下，可以用it迭代命令查询下一页数据。注意：键入it命令不能带“;”</span></span></span><br><span class="line"><span class="emphasis"><span class="quote">但是你可以设置每页显示数据的大小，用DBQuery.shellBatchSize= 50;这样每页就显示50条记录了。</span></span></span><br><span class="line"><span class="emphasis"><span class="quote"></span></span></span><br><span class="line"><span class="emphasis"><span class="quote">&gt; 查询去掉后的当前聚集集合中的某列的重复数据</span></span></span><br><span class="line"><span class="emphasis"><span class="quote">db.userInfo.distinct(“name”);</span></span></span><br><span class="line"><span class="emphasis"><span class="quote">会过滤掉name中的相同数据</span></span></span><br><span class="line"><span class="emphasis"><span class="quote">相当于：select distict name from userInfo;</span></span></span><br><span class="line"><span class="emphasis"><span class="quote"></span></span></span><br><span class="line"><span class="emphasis"><span class="quote">&gt; 查询age = 22的记录</span></span></span><br><span class="line"><span class="emphasis"><span class="quote">db.userInfo.find(&#123;“age”: 22&#125;);</span></span></span><br><span class="line"><span class="emphasis"><span class="quote">相当于： select *</span> from userInfo where age = 22;</span></span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 条件查询的记录 </span></span><br><span class="line">MongoDB中条件操作符有：</span><br><span class="line">(&gt;) 大于 – $gt</span><br><span class="line">(&lt;) 小于 – $lt</span><br><span class="line">(&gt;=) 大于等于 – $gte</span><br><span class="line">(&lt;= ) 小于等于 – $lte</span><br><span class="line">db.userInfo.find(&#123;age: &#123;$gt: 22&#125;&#125;); 相当于：select <span class="emphasis">* from userInfo where age&gt;22;</span></span><br><span class="line"><span class="emphasis">db.userInfo.find(&#123;age: &#123;$lt: 22&#125;&#125;);</span></span><br><span class="line"><span class="emphasis">相当于：select *</span> from userInfo where age&lt;22; db.userInfo.find(&#123;age: &#123;$gte: 25&#125;&#125;); 相当于：select <span class="emphasis">* from userInfo where age &gt;= 25;</span></span><br><span class="line"><span class="emphasis">db.userInfo.find(&#123;age: &#123;$lte: 25&#125;&#125;);</span></span><br><span class="line"><span class="emphasis">相当于：select *</span> from userInfo where age &lt;= 25; 5、and查询 db.userInfo.find(&#123;age: &#123;$gte: 23, $lte: 26&#125;&#125;); 相当于：select <span class="emphasis">* from userInfo wher age &gt;=23 and age &lt;=26</span></span><br><span class="line"><span class="emphasis">db.userInfo.find(&#123;name: ‘raykaeso’, age: 22&#125;);</span></span><br><span class="line"><span class="emphasis">相当于：select *</span> from userInfo where name = ‘raykaeso’ and age = ‘22′;</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 字符模糊查询</span></span><br><span class="line">db.userInfo.find(&#123;name: /mongo/&#125;);</span><br><span class="line">//相当于%%</span><br><span class="line">[code]select <span class="emphasis">* from userInfo where name like ‘%mongo%&#x27;;</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">&gt; 查询指定列数据</span></span><br><span class="line"><span class="emphasis">db.userInfo.find(&#123;&#125;, &#123;name: 1, age: 1&#125;);</span></span><br><span class="line"><span class="emphasis">相当于：select name, age from userInfo;</span></span><br><span class="line"><span class="emphasis">当然name也可以用true或false</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">&gt; 按条件查询指定列数据</span></span><br><span class="line"><span class="emphasis">db.userInfo.find(&#123;age: &#123;$gt: 25&#125;&#125;, &#123;name: 1, age: 1&#125;);</span></span><br><span class="line"><span class="emphasis">相当于：select name, age from userInfo where age &lt;25;</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">&gt; 排序</span></span><br><span class="line"><span class="emphasis">升序：db.userInfo.find().sort(&#123;age: 1&#125;);</span></span><br><span class="line"><span class="emphasis">降序：db.userInfo.find().sort(&#123;age: -1&#125;);</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">&gt; 查询前5条数据</span></span><br><span class="line"><span class="emphasis">db.userInfo.find().limit(5);</span></span><br><span class="line"><span class="emphasis">相当于：select *</span> from userInfo limit 5;</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 查询10条以后的数据</span></span><br><span class="line">db.userInfo.find().skip(10);</span><br><span class="line">相当于：select count() from userInfo as total;</span><br><span class="line">select from userInfo limit 10,total;</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 查询在5-10之间的数据</span></span><br><span class="line">db.userInfo.find().limit(10).skip(5);</span><br><span class="line">可用于分页，limit是pageSize，skip是第几页pageSize</span><br><span class="line">相当于：select from userInfo limit 5,10;</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; or与 查询</span></span><br><span class="line">db.userInfo.find(&#123;$or: [&#123;age: 22&#125;, &#123;age: 25&#125;]&#125;);</span><br><span class="line">相当于：select <span class="emphasis">* from userInfo where age = 22 or age = 25;</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">&gt; 查询第一条数据</span></span><br><span class="line"><span class="emphasis">db.userInfo.findOne();</span></span><br><span class="line"><span class="emphasis">db.userInfo.find().limit(1);</span></span><br><span class="line"><span class="emphasis">相当于：select *</span> from userInfo limit 1;</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 查询某个结果集的记录条数</span></span><br><span class="line">db.userInfo.find(&#123;age: &#123;$gte: 25&#125;&#125;).count();</span><br><span class="line">相当于：select count(<span class="emphasis">*) from userInfo where age &gt;= 20;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="五、MongoDB索引"><a href="#五、MongoDB索引" class="headerlink" title="五、MongoDB索引"></a>五、MongoDB索引</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 创建索引</span></span><br><span class="line">db.userInfo.ensureIndex(&#123;name: 1&#125;);</span><br><span class="line">db.userInfo.ensureIndex(&#123;name: 1, ts: -1&#125;);</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 查询当前聚集集合所有索引</span></span><br><span class="line">db.userInfo.getIndexes();</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 查看总索引记录大小</span></span><br><span class="line">db.userInfo.totalIndexSize();</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 读取当前集合的所有index信息</span></span><br><span class="line">db.users.reIndex();</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 删除指定索引</span></span><br><span class="line">db.users.dropIndex(“name<span class="emphasis">_1″);</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">&gt; 删除所有索引索引</span></span><br><span class="line"><span class="emphasis">db.users.dropIndexes();</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="六、MongoDB修改、添加、删除集合数据"><a href="#六、MongoDB修改、添加、删除集合数据" class="headerlink" title="六、MongoDB修改、添加、删除集合数据"></a>六、MongoDB修改、添加、删除集合数据</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 添加</span></span><br><span class="line">db.users.save(&#123;name: ‘zhangsan’, age: 25, sex: true&#125;);</span><br><span class="line">添加的数据的数据列，没有固定，根据添加的数据为准</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 修改</span></span><br><span class="line">db.users.update(&#123;age: 25&#125;, &#123;$set: &#123;name: ‘changeName’&#125;&#125;, false, true);</span><br><span class="line">相当于：update users set name = ‘changeName’ where age = 25;</span><br><span class="line">db.users.update(&#123;name: ‘Lisi’&#125;, &#123;$inc: &#123;age: 50&#125;&#125;, false, true);</span><br><span class="line">相当于：update users set age = age + 50 where name = ‘Lisi&#x27;;</span><br><span class="line">db.users.update(&#123;name: ‘Lisi’&#125;, &#123;$inc: &#123;age: 50&#125;, $set: &#123;name: ‘hoho’&#125;&#125;, false, true);</span><br><span class="line">相当于：update users set age = age + 50, name = ‘hoho’ where name = ‘Lisi&#x27;;</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 删除</span></span><br><span class="line">db.users.remove(&#123;age: 132&#125;);</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; 查询修改删除</span></span><br><span class="line">db.users.findAndModify(&#123;</span><br><span class="line"><span class="code">    query: &#123;age: &#123;$gte: 25&#125;&#125;,</span></span><br><span class="line"><span class="code">    sort: &#123;age: -1&#125;,</span></span><br><span class="line"><span class="code">    update: &#123;$set: &#123;name: ‘a2′&#125;, $inc: &#123;age: 2&#125;&#125;,</span></span><br><span class="line"><span class="code">    remove: true</span></span><br><span class="line"><span class="code">&#125;);</span></span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/mongodb/" rel="tag"><i class="ic i-tag"></i> mongodb</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2022-08-02 03:49:33" itemprop="dateModified" datetime="2022-08-02T03:49:33Z">2022-08-02</time>
+  </span>
+  <span id="2022/08/01/工具/mongdb安装/" class="item leancloud_visitors" data-flag-title="mongoDB 安装及常用指令" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 加个好友</button>
+  <p>技术讨论~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信">
+        <p>微信</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://www.yangdi.cloud/2022/08/01/%E5%B7%A5%E5%85%B7/mongdb%E5%AE%89%E8%A3%85/" title="mongoDB 安装及常用指令">http://www.yangdi.cloud/2022/08/01/工具/mongdb安装/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/07/29/nodeJS/Koa2%E5%92%8CExpress%E6%AF%94%E8%BE%83/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (1).jpg" title="Koa2和Express比较">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> nodeJS</span>
+  <h3>Koa2和Express比较</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2022/08/01/%E5%B7%A5%E5%85%B7/YAPI%20%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" itemprop="url" rel="next" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (5).jpeg" title="YAPI 安装使用">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 工具</span>
+  <h3>YAPI 安装使用</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%EF%BC%9A%E5%AE%89%E8%A3%85%E5%8C%85%E6%96%B9%E5%BC%8F%EF%BC%88linux%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">一：安装包方式（linux）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-number">2.</span> <span class="toc-text">二、常用操作指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81Collection-%E8%81%9A%E9%9B%86%E9%9B%86%E5%90%88%E6%8C%87%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">三、Collection 聚集集合指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81MongoDB%E8%81%9A%E9%9B%86%E9%9B%86%E5%90%88%E6%9F%A5%E8%AF%A2"><span class="toc-number">4.</span> <span class="toc-text">四、MongoDB聚集集合查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81MongoDB%E7%B4%A2%E5%BC%95"><span class="toc-number">5.</span> <span class="toc-text">五、MongoDB索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81MongoDB%E4%BF%AE%E6%94%B9%E3%80%81%E6%B7%BB%E5%8A%A0%E3%80%81%E5%88%A0%E9%99%A4%E9%9B%86%E5%90%88%E6%95%B0%E6%8D%AE"><span class="toc-number">6.</span> <span class="toc-text">六、MongoDB修改、添加、删除集合数据</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2022/08/01/%E5%B7%A5%E5%85%B7/mongdb%E5%AE%89%E8%A3%85/" rel="bookmark" title="mongoDB 安装及常用指令">mongoDB 安装及常用指令</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">78</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">32</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">85</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/07/29/nodeJS/Koa2%E5%92%8CExpress%E6%AF%94%E8%BE%83/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2022/08/01/%E5%B7%A5%E5%85%B7/YAPI%20%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/sshpass/" title="分类于 sshpass">sshpass</a>
+</div>
+
+    <span><a href="/2023/02/13/%E5%B7%A5%E5%85%B7/sshpass%E4%BD%BF%E7%94%A8/" title="sshpass 使用">sshpass 使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JS/" title="分类于 JS">JS</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/JS/JavaScript/" title="分类于 JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/2023/01/29/JavaScript/requestIdleCallback%E5%92%8CrequestAnimationFrame/" title="requestIdleCallback和requestAnimationFrame详解">requestIdleCallback和requestAnimationFrame详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/nodeJS/" title="分类于 nodeJS">nodeJS</a>
+</div>
+
+    <span><a href="/2022/07/29/nodeJS/Koa2%E5%92%8CExpress%E6%AF%94%E8%BE%83/" title="Koa2和Express比较">Koa2和Express比较</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2022/06/27/React/mobx/" title="Mobx 基本使用">Mobx 基本使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/python/" title="分类于 python">python</a>
+</div>
+
+    <span><a href="/2022/08/20/python/python%E4%BD%BF%E7%94%A8/" title="python 安装及使用">python 安装及使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/CSS/" title="分类于 CSS">CSS</a>
+</div>
+
+    <span><a href="/2024/11/11/CSS/filter/" title="CSS filter">CSS filter</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JavaScript/" title="分类于 JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/2023/05/15/JavaScript/HTML%E8%AE%BE%E7%BD%AE%E9%94%9A%E7%82%B9/" title="HTML设置锚点">HTML设置锚点</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Turborepo/" title="分类于 Turborepo">Turborepo</a>
+</div>
+
+    <span><a href="/2024/08/09/%E5%B7%A5%E5%85%B7/Turborepo%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Turborepo的使用">Turborepo的使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker/docker%20%E6%95%B0%E6%8D%AE%E5%8D%B7/" title="docker 数据卷">docker 数据卷</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/TypeScript/" title="分类于 TypeScript">TypeScript</a>
+</div>
+
+    <span><a href="/2022/06/27/TypeScript/tsconfig/" title="tsconfig.json 参数详解">tsconfig.json 参数详解</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/08/01/工具/mongdb安装/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

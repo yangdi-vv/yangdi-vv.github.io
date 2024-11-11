@@ -1,0 +1,599 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://www.yangdi.cloud/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://www.yangdi.cloud/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://www.yangdi.cloud/feed.json" />
+
+
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="JS,Turborepo" />
+
+
+<link rel="canonical" href="http://www.yangdi.cloud/2024/08/09/%E5%B7%A5%E5%85%B7/Turborepo%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+
+
+  <title>
+Turborepo的使用 - Turborepo |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">Turborepo的使用
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2024-08-09 06:34:37">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-08-09T06:34:37Z">2024-08-09</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (25).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (14).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (21).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (3).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (15).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (23).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/Turborepo/" itemprop="item" rel="index" title="分类于 Turborepo"><span itemprop="name">Turborepo</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://www.yangdi.cloud/2024/08/09/%E5%B7%A5%E5%85%B7/Turborepo%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="一、Monorepo介绍"><a href="#一、Monorepo介绍" class="headerlink" title="一、Monorepo介绍"></a>一、Monorepo介绍</h2><blockquote>
+<p>Monorepo是一种项目管理方式，通常是将多个项目的代码放在一个仓库中，这就导致重复的代码及工具会有很多，当前便有一些Monorepo的工具可使用，一定程度解决这些问题。</p>
+</blockquote>
+<ul>
+<li>比如以下几种工具</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bit</td>
+<td>用于驱动开发的工具链</td>
+</tr>
+<tr>
+<td>Turborepo</td>
+<td>用于JS和TS的高性能构建系统</td>
+</tr>
+<tr>
+<td>Rush</td>
+<td>一个可扩展的web单仓库处理器</td>
+</tr>
+<tr>
+<td>Nx</td>
+<td>具有一流的 monorepo 支持和强大集成的下一代构建系统</td>
+</tr>
+<tr>
+<td>Lerna</td>
+<td>用来管理多个软件包项目</td>
+</tr>
+</tbody></table>
+<h2 id="二、TurboRepo介绍"><a href="#二、TurboRepo介绍" class="headerlink" title="二、TurboRepo介绍"></a>二、TurboRepo介绍</h2><blockquote>
+<p>是一个构建JS、TS的Monorepo高性能构建系统，抽象出复杂的配置、脚本、工具，减少了项目的复杂性，使得专注于业务代码的开发。<br>TurboRepo支持npm&#x2F;pnpm&#x2F;yarn，建议使用pnpm。</p>
+</blockquote>
+<h2 id="三、TurboRepo优点"><a href="#三、TurboRepo优点" class="headerlink" title="三、TurboRepo优点"></a>三、TurboRepo优点</h2><ul>
+<li><p>支持多任务运行</p>
+<blockquote>
+<p>TurboRepo支持多任务运行，可同事进行多项目的运行和编译，下图可见其运行优势<br><img data-src="http://123.56.167.35/img_blog/repo1.jpg" alt="img.png"></p>
+</blockquote>
+</li>
+<li><p>增量构建</p>
+<blockquote>
+<p>如果我们的项目过大，构建多个子包会造成时间和性能的浪费，turborepo中的缓存机制 可以帮助我们记住构建内容 并且跳过已经计算过的内容，优化打包效率。</p>
+</blockquote>
+</li>
+<li><p>简单配置</p>
+<blockquote>
+<p>通过约定的配置方式，简单的配置降低复杂性，只需几行JSON 即可配置整个项目依赖，执行脚本的顺序结构。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="四、TurboRepo核心概念"><a href="#四、TurboRepo核心概念" class="headerlink" title="四、TurboRepo核心概念"></a>四、TurboRepo核心概念</h2><ul>
+<li>管道<blockquote>
+<p>TurboRepo为开发人员提供了一种以常规方式显式指定任务关系的方法，turbo在定义monorepo的任务依赖关系图，我们需要在根目录定义turbo.json 执行各种调度，输出，缓存依赖， 打包等功能。</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>turbo.json位于TurboRepo项目根目录, 如下图所示在pipeline中的每一个key都指向我们在package.json中定义的script脚本执行命令,并且在pipeline中的每一个key<br>都是可以被turbo run所执行 执行pipeline的脚本的名称。您可以使用其下方的键以及与缓存相关的一些其他选项来指定其依赖项，</p>
+</blockquote>
+<blockquote>
+<p>在我们执行turbo run ***命令的时候 turbo 会根据我们定义的 Pipelines 里对命令的各种配置去对我们的每个package中的package.json 中 对应的script执行脚本进行有序的执行和缓存输出的文件。</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">// turbo.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;$schema&quot;: &quot;https://turborepo.org/schema.json&quot;,</span><br><span class="line">  &quot;pipeline&quot;: &#123;</span><br><span class="line">    &quot;build&quot;: &#123;</span><br><span class="line">      // A package&#x27;s `build` script depends on that package&#x27;s</span><br><span class="line">      // dependencies&#x27; and devDependencies&#x27;</span><br><span class="line">      // `build` tasks  being completed first</span><br><span class="line">      // (the `^` symbol signifies `upstream`).</span><br><span class="line">      &quot;dependsOn&quot;: [&quot;^build&quot;],</span><br><span class="line">      // note: output globs are relative to each package&#x27;s `package.json`</span><br><span class="line">      // (and not the monorepo root)</span><br><span class="line">      &quot;outputs&quot;: [&quot;.next/**&quot;]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;test&quot;: &#123;</span><br><span class="line">      // A package&#x27;s `test` script depends on that package&#x27;s</span><br><span class="line">      // own `build` script being completed first.</span><br><span class="line">      &quot;dependsOn&quot;: [&quot;build&quot;],</span><br><span class="line">      &quot;outputs&quot;: [],</span><br><span class="line">      // A package&#x27;s `test` script should only be rerun when</span><br><span class="line">      // either a `.tsx` or `.ts` file has changed in `src` or `test` folders.</span><br><span class="line">      &quot;inputs&quot;: [&quot;src/**/*.tsx&quot;, &quot;src/**/*.ts&quot;, &quot;test/**/*.ts&quot;, &quot;test/**/*.tsx&quot;]</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;lint&quot;: &#123;</span><br><span class="line">      // A package&#x27;s `lint` script has no dependencies and</span><br><span class="line">      // can be run whenever. It also has no filesystem outputs.</span><br><span class="line">      &quot;outputs&quot;: []</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;deploy&quot;: &#123;</span><br><span class="line">      // A package&#x27;s `deploy` script depends on the `build`,</span><br><span class="line">      // `test`, and `lint` scripts of the same package</span><br><span class="line">      // being completed. It also has no filesystem outputs.</span><br><span class="line">      &quot;dependsOn&quot;: [&quot;build&quot;, &quot;test&quot;, &quot;lint&quot;],</span><br><span class="line">      &quot;outputs&quot;: []</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>DependsOn（依赖）<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&quot;pipeline&quot;: &#123;</span><br><span class="line">  &quot;build&quot;: &#123;</span><br><span class="line">    &quot;dependsOn&quot;: [&quot;build&quot;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&quot;pipeline&quot;: &#123;</span><br><span class="line">  &quot;build&quot;: &#123;</span><br><span class="line">    &quot;dependsOn&quot;: [&quot;^build&quot;]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      <div class="tags">
+          <a href="/tags/JS/" rel="tag"><i class="ic i-tag"></i> JS</a>
+          <a href="/tags/Turborepo/" rel="tag"><i class="ic i-tag"></i> Turborepo</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-08-16 10:21:22" itemprop="dateModified" datetime="2024-08-16T10:21:22Z">2024-08-16</time>
+  </span>
+  <span id="2024/08/09/工具/Turborepo的使用/" class="item leancloud_visitors" data-flag-title="Turborepo的使用" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 加个好友</button>
+  <p>技术讨论~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信">
+        <p>微信</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://www.yangdi.cloud/2024/08/09/%E5%B7%A5%E5%85%B7/Turborepo%E7%9A%84%E4%BD%BF%E7%94%A8/" title="Turborepo的使用">http://www.yangdi.cloud/2024/08/09/工具/Turborepo的使用/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/08/06/%E5%B7%A5%E5%85%B7/nexus%E6%90%AD%E5%BB%BAnpm%E7%A7%81%E6%9C%8D/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (11).jpeg" title="nexus3搭建npm私服仓库">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> npm</span>
+  <h3>nexus3搭建npm私服仓库</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2024/09/24/K8S/K8S%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/" itemprop="url" rel="next" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (13).jpeg" title="K8S基础功能介绍">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> K8S</span>
+  <h3>K8S基础功能介绍</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81Monorepo%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">一、Monorepo介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81TurboRepo%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">二、TurboRepo介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81TurboRepo%E4%BC%98%E7%82%B9"><span class="toc-number">3.</span> <span class="toc-text">三、TurboRepo优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81TurboRepo%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-number">4.</span> <span class="toc-text">四、TurboRepo核心概念</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li class="active"><a href="/2024/08/09/%E5%B7%A5%E5%85%B7/Turborepo%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="bookmark" title="Turborepo的使用">Turborepo的使用</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">78</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">32</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">85</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2024/08/06/%E5%B7%A5%E5%85%B7/nexus%E6%90%AD%E5%BB%BAnpm%E7%A7%81%E6%9C%8D/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2024/09/24/K8S/K8S%E5%9F%BA%E7%A1%80%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JS/" title="分类于 JS">JS</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/JS/JavaScript/" title="分类于 JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/2023/01/29/JavaScript/requestIdleCallback%E5%92%8CrequestAnimationFrame/" title="requestIdleCallback和requestAnimationFrame详解">requestIdleCallback和requestAnimationFrame详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2022/06/27/React/mobx/" title="Mobx 基本使用">Mobx 基本使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/mongodb/" title="分类于 mongodb">mongodb</a>
+</div>
+
+    <span><a href="/2022/08/01/%E5%B7%A5%E5%85%B7/mongdb%E5%AE%89%E8%A3%85/" title="mongoDB 安装及常用指令">mongoDB 安装及常用指令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/TypeScript/" title="分类于 TypeScript">TypeScript</a>
+</div>
+
+    <span><a href="/2022/06/27/TypeScript/tsconfig/" title="tsconfig.json 参数详解">tsconfig.json 参数详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JS/" title="分类于 JS">JS</a>
+</div>
+
+    <span><a href="/2022/11/09/PWA/" title="PWA">PWA</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/K8S/" title="分类于 K8S">K8S</a>
+</div>
+
+    <span><a href="/2022/12/27/K8S/multipass%20%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAk8s%E9%9B%86%E7%BE%A4/" title="MAC下multipass搭建k8s集群">MAC下multipass搭建k8s集群</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E5%85%B7/" title="分类于 工具">工具</a>
+</div>
+
+    <span><a href="/2022/08/20/%E5%B7%A5%E5%85%B7/pip%E4%BD%BF%E7%94%A8/" title="pip 安装及使用">pip 安装及使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker/JAVA%E6%A0%87%E5%87%86%E7%89%88%E6%9C%AC%E3%80%81openJDK%E3%80%81jre%E5%8C%BA%E5%88%AB/" title="JDK 和 openjdk的区别">JDK 和 openjdk的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2022/07/04/React/React%E7%9A%84SSR%E6%96%B9%E6%A1%88/" title="React 的SSR方案">React 的SSR方案</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/linux/" title="分类于 linux">linux</a>
+</div>
+
+    <span><a href="/2024/10/09/linux/find%E7%9A%84%E4%BD%BF%E7%94%A8/" title="find指令的使用">find指令的使用</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/08/09/工具/Turborepo的使用/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

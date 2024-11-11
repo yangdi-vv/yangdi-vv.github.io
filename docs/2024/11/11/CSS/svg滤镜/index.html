@@ -1,0 +1,545 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://www.yangdi.cloud/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://www.yangdi.cloud/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://www.yangdi.cloud/feed.json" />
+
+
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="feTurbulence,feDisplacementMap,svg" />
+
+
+<link rel="canonical" href="http://www.yangdi.cloud/2024/11/11/CSS/svg%E6%BB%A4%E9%95%9C/">
+
+
+
+  <title>
+svg 滤镜 - CSS |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">svg 滤镜
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2024-11-11 03:28:18">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2024-11-11T03:28:18Z">2024-11-11</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (18).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (2).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (31).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (1).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (4).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (5).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/CSS/" itemprop="item" rel="index" title="分类于 CSS"><span itemprop="name">CSS</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://www.yangdi.cloud/2024/11/11/CSS/svg%E6%BB%A4%E9%95%9C/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><ul>
+<li>示例<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">xlmns</span>=<span class="string">&quot;https://www.w3.org/2000/svg&quot;</span> <span class="attr">version</span>=<span class="string">&quot;1.1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter</span> <span class="attr">id</span>=<span class="string">&quot;turbulence&quot;</span> <span class="attr">filterUnits</span>=<span class="string">&quot;objectBoundingBox&quot;</span> <span class="attr">x</span>=<span class="string">&quot;0&quot;</span> <span class="attr">y</span>=<span class="string">&quot;0&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100%&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">feTurbulence</span> <span class="attr">id</span>=<span class="string">&quot;feturbulence&quot;</span> <span class="attr">type</span>=<span class="string">&quot;fractalNoise&quot;</span> <span class="attr">numOctaves</span>=<span class="string">&quot;3&quot;</span> <span class="attr">seed</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">feTurbulence</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">feDisplacementMap</span> <span class="attr">xChannelSelector</span>=<span class="string">&quot;G&quot;</span> <span class="attr">yChannelSelector</span>=<span class="string">&quot;B&quot;</span> <span class="attr">scale</span>=<span class="string">&quot;20&quot;</span> <span class="attr">in</span>=<span class="string">&quot;SourceGraphic&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">feDisplacementMap</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><blockquote>
+<p>feTurbulence创建了一个位移图，然后通过feDisplacementMap应用位移效果。scale设置为20，表示位移的大小，而xChannelSelector和yChannelSelector分别设置为R和G，表示使用位移图的红色和绿色通道来决定x轴和y轴的位移。</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">baseFrequency: 控制噪声的基础频率。值越低，生成的纹理越大，细节越少；值越高，纹理越小，细节越丰富。</span><br><span class="line">numOctaves: 定义噪声的细节层次，即倍频的数量。值越大，纹理越复杂，但计算量也越大。</span><br><span class="line">seed: 用于生成随机数的种子。相同的种子值会生成相同的纹理。</span><br><span class="line">stitchTiles: 控制多个图形元素的边界是否平滑。stitch值会使得相邻图形的纹理边缘平滑过渡。</span><br><span class="line">type: 定义噪声的类型。turbulence生成湍流效果，fractalNoise生成更平滑的云状效果。</span><br><span class="line"></span><br><span class="line">filter: url(#svgId)</span><br></pre></td></tr></table></figure>
+
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><ul>
+<li><p>使用svg animation</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">defs</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter</span> <span class="attr">id</span>=<span class="string">&quot;fe1&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">feTurbulence</span> <span class="attr">id</span>=<span class="string">&quot;animation&quot;</span> <span class="attr">type</span>=<span class="string">&quot;fractalNoise&quot;</span> <span class="attr">baseFrequency</span>=<span class="string">&quot;0.00001 9.9999999&quot;</span> <span class="attr">numOctaves</span>=<span class="string">&quot;1&quot;</span> <span class="attr">result</span>=<span class="string">&quot;warp&quot;</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">animate</span> <span class="attr">attributeName</span>=<span class="string">&quot;baseFrequency&quot;</span> <span class="attr">from</span>=<span class="string">&quot;0.001 0.001&quot;</span> <span class="attr">to</span>=<span class="string">&quot;0.015 0.1&quot;</span> <span class="attr">dur</span>=<span class="string">&quot;10s&quot;</span> <span class="attr">repeatCount</span>=<span class="string">&quot;indefinite&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">feTurbulence</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">feDisplacementMap</span> <span class="attr">xChannelSelector</span>=<span class="string">&quot;R&quot;</span> <span class="attr">yChannelSelector</span>=<span class="string">&quot;G&quot;</span> <span class="attr">scale</span>=<span class="string">&quot;30&quot;</span> <span class="attr">in</span>=<span class="string">&quot;SourceGraphic&quot;</span> <span class="attr">in2</span>=<span class="string">&quot;warpOffset&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">feDisplacementMap</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">defs</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TweenMax</p>
+<blockquote>
+<p>使用 TweenMax 的动态计算波纹效果并应用</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">xlmns</span>=<span class="string">&quot;https://www.w3.org/2000/svg&quot;</span> <span class="attr">version</span>=<span class="string">&quot;1.1&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter</span> <span class="attr">id</span>=<span class="string">&quot;turbulence&quot;</span> <span class="attr">filterUnits</span>=<span class="string">&quot;objectBoundingBox&quot;</span> <span class="attr">x</span>=<span class="string">&quot;0&quot;</span> <span class="attr">y</span>=<span class="string">&quot;0&quot;</span> <span class="attr">width</span>=<span class="string">&quot;100%&quot;</span> <span class="attr">height</span>=<span class="string">&quot;100%&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">feTurbulence</span> <span class="attr">id</span>=<span class="string">&quot;feturbulence&quot;</span> <span class="attr">type</span>=<span class="string">&quot;fractalNoise&quot;</span> <span class="attr">numOctaves</span>=<span class="string">&quot;3&quot;</span> <span class="attr">seed</span>=<span class="string">&quot;2&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">feTurbulence</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">feDisplacementMap</span> <span class="attr">xChannelSelector</span>=<span class="string">&quot;G&quot;</span> <span class="attr">yChannelSelector</span>=<span class="string">&quot;B&quot;</span> <span class="attr">scale</span>=<span class="string">&quot;20&quot;</span> <span class="attr">in</span>=<span class="string">&quot;SourceGraphic&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">feDisplacementMap</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> timeline = <span class="keyword">new</span> <span class="title class_">TimelineMax</span>(&#123;</span><br><span class="line">        <span class="attr">repeat</span>: -<span class="number">1</span>,</span><br><span class="line">        <span class="attr">yoyo</span>: <span class="literal">true</span></span><br><span class="line">    &#125;),</span><br><span class="line">    feTurb = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#feturbulence&#x27;</span>);</span><br><span class="line"></span><br><span class="line">timeline.<span class="title function_">add</span>(</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">TweenMax</span>.<span class="title function_">to</span>(feTurb, <span class="number">8</span>, &#123;</span><br><span class="line">        <span class="attr">onUpdateParams</span>: [feTurb], <span class="comment">//pass the filter element to onUpdate</span></span><br><span class="line">        <span class="attr">onUpdate</span>: <span class="keyword">function</span> (<span class="params">fe</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>.<span class="title function_">progress</span>(), <span class="string">&#x27;---------&#x27;</span>)</span><br><span class="line">            <span class="keyword">var</span> bfX = <span class="variable language_">this</span>.<span class="title function_">progress</span>() * <span class="number">0.005</span> + <span class="number">0.015</span>, <span class="comment">//base frequency x</span></span><br><span class="line">                bfY = <span class="variable language_">this</span>.<span class="title function_">progress</span>() * <span class="number">0.05</span> + <span class="number">0.1</span>, <span class="comment">//base frequency y</span></span><br><span class="line">                bfStr = bfX.<span class="title function_">toString</span>() + <span class="string">&#x27; &#x27;</span> + bfY.<span class="title function_">toString</span>(); <span class="comment">//base frequency string</span></span><br><span class="line">            fe.<span class="title function_">setAttribute</span>(<span class="string">&#x27;baseFrequency&#x27;</span>, bfStr);</span><br><span class="line">        &#125;&#125;), <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+
+      <div class="tags">
+          <a href="/tags/feTurbulence/" rel="tag"><i class="ic i-tag"></i> feTurbulence</a>
+          <a href="/tags/feDisplacementMap/" rel="tag"><i class="ic i-tag"></i> feDisplacementMap</a>
+          <a href="/tags/svg/" rel="tag"><i class="ic i-tag"></i> svg</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-11-11 06:51:50" itemprop="dateModified" datetime="2024-11-11T06:51:50Z">2024-11-11</time>
+  </span>
+  <span id="2024/11/11/CSS/svg滤镜/" class="item leancloud_visitors" data-flag-title="svg 滤镜" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 加个好友</button>
+  <p>技术讨论~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信">
+        <p>微信</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://www.yangdi.cloud/2024/11/11/CSS/svg%E6%BB%A4%E9%95%9C/" title="svg 滤镜">http://www.yangdi.cloud/2024/11/11/CSS/svg滤镜/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2024/11/11/CSS/filter/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (24).jpeg" title="CSS filter">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> CSS</span>
+  <h3>CSS filter</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0"><span class="toc-number">3.</span> <span class="toc-text">实现</span></a></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2022/12/29/CSS/flex%E5%B8%83%E5%B1%80/" rel="bookmark" title="flex布局">flex布局</a></li><li><a href="/2022/12/29/CSS/grid%E5%B8%83%E5%B1%80/" rel="bookmark" title="grid布局">grid布局</a></li><li><a href="/2024/11/11/CSS/filter/" rel="bookmark" title="CSS filter">CSS filter</a></li><li class="active"><a href="/2024/11/11/CSS/svg%E6%BB%A4%E9%95%9C/" rel="bookmark" title="svg 滤镜">svg 滤镜</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">78</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">32</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">85</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JavaScript/" title="分类于 JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/2023/05/15/JavaScript/%E8%8E%B7%E5%8F%96HTML%20H%E6%A0%87%E7%AD%BE%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" title="获取HTML目录结构">获取HTML目录结构</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" title="分类于 测试工具">测试工具</a>
+</div>
+
+    <span><a href="/2022/07/13/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/ant+jmeter+docker%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" title="制作自动化测试镜像（ant+jmeter+docker）">制作自动化测试镜像（ant+jmeter+docker）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JS/" title="分类于 JS">JS</a>
+</div>
+
+    <span><a href="/2022/11/09/PWA/" title="PWA">PWA</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/CSS/" title="分类于 CSS">CSS</a>
+</div>
+
+    <span><a href="/2024/11/11/CSS/svg%E6%BB%A4%E9%95%9C/" title="svg 滤镜">svg 滤镜</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/git/" title="分类于 git">git</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/git/object-Object/" title="分类于 [object Object]">[object Object]</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/git/object-Object/git/" title="分类于 git">git</a>
+</div>
+
+    <span><a href="/2023/02/13/git/git%20pull%E6%9C%AC%E9%83%BD%E4%BF%9D%E5%AD%98%E5%AF%86%E7%A0%81/" title="git pull 保存密码无需再次输入">git pull 保存密码无需再次输入</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JavaScript/" title="分类于 JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/2023/05/05/JavaScript/JS%E8%AF%BB%E5%8F%96JSON%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6/" title="JS 读取JSON文件">JS 读取JSON文件</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2022/11/03/React/%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6%20HOC/" title="高阶组件 HOC">高阶组件 HOC</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JS/" title="分类于 JS">JS</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/JS/JavaScript/" title="分类于 JavaScript">JavaScript</a>
+</div>
+
+    <span><a href="/2023/01/29/JavaScript/requestIdleCallback%E5%92%8CrequestAnimationFrame/" title="requestIdleCallback和requestAnimationFrame详解">requestIdleCallback和requestAnimationFrame详解</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Vue/" title="分类于 Vue">Vue</a>
+</div>
+
+    <span><a href="/2022/07/04/Vue/nuxt/" title="Nuxt基本使用">Nuxt基本使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/vite/" title="分类于 vite">vite</a>
+</div>
+
+    <span><a href="/2022/06/27/vite/vite%20+%20vue3%20+%20ts%20+%20eslint...%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE/" title="Vue3 + Vite + TS + Eslint搭建一个项目">Vue3 + Vite + TS + Eslint搭建一个项目</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2024/11/11/CSS/svg滤镜/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

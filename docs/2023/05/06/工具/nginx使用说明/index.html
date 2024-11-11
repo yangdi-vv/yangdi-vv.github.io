@@ -1,0 +1,643 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://www.yangdi.cloud/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://www.yangdi.cloud/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://www.yangdi.cloud/feed.json" />
+
+
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="工具,nginx" />
+
+
+<link rel="canonical" href="http://www.yangdi.cloud/2023/05/06/%E5%B7%A5%E5%85%B7/nginx%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
+
+
+
+  <title>
+nginx 使用 - 工具 |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">nginx 使用
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2023-05-06 09:39:32">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2023-05-06T09:39:32Z">2023-05-06</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (27).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (3).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (1).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (26).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (5).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (18).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/%E5%B7%A5%E5%85%B7/" itemprop="item" rel="index" title="分类于 工具"><span itemprop="name">工具</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://www.yangdi.cloud/2023/05/06/%E5%B7%A5%E5%85%B7/nginx%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h3 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h3><blockquote>
+<p>Nginx是一款轻量级的HTTP服务器，采用事件驱动的异步非阻塞处理方式框架，<br>这让其具有极好的IO性能，时常用于服务端的反向代理和负载均衡。</p>
+</blockquote>
+<ul>
+<li>优点<ul>
+<li>高并发：支持多路复用epoll，理论支持5W并发数，实际生产环境可支持2~4万</li>
+<li>内存消耗少：比如我们用Nginx+PHP，在3万并发链接下，开启10个Nginx进程消耗150M内存</li>
+<li>配置文件简单：参数配置容易上手</li>
+</ul>
+</li>
+</ul>
+<h3 id="二、安装"><a href="#二、安装" class="headerlink" title="二、安装"></a>二、安装</h3><ul>
+<li><p>MAC安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>linux</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">下载安装包</span></span><br><span class="line">wget http://nginx.org/download/nginx-1.22.0.tar.gz</span><br><span class="line">tar -xzvf nginx-*</span><br><span class="line">cd nginx-1.20.2</span><br><span class="line">sudo ./configure</span><br><span class="line">sudo make</span><br><span class="line">sudo make install </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">yum 安装</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">yum 更新源</span></span><br><span class="line">yum install epel-release</span><br><span class="line">yum update</span><br><span class="line">yum install nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>windows</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 官网下载安装</span><br><span class="line">http://nginx.org/</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>二、基础配置</p>
+<ul>
+<li><p>全局配置</p>
+<blockquote>
+<p>配置影响全局，包括运行 nginx 的用户组，进程存放，日志，配置文件等</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">#指定nginx运行的用户及用户组,默认为nobody</span><br><span class="line">user root;</span><br><span class="line"></span><br><span class="line">#开启线程数，最大值可设逻辑CPU核数</span><br><span class="line">worker_processes 1;</span><br><span class="line"></span><br><span class="line">#定位全局错误日志文件，级别以notice显示，还有debug,info,warn,error,crit模式，debug输出最多，crir输出最少，根据实际环境而定(可不填写)</span><br><span class="line">#error_log  logs/error.log;</span><br><span class="line">#error_log  logs/error.log  notice;</span><br><span class="line">#error_log  logs/error.log  info;</span><br><span class="line"></span><br><span class="line">#指定进程id的存储文件位置(可不填写)</span><br><span class="line">#pid        logs/nginx.pid;</span><br><span class="line"></span><br><span class="line">#指定一个nginx进程打开的最多文件描述符数目，受系统进程的最大打开文件数量限制(可不填写)</span><br><span class="line">#worker_rlimit_nofile 65535</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>events</p>
+<blockquote>
+<p>配置影响 nginx 服务器与客户端的网络连接，包括进程最大连接数，数据驱动模型，序列化等</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#设置工作模式为epoll,除此之外还有select,poll,kqueue,rtsig和/dev/poll模式</span><br><span class="line">use epoll;</span><br><span class="line"></span><br><span class="line">#定义每个进程的最大连接数,受系统进程的最大打开文件数量限制</span><br><span class="line">worker_connections  1024;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>http 配置</p>
+<blockquote>
+<p>配置代理，缓存，日志，第三方模块等，可嵌套多个 server；server：配置虚拟主机的参数；location：配置请求路由，页面处理</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">    #主模块指令，实现对配置文件所包含的文件的设定，可以减少主配置文件的复杂度</span><br><span class="line">    include       mime.types;</span><br><span class="line">    </span><br><span class="line">    #核心模块指令，默认设置为二进制流，也就是当文件类型未定义时使用这种方式</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    </span><br><span class="line">    #下面代码为日志格式的设定，main为日志格式的名称，可自行设置，后面引用</span><br><span class="line">	log_format  main  &#x27;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &#x27;</span><br><span class="line">	                  &#x27;$status $body_bytes_sent &quot;$http_referer&quot; &#x27;</span><br><span class="line">	                  &#x27;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&#x27;;</span><br><span class="line">	                  </span><br><span class="line">	#引用日志main格式</span><br><span class="line">	access_log  logs/access.log  main;</span><br><span class="line">	</span><br><span class="line">	#设置允许客户端请求的最大的单个文件字节数</span><br><span class="line">    client_max_body_size 20M;</span><br><span class="line">    #指定来自客户端请求头的headebuffer大小</span><br><span class="line">    client_header_buffer_size  32k;</span><br><span class="line">    #指定连接请求试图写入缓存文件的目录路径</span><br><span class="line">    client_body_temp_path /dev/shm/client_body_temp;</span><br><span class="line">    #指定客户端请求中较大的消息头的缓存最大数量和大小，目前设置为4个32KB</span><br><span class="line">    large client_header_buffers 4 32k;</span><br><span class="line">    </span><br><span class="line">    #开启高效文件传输模式</span><br><span class="line">    sendfile        on;</span><br><span class="line">    #开启防止网络阻塞</span><br><span class="line">    tcp_nopush     on;</span><br><span class="line">    #开启防止网络阻塞</span><br><span class="line">    tcp_nodelay    on;</span><br><span class="line">    </span><br><span class="line">    #设置客户端连接保存活动的超时时间</span><br><span class="line">    #keepalive_timeout  0; # 无限时间</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    #设置客户端请求读取header超时时间</span><br><span class="line">    client_header_timeout 10;</span><br><span class="line">    #设置客户端请求body读取超时时间</span><br><span class="line">    client_body_timeout 10;</span><br><span class="line">    </span><br><span class="line">    #HttpGZip模块配置</span><br><span class="line">    #开启gzip压缩</span><br><span class="line">    gzip  on;</span><br><span class="line">    #设置允许压缩的页面最小字节数</span><br><span class="line">    gzip_min_length 1k;</span><br><span class="line">    #申请4个单位为16K的内存作为压缩结果流缓存</span><br><span class="line">    gzip_buffers 4 16k;</span><br><span class="line">    #设置识别http协议的版本，默认为1.1</span><br><span class="line">    gzip_http_version 1.1;</span><br><span class="line">    #指定gzip压缩比，1-9数字越小，压缩比越小，速度越快</span><br><span class="line">    gzip_comp_level 2;</span><br><span class="line">    #指定压缩的类型</span><br><span class="line">    gzip_types text/plain application/x-javascript text/css application/xml;</span><br><span class="line">    #让前端的缓存服务器进过gzip压缩的页面</span><br><span class="line">    gzip_vary on; </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>server 配置</p>
+<blockquote>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line"></span><br><span class="line">    #单连接请求上限次数</span><br><span class="line">    keepalive_requests 120; </span><br><span class="line">    #监听端口</span><br><span class="line">    listen       88;</span><br><span class="line">    #监听地址，可以是ip，最好是域名</span><br><span class="line">    server_name  111.222.333.123;</span><br><span class="line">    #server_name  www.123.com;</span><br><span class="line">    #设置访问的语言编码</span><br><span class="line">    charset utf-8;</span><br><span class="line">    #设置虚拟主机访问日志的存放路径及日志的格式为main</span><br><span class="line">    access_log  /www/wwwlogs/111.222.333.123.log main; #响应日志</span><br><span class="line">    error_log  /www/wwwlogs/111.222.333.123.log main; #错误日志</span><br><span class="line">    </span><br><span class="line">    #PHP-INFO-START  PHP引用配置，可以注释或修改</span><br><span class="line">    include enable-php-74.conf;</span><br><span class="line">    #PHP-INFO-END</span><br><span class="line">    </span><br><span class="line">    #REWRITE-START URL重写规则引用</span><br><span class="line">    include /www/server/panel/vhost/rewrite/111.222.333.123.conf;</span><br><span class="line">    #REWRITE-END</span><br><span class="line">    </span><br><span class="line">    #设置主机基本信息</span><br><span class="line">    #请求的url过滤，正则匹配，~为区分大小写，~*为不区分大小写。</span><br><span class="line">    location  ~*^.+$ &#123;</span><br><span class="line">    	#根目录</span><br><span class="line">        root html;  </span><br><span class="line">        #设置默认页</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">        #拒绝的ip,黑名单</span><br><span class="line">        deny 127.0.0.1;  </span><br><span class="line">        #允许的ip，白名单</span><br><span class="line">        allow 172.18.5.54; </span><br><span class="line">    &#125; </span><br><span class="line">    </span><br><span class="line">    #禁止访问的文件或目录</span><br><span class="line">    location ~ ^/(\.user.ini|\.htaccess|\.git|\.svn|\.project|LICENSE|README.md)</span><br><span class="line">    &#123;</span><br><span class="line">        return 404;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    #SSL证书验证目录相关设置</span><br><span class="line">    location ~ \.well-known&#123;</span><br><span class="line">        allow all;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	#图片资源配置</span><br><span class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span><br><span class="line">    &#123;</span><br><span class="line">        expires      30d;</span><br><span class="line">        error_log /dev/null;</span><br><span class="line">        access_log off;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    #网站js与css资源配置</span><br><span class="line">    location ~ .*\.(js|css)?$</span><br><span class="line">    &#123;</span><br><span class="line">        expires      12h;</span><br><span class="line">        error_log /dev/null;</span><br><span class="line">        access_log off; </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    #访问异常页面配置</span><br><span class="line">    error_page  404              /404.html;</span><br><span class="line">    error_page  500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">		root   html;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三、常用配置"><a href="#三、常用配置" class="headerlink" title="三、常用配置"></a>三、常用配置</h3><h4 id="1、Rewrite"><a href="#1、Rewrite" class="headerlink" title="1、Rewrite"></a>1、Rewrite</h4><ul>
+<li>地址重写，地址转发，重定向<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /re &#123;</span><br><span class="line">    rewrite www.baidu.com</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>URL 重写<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">rewrite regex replacement [flag];</span><br><span class="line"></span><br><span class="line"># 参数说明</span><br><span class="line">rewrite：该指令是实现URL重写的指令</span><br><span class="line">regex：用于匹配URI的正则表达式</span><br><span class="line">replacement：将regex正则匹配到的内容替换成 replacement。</span><br><span class="line">flag:标记</span><br><span class="line">  last: 本条规则匹配完成后，继续向下匹配新的location URI 规则。(不常用)</span><br><span class="line">  break: 本条规则匹配完成即终止，不再匹配后面的任何规则(不常用)。</span><br><span class="line">  redirect: 返回302临时重定向，浏览器地址会显示跳转新的URL地址。</span><br><span class="line">  permanent: 返回301永久重定向。浏览器地址会显示跳转新的URL地址。</span><br><span class="line"></span><br><span class="line"># example:</span><br><span class="line">rewrite ^/(.*) http://www.baidu.com/$1 permanent;</span><br><span class="line"></span><br><span class="line">rewrite ：指令。</span><br><span class="line">regex：正则表达式，匹配完整的域名和后面的路径地址。</span><br><span class="line">replacement：$1是取regex部分()里面的内容。如果匹配成功后跳转到的URL。</span><br><span class="line">**flag；**permanent，代表永久重定向的含义，即跳转到 http://www.baidu.com/$1 地址上。</span><br></pre></td></tr></table></figure></li>
+<li>正则描述<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">字符	描述</span><br><span class="line">\	转义字符标记，如 \n匹配一个换行符，而\$则匹配$</span><br><span class="line">^	匹配输入字符串的起始位置</span><br><span class="line">$	匹配输入字符串的结束位置</span><br><span class="line">*	匹配前面的字符零次或多次。如ol*能匹配o及ol、oll</span><br><span class="line">+	匹配前面的字符一次或多次。如ol+能匹配ol及oll、oll，但不能匹配o</span><br><span class="line">?	匹配前面的字符零次或一次，例如do(es)?能匹配do或者does，?等效于&#123;0,1&#125;</span><br><span class="line">.	匹配除“\n之外的任何单个字符，若要匹配包括“\n”在内的任意字符，请使用诸如[.\n]之类的模式。</span><br><span class="line">(pattern)	匹配括号内pattern并可以在后面获取对应的匹配，常用$0...$9属性获取小括号中的匹配内容，要匹配圆括号字符需要\(Content\)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="2、if指令"><a href="#2、if指令" class="headerlink" title="2、if指令"></a>2、if指令</h4><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (condition) &#123;</span><br><span class="line">  // ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>可以使用的全局变量</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$args: 该变量中存放了请求URL中的请求指令。比如 http://127.0.0.1:3001?arg1=value1&amp;arg2=value2 中的 arg1=value1&amp;arg2=value2</span><br><span class="line">$content_length: 该变量中存放了请求头中的Content-length字段</span><br><span class="line">$content_type: 该变量中存放了请求头中的 Content-type字段</span><br><span class="line">$document_root: 该变量中存放了针对当前请求的根路径</span><br><span class="line">$document_uri: 该变量中存放了请求的当前URI, 但是不包括请求指令。比如 http://xxx.abc.com/home/1?arg1=value1&amp; arg2=value2; 中的 /home/1</span><br><span class="line">$host: 变量中存放了请求的URL中的主机部分字段，比如http://xxx.abc.com:8080/home中的 xxx.abc.com</span><br><span class="line">$httphost: 该变量与host唯一区别带有端口号：比如上面的是 xxx.abc.com:8080</span><br><span class="line">$http_user_agent: 变量中存放客户端的代理信息</span><br><span class="line">$http_cookie, 该变量中存放客户端的cookie信息</span><br><span class="line">$remote_addr 该变量中存放客户端的地址</span><br><span class="line">$remote_port 该变量中存放了客户端与服务器建立连接的端口号</span><br><span class="line">$remote_user 变量中存放客户端的用户名</span><br><span class="line">$request_body_file 变量中存放了发给后端服务器的本地文件资源的名称</span><br><span class="line">$request_method 变量中存放了客户端的请求方式，比如 ‘GET’、&#x27;POST’等</span><br><span class="line">$request_filename 变量中存放了当前请求的资源文件的路径名</span><br><span class="line">$request_uri 变量中存放了当前请求的URI，并且带请求指令</span><br><span class="line">$scheme 变量中存放了客户端请求使用的协议，比如 ‘http’, &#x27;https’等</span><br><span class="line">$server_protocol 变量中存放了客户端请求协议的版本, 比如 ‘HTTP/1.0’、‘HTTP/1.1’ 等</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>变量匹配</p>
+<ul>
+<li>~：表示匹配过程中对大小写敏感</li>
+<li>~*：表示匹配过程中对大小写不敏感</li>
+<li>!~ ：如果~匹配失败时，那么该条件就为true</li>
+<li>!~<em>‘：如果 ~</em> 匹配失败时，那么该条件就为true</li>
+</ul>
+</li>
+<li><p>其他指令</p>
+<ul>
+<li>-f和!-f用来判断请求文件是否存在</li>
+<li>-d和!-d用来判断请求目录是否存在</li>
+<li>-e和!-e用来判断是请求的文件或者目录否存在</li>
+<li>-x和!-x用来判断请求的文件是否可执行</li>
+</ul>
+</li>
+<li><p>示例</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">if ($http_user_agent ~ MSIE) &#123;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br><span class="line">含义：$http_user_agent值中是否含有 MSIE 字符串，如果包含为true，否则为false</span><br><span class="line"></span><br><span class="line">if (-f $request_filename) &#123;</span><br><span class="line">  # 判断请求的文件是否存在</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if (!-f $request_filename) &#123;</span><br><span class="line">  # 判断请求的文件是否不存在</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">if ( $http_user_agent ~* &quot;(Android)|(iPhone)|(Mobile)|(WAP)|(UCWEB)&quot; )&#123;</span><br><span class="line">  rewrite ^/$  http://www.cnblogs.com  permanent；</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">  listen 8088;</span><br><span class="line">  server_name xxx.abc.com;</span><br><span class="line">  location / &#123;</span><br><span class="line">    proxy_pass http://127.0.0.1:3001;</span><br><span class="line">    if ($host = &#x27;xxx.abc.com&#x27;) &#123;</span><br><span class="line">      rewrite ^/(.*) http://www.cnblogs.com redirect;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"># 含义：现在我们使用if指令来对nginx加一些判断；比如说我们访问http://xxx.abc.com:8080/home时候，如果$host = ‘xxx.abc.com’ 的时候，就做重定向跳转</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="四、防盗链"><a href="#四、防盗链" class="headerlink" title="四、防盗链"></a>四、防盗链</h3><h4 id="什么是防盗链？"><a href="#什么是防盗链？" class="headerlink" title="什么是防盗链？"></a>什么是防盗链？</h4><blockquote>
+<p>盗链可以理解盗图链接，也就是说把别人的图片偷过来用在自己的服务器上，那么防盗链可以理解为防止其他人把我的图片盗取过去。</p>
+</blockquote>
+<h4 id="防盗链的实现原理："><a href="#防盗链的实现原理：" class="headerlink" title="防盗链的实现原理："></a>防盗链的实现原理：</h4><blockquote>
+<p>客户端向服务器端请求资源时，为了减少网络带宽，提高响应时间，服务器一般不会一次将所有资源完整地传回客户端。比如请求一个网页时，首先会传回该网页的文本内容，当客户端浏览器在解析文本的过程中发现有图片存在时，会再次向服务器发起对该图片资源的请求，服务器将存储的图片资源再发送给客户端。但是如果这个图片是链接到其他站点的服务器上去了呢，比如在我项目中，我引用了的是淘宝中的一张图片的话，那么当我们网站重新加载的时候，就会请求淘宝的服务器，那么这就很有可能造成淘宝服务器负担。因此这个就是盗链行为。因此我们要实现防盗链。</p>
+</blockquote>
+<h4 id="实现防盗链："><a href="#实现防盗链：" class="headerlink" title="实现防盗链："></a>实现防盗链：</h4><blockquote>
+<p>使用http协议中请求头部的Referer头域来判断当前访问的网页或文件的源地址。通过该头域的值，我们可以检测访问目标资源的源地址。如果目标源地址不是我们自己站内的URL的话，那么这种情况下，我们采取阻止措施，实现防盗链。但是注意的是：Referer头域中的值是可以被更改的。因此该方法也不能完全安全阻止防盗链。 </p>
+</blockquote>
+<h4 id="使用Nginx服务器的Rewrite功能实现防盗链。"><a href="#使用Nginx服务器的Rewrite功能实现防盗链。" class="headerlink" title="使用Nginx服务器的Rewrite功能实现防盗链。"></a>使用Nginx服务器的Rewrite功能实现防盗链。</h4><blockquote>
+<p>Nginx中有一个指令 valid_referers. 该指令可以用来获取 Referer 头域中的值，并且根据该值的情况给 Nginx全局变量 invalidreferer赋值。如果Referer头域中没有符合validreferers指令的值的话，invalidreferer赋值。如果Referer头域中没有符合validreferers指令的值的话，invalid_referer变量将会赋值为</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">valid_referers 指令基本语法如下：</span><br><span class="line"></span><br><span class="line">valid_referers none | blocked | server_names | string</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>none: 检测Referer头域不存在的情况。</p>
+</li>
+<li><p>blocked： 检测Referer头域的值被防火墙或者代理服务器删除或伪装的情况。那么在这种情况下，该头域的值不以”http:&#x2F;&#x2F;“ 或 “https:&#x2F;&#x2F;” 开头。</p>
+</li>
+<li><p>server_names: 设置一个或多个URL，检测Referer头域的值是否是URL中的某个。</p>
+</li>
+</ul>
+<blockquote>
+<p>因此我们有了 valid_referers指令和$invalid_referer变量的话，我们就可以通过 Rewrite功能来实现防盗链。<br>下面我们介绍两种方案：第一：根据请求资源的类型。第二：根据请求目录。</p>
+</blockquote>
+<ul>
+<li><p>示例： 根据请求文件类型实现防盗链配置实列如下</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 8080;</span><br><span class="line">  server_name xxx.abc.com</span><br><span class="line">  location ~* ^.+\.(gif|jpg|png|swf|flv|rar|zip)$ &#123;</span><br><span class="line">    valid_referers none blocked www.xxx.com www.yyy.com *.baidu.com  *.tabobao.com;</span><br><span class="line">    if ($invalid_referer) &#123;</span><br><span class="line">      rewrite ^/ http://www.xxx.com/images/forbidden.png;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">如上基本配置，当有网络连接对以 gif、jpg、png为后缀的图片资源时候、当有以swf、flv为后缀的媒体资源时、或以 rar、zip为后缀的压缩资源发起请求时，如果检测到Referer头域中没有符合 valid_referers指令的话，那么说明不是本站的资源请求。</span><br><span class="line"></span><br><span class="line">location ~* ^.+.(gif|jpg|png|swf|flv|rar|zip)$ 该配置的含义是 设置防盗链的文件类型。</span><br><span class="line"></span><br><span class="line">valid_referers none blocked www.xxx.com www.yyy.com *.baidu.com *.tabobao.com; 可以理解为白名单，允许文件链出的域名白名单，如果请求的资源文件不是以这些域名开头的话，就说明请求的资源文件不是该域下的请求，因此可以判断它是盗链。因此如果不是该域下的请求，就会使用 Rewrite进行重定向到 http://www.xxx.com/images/forbidden.png 这个图片，比如这张图片是一个x或其他的标识，然后其他的网站就访问不了你这个图片哦。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>示例：根据请求目录实现防盗链的配置实列如下</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">  listen 8080;</span><br><span class="line">  server_name xxx.abc.com</span><br><span class="line">  location /file/ &#123;</span><br><span class="line">    root /server/file/;</span><br><span class="line">    valid_referers none blocked www.xxx.com www.yyy.com *.baidu.com  *.tabobao.com;</span><br><span class="line">    if ($invalid_referer) &#123;</span><br><span class="line">      rewrite ^/ http://www.xxx.com/images/forbidden.png;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">例子一（域名跳转）:</span><br><span class="line">    server &#123;</span><br><span class="line">            listen 80;</span><br><span class="line">            server_name   abc.com;</span><br><span class="line">            rewrite   ^/(.*)     http://www.ab c.com/$1 permanent;  # 跳转到www.abc.com网址上</span><br><span class="line">        &#125;</span><br><span class="line">例子二：</span><br><span class="line">  server &#123;</span><br><span class="line">            listen 80;</span><br><span class="line">            server_name   www.myweb.com www.web.info</span><br><span class="line">            if($host ~ myweb\.info)&#123;                        #&quot;.&quot;需要使用“\”转义，这里是匹配到www.web.info时</span><br><span class="line">                     rewrite ^(.*)  http://www.myweb.com/&amp;1 permanent;   #永久重定向到http://www.myweb.com网址上&amp;1是匹配的uri</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">例子三(防盗链)：</span><br><span class="line">location ~* \.(gif|jpg|png|swf|flv)$ &#123;</span><br><span class="line">    valid_referers none blocked www.vison.com www.wsvison.com;  #这里表示Referer头域中的值是none或者blocked或者后面这些网址才会返回去正常的gif|jpg|png|swf|flv文件，否则执行下面if块代码</span><br><span class="line">    if ($invalid_referer) &#123;  #上面没有匹配成功，$invalid_referer值为1，否则为0</span><br><span class="line">        return 404;</span><br><span class="line">    &#125; //防盗链</span><br><span class="line">&#125;       </span><br><span class="line">其他例子：    </span><br><span class="line">if ($http_user_agent ~ MSIE) &#123;</span><br><span class="line">    rewrite ^(.*)$ /msie/$1 break;</span><br><span class="line">&#125; //如果UA包含&quot;MSIE&quot;，rewrite请求到/msid/目录下</span><br><span class="line"></span><br><span class="line">if ($http_cookie ~* &quot;id=([^;]+)(?:;|$)&quot;) &#123;</span><br><span class="line">    set $id $1;</span><br><span class="line"> &#125; //如果cookie匹配正则，设置变量$id等于正则引用部分</span><br><span class="line"></span><br><span class="line">if ($request_method = POST) &#123;</span><br><span class="line">    return 405;</span><br><span class="line">&#125; //如果提交方法为POST，则返回状态405（Method not allowed）。return不能返回301,302</span><br><span class="line"></span><br><span class="line">if ($slow) &#123;</span><br><span class="line">    limit_rate 10k;</span><br><span class="line">&#125; //限速，$slow可以通过 set 指令设置</span><br><span class="line"></span><br><span class="line">if (!-f $request_filename)&#123;</span><br><span class="line">    break;</span><br><span class="line">    proxy_pass  http://127.0.0.1; </span><br><span class="line">&#125; //如果请求的文件名不存在，则反向代理到localhost 。这里的break也是停止rewrite检查</span><br><span class="line"></span><br><span class="line">if ($args ~ post=140)&#123;</span><br><span class="line">    rewrite ^ http://example.com/ permanent;</span><br><span class="line">&#125; //如果query string中包含&quot;post=140&quot;，永久重定向到example.com</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+      <div class="tags">
+          <a href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag"><i class="ic i-tag"></i> 工具</a>
+          <a href="/tags/nginx/" rel="tag"><i class="ic i-tag"></i> nginx</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2023-05-12 03:42:18" itemprop="dateModified" datetime="2023-05-12T03:42:18Z">2023-05-12</time>
+  </span>
+  <span id="2023/05/06/工具/nginx使用说明/" class="item leancloud_visitors" data-flag-title="nginx 使用" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 加个好友</button>
+  <p>技术讨论~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信">
+        <p>微信</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://www.yangdi.cloud/2023/05/06/%E5%B7%A5%E5%85%B7/nginx%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" title="nginx 使用">http://www.yangdi.cloud/2023/05/06/工具/nginx使用说明/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2023/05/05/JavaScript/JS%E8%AF%BB%E5%8F%96JSON%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (18).jpeg" title="JS 读取JSON文件">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>JS 读取JSON文件</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/05/12/%E5%B7%A5%E5%85%B7/nginx%E8%AE%BE%E7%BD%AEGzip/" itemprop="url" rel="next" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (13).jpeg" title="nginx 设置gzip">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> 工具</span>
+  <h3>nginx 设置gzip</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">一、介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">二、安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">3.</span> <span class="toc-text">三、常用配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81Rewrite"><span class="toc-number">3.1.</span> <span class="toc-text">1、Rewrite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81if%E6%8C%87%E4%BB%A4"><span class="toc-number">3.2.</span> <span class="toc-text">2、if指令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%98%B2%E7%9B%97%E9%93%BE"><span class="toc-number">4.</span> <span class="toc-text">四、防盗链</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%98%B2%E7%9B%97%E9%93%BE%EF%BC%9F"><span class="toc-number">4.1.</span> <span class="toc-text">什么是防盗链？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%B2%E7%9B%97%E9%93%BE%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%EF%BC%9A"><span class="toc-number">4.2.</span> <span class="toc-text">防盗链的实现原理：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E9%98%B2%E7%9B%97%E9%93%BE%EF%BC%9A"><span class="toc-number">4.3.</span> <span class="toc-text">实现防盗链：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8Nginx%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84Rewrite%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0%E9%98%B2%E7%9B%97%E9%93%BE%E3%80%82"><span class="toc-number">4.4.</span> <span class="toc-text">使用Nginx服务器的Rewrite功能实现防盗链。</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2022/06/27/%E5%B7%A5%E5%85%B7/ESbuild/" rel="bookmark" title="ESbuild">ESbuild</a></li><li><a href="/2022/06/28/%E5%B7%A5%E5%85%B7/homebrew%E4%BD%BF%E7%94%A8/" rel="bookmark" title="homebrew 安装与使用">homebrew 安装与使用</a></li><li><a href="/2022/08/01/%E5%B7%A5%E5%85%B7/YAPI%20%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" rel="bookmark" title="YAPI 安装使用">YAPI 安装使用</a></li><li><a href="/2022/08/20/%E5%B7%A5%E5%85%B7/pip%E4%BD%BF%E7%94%A8/" rel="bookmark" title="pip 安装及使用">pip 安装及使用</a></li><li><a href="/2022/11/11/%E5%BE%AE%E5%89%8D%E7%AB%AF/html%20entry/" rel="bookmark" title="html entry">html entry</a></li><li><a href="/2022/11/16/%E5%B7%A5%E5%85%B7/lerna/" rel="bookmark" title="lerna使用">lerna使用</a></li><li><a href="/2022/11/18/%E5%B7%A5%E5%85%B7/npm-run-all/" rel="bookmark" title="npm-run-all">npm-run-all</a></li><li><a href="/2022/12/29/%E5%B7%A5%E5%85%B7/npx/" rel="bookmark" title="npx 介绍">npx 介绍</a></li><li class="active"><a href="/2023/05/06/%E5%B7%A5%E5%85%B7/nginx%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="bookmark" title="nginx 使用">nginx 使用</a></li><li><a href="/2023/05/12/%E5%B7%A5%E5%85%B7/nginx%E8%AE%BE%E7%BD%AEGzip/" rel="bookmark" title="nginx 设置gzip">nginx 设置gzip</a></li><li><a href="/2024/06/04/%E5%B7%A5%E5%85%B7/nginx%E5%8D%87%E7%BA%A7/" rel="bookmark" title="nginx 升级">nginx 升级</a></li><li><a href="/2024/07/24/%E5%B7%A5%E5%85%B7/pnpm/" rel="bookmark" title="pnpm">pnpm</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">78</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">32</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">85</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2023/05/05/JavaScript/JS%E8%AF%BB%E5%8F%96JSON%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/05/12/%E5%B7%A5%E5%85%B7/nginx%E8%AE%BE%E7%BD%AEGzip/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/vite/" title="分类于 vite">vite</a>
+</div>
+
+    <span><a href="/2022/06/27/vite/Vite/" title="Vite">Vite</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/CSS/" title="分类于 CSS">CSS</a>
+</div>
+
+    <span><a href="/2024/11/11/CSS/filter/" title="CSS filter">CSS filter</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker/Dockerfile%E8%AF%AD%E6%B3%95/" title="Dockerfile 基本语法">Dockerfile 基本语法</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E5%85%B7/" title="分类于 工具">工具</a>
+</div>
+
+    <span><a href="/2022/11/11/%E5%BE%AE%E5%89%8D%E7%AB%AF/html%20entry/" title="html entry">html entry</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/graphQL/" title="分类于 graphQL">graphQL</a>
+</div>
+
+    <span><a href="/2022/06/27/graphQL%E4%BD%BF%E7%94%A8/" title="graphQL使用">graphQL使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/28/docker/CMD%E5%92%8CENTRYPOINT%E7%9A%84%E5%8C%BA%E5%88%AB/" title="Dockerfile CMD和ENTRYPOINT的区别">Dockerfile CMD和ENTRYPOINT的区别</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker/docker%20%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" title="docker 操作指令">docker 操作指令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/JS/" title="分类于 JS">JS</a>
+</div>
+
+    <span><a href="/2022/11/09/PWA/" title="PWA">PWA</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/15/docker/%E5%88%B6%E4%BD%9C%E8%BD%BB%E9%87%8Fjava%E9%95%9C%E5%83%8F/" title="制作轻量JAVA镜像">制作轻量JAVA镜像</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E5%85%B7/" title="分类于 工具">工具</a>
+</div>
+
+    <span><a href="/2022/12/29/%E5%B7%A5%E5%85%B7/npx/" title="npx 介绍">npx 介绍</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2023/05/06/工具/nginx使用说明/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

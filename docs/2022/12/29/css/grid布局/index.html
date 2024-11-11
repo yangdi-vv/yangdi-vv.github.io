@@ -1,0 +1,569 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="">
+  <link rel="manifest" href="/images/manifest.json">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Yang Di" href="http://www.yangdi.cloud/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Yang Di" href="http://www.yangdi.cloud/atom.xml" />
+<link rel="alternate" type="application/json" title="Yang Di" href="http://www.yangdi.cloud/feed.json" />
+
+
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="grid,CSS" />
+
+
+<link rel="canonical" href="http://www.yangdi.cloud/2022/12/29/CSS/grid%E5%B8%83%E5%B1%80/">
+
+
+
+  <title>
+grid布局 - CSS |
+One Piece = Yang Di = 吐司vv的友人帳</title>
+<meta name="generator" content="Hexo 6.1.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">grid布局
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2022-12-29 09:58:54">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2022-12-29T09:58:54Z">2022-12-29</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">One Piece</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (6).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (16).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (3).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (13).jpeg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (2).jpg"></li>
+          <li class="item" data-background-image="http://123.56.167.35/img_blog/img (14).jpeg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span><i class="ic i-angle-right"></i>
+<span  class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/CSS/" itemprop="item" rel="index" title="分类于 CSS"><span itemprop="name">CSS</span></a>
+<meta itemprop="position" content="1" /></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="http://www.yangdi.cloud/2022/12/29/CSS/grid%E5%B8%83%E5%B1%80/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="yangdi">
+    <meta itemprop="description" content="吐司vv的友人帳, ">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Yang Di">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h2 id="一、grid布局"><a href="#一、grid布局" class="headerlink" title="一、grid布局"></a>一、grid布局</h2><h3 id="1、基本概念"><a href="#1、基本概念" class="headerlink" title="1、基本概念"></a>1、基本概念</h3><blockquote>
+<p>Grid 网格布局，将网页划分为一个个网格，可以任意组合不同的网格，对项目进行不同的排列顺序，flex是一维布局，只能针对项目的轴线设置项目放置的相对位置，而grid布局是将容器划分成行和列，产生的单元格，然后指定项目所在的位置，可以把它看成是一个二维布局。</p>
+</blockquote>
+<ul>
+<li>行<br><img data-src="http://123.56.167.35/img_blog/grid_rows.png" alt="grid"></li>
+<li>列<br><img data-src="http://123.56.167.35/img_blog/grid_columns.png" alt="grid"></li>
+<li>间隔<br><img data-src="http://123.56.167.35/img_blog/grid_gaps.png" alt="grid"></li>
+<li>区域<br><img data-src="http://123.56.167.35/img_blog/grid-area.png" alt="grid"></li>
+</ul>
+<h2 id="二、容器属性"><a href="#二、容器属性" class="headerlink" title="二、容器属性"></a>二、容器属性</h2><h3 id="1、grid-template-columns-和-grid-template-rows-分别设置属性的列宽和行高-补充："><a href="#1、grid-template-columns-和-grid-template-rows-分别设置属性的列宽和行高-补充：" class="headerlink" title="1、grid-template-columns 和 grid-template-rows:分别设置属性的列宽和行高 补充："></a>1、grid-template-columns 和 grid-template-rows:分别设置属性的列宽和行高 补充：</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">1</span>fr <span class="number">2</span>fr</span><br><span class="line">grid-template-columns: <span class="number">1</span>fr <span class="number">2</span>fr <span class="number">1</span>fr</span><br><span class="line">grid-template-columns: <span class="built_in">repeat</span>(auto-fill,<span class="number">300px</span>)</span><br><span class="line">grid-template-columns: <span class="number">1</span>fr auto auto;</span><br><span class="line"><span class="attribute">grid-template-columns</span>: <span class="number">1</span>fr <span class="number">1</span>fr <span class="built_in">minmax</span>(<span class="number">300px</span>, <span class="number">2</span>fr);</span><br></pre></td></tr></table></figure>
+<p><img data-src="http://123.56.167.35/img_blog/grid-template-column1.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-template-column2.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-template-column3.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-template-column4.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-template-column5.png" alt="grid"></p>
+<h3 id="2、grid-gap-设置行间隙和列间隙大小"><a href="#2、grid-gap-设置行间隙和列间隙大小" class="headerlink" title="2、grid-gap 设置行间隙和列间隙大小"></a>2、grid-gap 设置行间隙和列间隙大小</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-gap</span>: <span class="number">10px</span>;</span><br></pre></td></tr></table></figure>
+<p><img data-src="http://123.56.167.35/img_blog/grid-gap.png" alt="grid"></p>
+<h3 id="3、grid-template-areas-定义多个区域及区域的排列方式（区域客服用出现多次）"><a href="#3、grid-template-areas-定义多个区域及区域的排列方式（区域客服用出现多次）" class="headerlink" title="3、grid-template-areas 定义多个区域及区域的排列方式（区域客服用出现多次）"></a>3、grid-template-areas 定义多个区域及区域的排列方式（区域客服用出现多次）</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-template-areas</span>:  <span class="string">&quot;. header  header &quot;</span>  <span class="string">&quot;sidebar content content&quot;</span>  <span class="string">&quot;footer footer footer&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.sidebar</span> &#123;</span><br><span class="line">    <span class="attribute">grid-area</span>: sidebar;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.footer</span>&#123;</span><br><span class="line">    <span class="attribute">grid-area</span>: footer;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">    <span class="attribute">grid-area</span>: content;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">    <span class="attribute">grid-area</span>: header;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot; box sidebar&quot;</span>&gt;</span>sidebar<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot; box content&quot;</span>&gt;</span>content<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot; box footer&quot;</span>&gt;</span>footer<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot; box header&quot;</span>&gt;</span>header<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img data-src="http://123.56.167.35/img_blog/grid-template-areas.png" alt="grid"></p>
+<h3 id="4、grid-auto-flow-row-自动布局算法，在一行内能排列下的情况下，依照先行后列（默认）的原则依次布局排列。也可以设置先列后行的写法，即：grid-auto-flow-column"><a href="#4、grid-auto-flow-row-自动布局算法，在一行内能排列下的情况下，依照先行后列（默认）的原则依次布局排列。也可以设置先列后行的写法，即：grid-auto-flow-column" class="headerlink" title="4、grid-auto-flow: row  自动布局算法，在一行内能排列下的情况下，依照先行后列（默认）的原则依次布局排列。也可以设置先列后行的写法，即：grid-auto-flow: column"></a>4、grid-auto-flow: row  自动布局算法，在一行内能排列下的情况下，依照先行后列（默认）的原则依次布局排列。也可以设置先列后行的写法，即：grid-auto-flow: column</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">grid-auto-flow</span>: row</span><br></pre></td></tr></table></figure>
+<p><img data-src="http://123.56.167.35/img_blog/flex-justify-left.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/flex-justify-right.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/flex-justify-center.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/flex-justify-between.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/flex-justify-around.png" alt="grid"></p>
+<h3 id="5、align-items-start-设置单元格内的项目的垂直（上中下）位置"><a href="#5、align-items-start-设置单元格内的项目的垂直（上中下）位置" class="headerlink" title="5、align-items: start  设置单元格内的项目的垂直（上中下）位置"></a>5、align-items: start  设置单元格内的项目的垂直（上中下）位置</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start：对齐单元格的起始边缘。</span><br><span class="line">end：对齐单元格的结束边缘。</span><br><span class="line">center：单元格内部居中。</span><br><span class="line">stretch：拉伸，占满单元格的整个宽度（默认值）。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">align-items</span>: start / end / center /stretch</span><br></pre></td></tr></table></figure>
+<p><img data-src="http://123.56.167.35/img_blog/grid-items1.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-items2.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-items3.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-items3.png" alt="grid"></p>
+<h3 id="6、justify-items-设置单元格内的项目的水平（左中右）位置；align-items设置单元格（项目）内容的垂直（上中下）位置；place-items-x3D-align-items-justify-items-这俩个属性的写法完全相同"><a href="#6、justify-items-设置单元格内的项目的水平（左中右）位置；align-items设置单元格（项目）内容的垂直（上中下）位置；place-items-x3D-align-items-justify-items-这俩个属性的写法完全相同" class="headerlink" title="6、justify-items 设置单元格内的项目的水平（左中右）位置；align-items设置单元格（项目）内容的垂直（上中下）位置；place-items &#x3D; align-items +justify-items 这俩个属性的写法完全相同"></a>6、justify-items 设置单元格内的项目的水平（左中右）位置；align-items设置单元格（项目）内容的垂直（上中下）位置；place-items &#x3D; align-items +justify-items 这俩个属性的写法完全相同</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">start：对齐单元格的起始边缘。</span><br><span class="line">end：对齐单元格的结束边缘。</span><br><span class="line">center：单元格内部居中。</span><br><span class="line">stretch：拉伸，占满单元格的整个宽度（默认值）。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">justify-items: start / end / center /stretch</span><br></pre></td></tr></table></figure>
+<p><img data-src="http://123.56.167.35/img_blog/grid-justify1.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-justify2.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-justify3.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-justify4.png" alt="grid"></p>
+<h3 id="7、place-items-align-items-justify-items"><a href="#7、place-items-align-items-justify-items" class="headerlink" title="7、place-items: align-items + justify-items"></a>7、place-items: align-items + justify-items</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">place-items: center center;</span><br></pre></td></tr></table></figure>
+<p><img data-src="http://123.56.167.35/img_blog/grid-place-item.png" alt="grid"></p>
+<h3 id="8、justify-content、align-content-设置容器内所有内容的垂直和水平方向"><a href="#8、justify-content、align-content-设置容器内所有内容的垂直和水平方向" class="headerlink" title="8、justify-content、align-content 设置容器内所有内容的垂直和水平方向"></a>8、justify-content、align-content 设置容器内所有内容的垂直和水平方向</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">justify-content</span>: start / end / center /  stretch</span><br><span class="line">align-content: start / end / center /  stretch</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="http://123.56.167.35/img_blog/grid-justify-content1.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-justify-content2.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-justify-content3.png" alt="grid"><br><img data-src="http://123.56.167.35/img_blog/grid-justify-content4.png" alt="grid"></p>
+<h3 id="9、place-content是justify-content、align-content-合并"><a href="#9、place-content是justify-content、align-content-合并" class="headerlink" title="9、place-content是justify-content、align-content 合并"></a>9、place-content是justify-content、align-content 合并</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">place-<span class="attribute">content</span>: center center</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="http://123.56.167.35/img_blog/grid-place-content.png" alt="grid"></p>
+<h2 id="三、项目属性"><a href="#三、项目属性" class="headerlink" title="三、项目属性"></a>三、项目属性</h2><blockquote>
+<p>项目的属性是针对一个大的div中的具体的内容设置的元素（也就是给大箱子中的小箱子设置样式）。一共6有个属性，分别是：order、flex-grow、flex-shrink、flex-basis、flex、align-self。</p>
+</blockquote>
+<h3 id="1、grid-row-start-属性指定哪一行开始显示网格元素。"><a href="#1、grid-row-start-属性指定哪一行开始显示网格元素。" class="headerlink" title="1、grid-row-start: 属性指定哪一行开始显示网格元素。"></a>1、grid-row-start: 属性指定哪一行开始显示网格元素。</h3><p><img data-src="http://123.56.167.35/img_blog/grid-row-start.png" alt="grid"></p>
+<h3 id="2、grid-row-end-属性指定哪一行停止显示网格元素，或设置跨越多少行。"><a href="#2、grid-row-end-属性指定哪一行停止显示网格元素，或设置跨越多少行。" class="headerlink" title="2、grid-row-end 属性指定哪一行停止显示网格元素，或设置跨越多少行。"></a>2、grid-row-end 属性指定哪一行停止显示网格元素，或设置跨越多少行。</h3><p><img data-src="http://123.56.167.35/img_blog/grid-row-start.png" alt="grid"></p>
+<h3 id="3、grid-column-start：指定网格元素列的开始位置"><a href="#3、grid-column-start：指定网格元素列的开始位置" class="headerlink" title="3、grid-column-start：指定网格元素列的开始位置"></a>3、grid-column-start：指定网格元素列的开始位置</h3><p><img data-src="http://123.56.167.35/img_blog/grid-column-start.png" alt="grid"></p>
+<h3 id="4、grid-column-end：指定网格元素列的结束位置"><a href="#4、grid-column-end：指定网格元素列的结束位置" class="headerlink" title="4、grid-column-end：指定网格元素列的结束位置"></a>4、grid-column-end：指定网格元素列的结束位置</h3><p><img data-src="http://123.56.167.35/img_blog/grid-column-end.png" alt="grid"></p>
+
+      <div class="tags">
+          <a href="/tags/grid/" rel="tag"><i class="ic i-tag"></i> grid</a>
+          <a href="/tags/CSS/" rel="tag"><i class="ic i-tag"></i> CSS</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2024-11-11 03:27:43" itemprop="dateModified" datetime="2024-11-11T03:27:43Z">2024-11-11</time>
+  </span>
+  <span id="2022/12/29/CSS/grid布局/" class="item leancloud_visitors" data-flag-title="grid布局" title="阅读次数">
+      <span class="icon">
+        <i class="ic i-eye"></i>
+      </span>
+      <span class="text">阅读次数</span>
+      <span class="leancloud-visitors-count"></span>
+      <span class="text">次</span>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 加个好友</button>
+  <p>技术讨论~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="yangdi 微信">
+        <p>微信</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>yangdi <i class="ic i-at"><em>@</em></i>Yang Di
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="http://www.yangdi.cloud/2022/12/29/CSS/grid%E5%B8%83%E5%B1%80/" title="grid布局">http://www.yangdi.cloud/2022/12/29/CSS/grid布局/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2022/12/29/CSS/flex%E5%B8%83%E5%B1%80/" itemprop="url" rel="prev" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (3).jpeg" title="flex布局">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> CSS</span>
+  <h3>flex布局</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2023/01/29/JavaScript/requestIdleCallback%E5%92%8CrequestAnimationFrame/" itemprop="url" rel="next" data-background-image="http:&#x2F;&#x2F;123.56.167.35&#x2F;img_blog&#x2F;img (10).jpeg" title="requestIdleCallback和requestAnimationFrame详解">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> JavaScript</span>
+  <h3>requestIdleCallback和requestAnimationFrame详解</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81grid%E5%B8%83%E5%B1%80"><span class="toc-number">1.</span> <span class="toc-text">一、grid布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">1、基本概念</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%AE%B9%E5%99%A8%E5%B1%9E%E6%80%A7"><span class="toc-number">2.</span> <span class="toc-text">二、容器属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81grid-template-columns-%E5%92%8C-grid-template-rows-%E5%88%86%E5%88%AB%E8%AE%BE%E7%BD%AE%E5%B1%9E%E6%80%A7%E7%9A%84%E5%88%97%E5%AE%BD%E5%92%8C%E8%A1%8C%E9%AB%98-%E8%A1%A5%E5%85%85%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">1、grid-template-columns 和 grid-template-rows:分别设置属性的列宽和行高 补充：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81grid-gap-%E8%AE%BE%E7%BD%AE%E8%A1%8C%E9%97%B4%E9%9A%99%E5%92%8C%E5%88%97%E9%97%B4%E9%9A%99%E5%A4%A7%E5%B0%8F"><span class="toc-number">2.2.</span> <span class="toc-text">2、grid-gap 设置行间隙和列间隙大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81grid-template-areas-%E5%AE%9A%E4%B9%89%E5%A4%9A%E4%B8%AA%E5%8C%BA%E5%9F%9F%E5%8F%8A%E5%8C%BA%E5%9F%9F%E7%9A%84%E6%8E%92%E5%88%97%E6%96%B9%E5%BC%8F%EF%BC%88%E5%8C%BA%E5%9F%9F%E5%AE%A2%E6%9C%8D%E7%94%A8%E5%87%BA%E7%8E%B0%E5%A4%9A%E6%AC%A1%EF%BC%89"><span class="toc-number">2.3.</span> <span class="toc-text">3、grid-template-areas 定义多个区域及区域的排列方式（区域客服用出现多次）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81grid-auto-flow-row-%E8%87%AA%E5%8A%A8%E5%B8%83%E5%B1%80%E7%AE%97%E6%B3%95%EF%BC%8C%E5%9C%A8%E4%B8%80%E8%A1%8C%E5%86%85%E8%83%BD%E6%8E%92%E5%88%97%E4%B8%8B%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E4%BE%9D%E7%85%A7%E5%85%88%E8%A1%8C%E5%90%8E%E5%88%97%EF%BC%88%E9%BB%98%E8%AE%A4%EF%BC%89%E7%9A%84%E5%8E%9F%E5%88%99%E4%BE%9D%E6%AC%A1%E5%B8%83%E5%B1%80%E6%8E%92%E5%88%97%E3%80%82%E4%B9%9F%E5%8F%AF%E4%BB%A5%E8%AE%BE%E7%BD%AE%E5%85%88%E5%88%97%E5%90%8E%E8%A1%8C%E7%9A%84%E5%86%99%E6%B3%95%EF%BC%8C%E5%8D%B3%EF%BC%9Agrid-auto-flow-column"><span class="toc-number">2.4.</span> <span class="toc-text">4、grid-auto-flow: row  自动布局算法，在一行内能排列下的情况下，依照先行后列（默认）的原则依次布局排列。也可以设置先列后行的写法，即：grid-auto-flow: column</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81align-items-start-%E8%AE%BE%E7%BD%AE%E5%8D%95%E5%85%83%E6%A0%BC%E5%86%85%E7%9A%84%E9%A1%B9%E7%9B%AE%E7%9A%84%E5%9E%82%E7%9B%B4%EF%BC%88%E4%B8%8A%E4%B8%AD%E4%B8%8B%EF%BC%89%E4%BD%8D%E7%BD%AE"><span class="toc-number">2.5.</span> <span class="toc-text">5、align-items: start  设置单元格内的项目的垂直（上中下）位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6%E3%80%81justify-items-%E8%AE%BE%E7%BD%AE%E5%8D%95%E5%85%83%E6%A0%BC%E5%86%85%E7%9A%84%E9%A1%B9%E7%9B%AE%E7%9A%84%E6%B0%B4%E5%B9%B3%EF%BC%88%E5%B7%A6%E4%B8%AD%E5%8F%B3%EF%BC%89%E4%BD%8D%E7%BD%AE%EF%BC%9Balign-items%E8%AE%BE%E7%BD%AE%E5%8D%95%E5%85%83%E6%A0%BC%EF%BC%88%E9%A1%B9%E7%9B%AE%EF%BC%89%E5%86%85%E5%AE%B9%E7%9A%84%E5%9E%82%E7%9B%B4%EF%BC%88%E4%B8%8A%E4%B8%AD%E4%B8%8B%EF%BC%89%E4%BD%8D%E7%BD%AE%EF%BC%9Bplace-items-x3D-align-items-justify-items-%E8%BF%99%E4%BF%A9%E4%B8%AA%E5%B1%9E%E6%80%A7%E7%9A%84%E5%86%99%E6%B3%95%E5%AE%8C%E5%85%A8%E7%9B%B8%E5%90%8C"><span class="toc-number">2.6.</span> <span class="toc-text">6、justify-items 设置单元格内的项目的水平（左中右）位置；align-items设置单元格（项目）内容的垂直（上中下）位置；place-items &#x3D; align-items +justify-items 这俩个属性的写法完全相同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7%E3%80%81place-items-align-items-justify-items"><span class="toc-number">2.7.</span> <span class="toc-text">7、place-items: align-items + justify-items</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8%E3%80%81justify-content%E3%80%81align-content-%E8%AE%BE%E7%BD%AE%E5%AE%B9%E5%99%A8%E5%86%85%E6%89%80%E6%9C%89%E5%86%85%E5%AE%B9%E7%9A%84%E5%9E%82%E7%9B%B4%E5%92%8C%E6%B0%B4%E5%B9%B3%E6%96%B9%E5%90%91"><span class="toc-number">2.8.</span> <span class="toc-text">8、justify-content、align-content 设置容器内所有内容的垂直和水平方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9%E3%80%81place-content%E6%98%AFjustify-content%E3%80%81align-content-%E5%90%88%E5%B9%B6"><span class="toc-number">2.9.</span> <span class="toc-text">9、place-content是justify-content、align-content 合并</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%A1%B9%E7%9B%AE%E5%B1%9E%E6%80%A7"><span class="toc-number">3.</span> <span class="toc-text">三、项目属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81grid-row-start-%E5%B1%9E%E6%80%A7%E6%8C%87%E5%AE%9A%E5%93%AA%E4%B8%80%E8%A1%8C%E5%BC%80%E5%A7%8B%E6%98%BE%E7%A4%BA%E7%BD%91%E6%A0%BC%E5%85%83%E7%B4%A0%E3%80%82"><span class="toc-number">3.1.</span> <span class="toc-text">1、grid-row-start: 属性指定哪一行开始显示网格元素。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81grid-row-end-%E5%B1%9E%E6%80%A7%E6%8C%87%E5%AE%9A%E5%93%AA%E4%B8%80%E8%A1%8C%E5%81%9C%E6%AD%A2%E6%98%BE%E7%A4%BA%E7%BD%91%E6%A0%BC%E5%85%83%E7%B4%A0%EF%BC%8C%E6%88%96%E8%AE%BE%E7%BD%AE%E8%B7%A8%E8%B6%8A%E5%A4%9A%E5%B0%91%E8%A1%8C%E3%80%82"><span class="toc-number">3.2.</span> <span class="toc-text">2、grid-row-end 属性指定哪一行停止显示网格元素，或设置跨越多少行。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81grid-column-start%EF%BC%9A%E6%8C%87%E5%AE%9A%E7%BD%91%E6%A0%BC%E5%85%83%E7%B4%A0%E5%88%97%E7%9A%84%E5%BC%80%E5%A7%8B%E4%BD%8D%E7%BD%AE"><span class="toc-number">3.3.</span> <span class="toc-text">3、grid-column-start：指定网格元素列的开始位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81grid-column-end%EF%BC%9A%E6%8C%87%E5%AE%9A%E7%BD%91%E6%A0%BC%E5%85%83%E7%B4%A0%E5%88%97%E7%9A%84%E7%BB%93%E6%9D%9F%E4%BD%8D%E7%BD%AE"><span class="toc-number">3.4.</span> <span class="toc-text">4、grid-column-end：指定网格元素列的结束位置</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+        <ul>
+          <li><a href="/2022/12/29/CSS/flex%E5%B8%83%E5%B1%80/" rel="bookmark" title="flex布局">flex布局</a></li><li class="active"><a href="/2022/12/29/CSS/grid%E5%B8%83%E5%B1%80/" rel="bookmark" title="grid布局">grid布局</a></li><li><a href="/2024/11/11/CSS/filter/" rel="bookmark" title="CSS filter">CSS filter</a></li><li><a href="/2024/11/11/CSS/svg%E6%BB%A4%E9%95%9C/" rel="bookmark" title="svg 滤镜">svg 滤镜</a></li>
+        </ul>
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="yangdi"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">yangdi</p>
+  <div class="description" itemprop="description"></div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">78</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item categories">
+      <a href="/categories/">
+        <span class="count">32</span>
+        <span class="name">分类</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">85</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg==" title="https:&#x2F;&#x2F;github.com&#x2F;yangdi-vv"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>主页</a>
+  </li>
+
+        
+  <li class="item dropdown">
+      <a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a>
+    <ul class="submenu">
+
+        
+  <li class="item">
+    <a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a>
+  </li>
+
+        
+  <li class="item">
+    <a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a>
+  </li>
+
+  </ul>
+    
+  <li class="item">
+    <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lhbmdkaS12dg=="><i class="ic i-github"></i>GitHub</span>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2022/12/29/CSS/flex%E5%B8%83%E5%B1%80/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2023/01/29/JavaScript/requestIdleCallback%E5%92%8CrequestAnimationFrame/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/threeJS/" title="分类于 threeJS">threeJS</a>
+</div>
+
+    <span><a href="/2022/11/03/threeJS/" title="threeJS">threeJS</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/TypeScript/" title="分类于 TypeScript">TypeScript</a>
+</div>
+
+    <span><a href="/2022/10/18/TypeScript/typeScript/" title="typeScript使用">typeScript使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BE%AE%E5%89%8D%E7%AB%AF/" title="分类于 微前端">微前端</a>
+<i class="ic i-angle-right"></i>
+<a href="/categories/%E5%BE%AE%E5%89%8D%E7%AB%AF/JS/" title="分类于 JS">JS</a>
+</div>
+
+    <span><a href="/2022/11/16/%E5%BE%AE%E5%89%8D%E7%AB%AF/%E6%B5%81%E8%A1%8C%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E6%AF%94%E8%BE%83/" title="微前端框架比较">微前端框架比较</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/React/" title="分类于 React">React</a>
+</div>
+
+    <span><a href="/2022/06/27/React/mobx/" title="Mobx 基本使用">Mobx 基本使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%BE%AE%E5%89%8D%E7%AB%AF/" title="分类于 微前端">微前端</a>
+</div>
+
+    <span><a href="/2022/11/16/%E5%BE%AE%E5%89%8D%E7%AB%AF/%E8%85%BE%E8%AE%AF%E5%BE%AE%E5%89%8D%E7%AB%AF-%E6%97%A0%E7%95%8C/" title="微前端框架-无界">微前端框架-无界</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/Linux/" title="分类于 Linux">Linux</a>
+</div>
+
+    <span><a href="/2022/08/02/linux/%E4%B8%8D%E5%90%8C%E7%B3%BB%E7%BB%9F%E4%B8%8B%E6%9F%A5%E7%9C%8B%E5%92%8Ckill%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E7%A8%8B%E5%BA%8F/" title="不同系统下查看和kill端口占用程序">不同系统下查看和kill端口占用程序</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" title="分类于 测试工具">测试工具</a>
+</div>
+
+    <span><a href="/2022/07/13/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/ant+jmeter+docker%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" title="制作自动化测试镜像（ant+jmeter+docker）">制作自动化测试镜像（ant+jmeter+docker）</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/MongoDB/" title="分类于 MongoDB">MongoDB</a>
+</div>
+
+    <span><a href="/2022/08/24/%E5%B7%A5%E5%85%B7/mongoDB%20%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" title="mongoDB 安装及使用">mongoDB 安装及使用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/docker/" title="分类于 docker">docker</a>
+</div>
+
+    <span><a href="/2022/07/13/docker/docker%20%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" title="docker 操作指令">docker 操作指令</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+<a href="/categories/%E5%B7%A5%E5%85%B7/" title="分类于 工具">工具</a>
+</div>
+
+    <span><a href="/2024/06/04/%E5%B7%A5%E5%85%B7/nginx%E5%8D%87%E7%BA%A7/" title="nginx 升级">nginx 升级</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2015 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">yangdi @ One Piece</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2022/12/29/CSS/grid布局/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)看看我"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,
+    copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>
